@@ -1,5 +1,5 @@
 {
-  "name": "goit-wallet-fe",
+  "name": "wallet-app-frontend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
