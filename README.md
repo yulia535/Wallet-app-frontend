@@ -1,1 +1,1 @@
-# goit-wallet-fe
+# Wallet
