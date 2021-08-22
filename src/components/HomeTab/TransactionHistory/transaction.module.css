@@ -61,7 +61,9 @@ td{
     font-family: 'Courier New', Courier, monospace;
     font-weight: 300;
 }
-
+td{
+    color: black;
+}
 tr:nth-child(2n) {
     /* background-color: rgb(203, 234, 240); */
 }
@@ -71,6 +73,7 @@ color: #24CCA7
 .outcome{
     color: #FF6596
 }
+
 .incomeItem{
 color: #24CCA7;
 
