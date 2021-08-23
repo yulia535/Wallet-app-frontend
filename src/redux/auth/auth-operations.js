@@ -1,20 +1,10 @@
 import axios from 'axios';
-import {
-  registerRequest,
-  registerSuccess,
-  registerError,
-  loginRequest,
-  loginSuccess,
-  loginError,
-//   logoutRequest,
-//   logoutSuccess,
-//   logoutError,
-//   getCurrentUserRequest,
-//   getCurrentUserSuccess,
-//   getCurrentUserError,
-} from './auth-actions';
+import authActions from './auth-actions';
 
-axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
+axios.defaults.baseURL = '';
+
+
+// axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
 const token = {
   set(token) {
@@ -26,61 +16,59 @@ const token = {
 };
 
 const register = credentials => async dispatch => {
-  dispatch(registerRequest());
-
+  dispatch(authActions.registerRequest());
   try {
-    const response = await axios.post('/users/signup', credentials);
+    const response = await axios.post('/users/registration', credentials);
+
     token.set(response.data.token);
-    dispatch(registerSuccess(response.data));
+
+    dispatch(authActions.registerSuccess(response.data));
   } catch (error) {
-    dispatch(registerError(error.message));
-  }
-};
+    dispatch(authActions.registerError(error.message));
+
 
 const login = credentials => async dispatch => {
-  dispatch(loginRequest());
-
+  dispatch(authActions.loginRequest());
   try {
     const response = await axios.post('/users/login', credentials);
+
     token.set(response.data.token);
-    dispatch(loginSuccess(response.data));
+    dispatch(authActions.loginSuccess(response.data));
   } catch (error) {
-    dispatch(loginError(error.message));
+    dispatch(authActions.loginError(alert(error.message)));
   }
 };
 
-// const logout = () => async dispatch => {
-//   dispatch(logoutRequest());
+const logout = () => async dispatch => {
+  dispatch(authActions.logoutRequest());
 
-//   try {
-//     await axios.post('/users/logout');
-//     token.unset();
-//     dispatch(logoutSuccess());
-//   } catch (error) {
-//     dispatch(logoutError(error.message));
-//   }
-// };
+  try {
+    await axios.post('/users/logout');
+    token.unset();
+    dispatch(authActions.logoutSuccess());
+  } catch (error) {
+    dispatch(authActions.logoutError(error.message));
+  }
+};
 
-// const getCurrentUser = () => async (dispatch, getState) => {
-//   const {
-//     auth: { token: persistedToken },
-//   } = getState();
+const getCurrentUser = () => async (dispatch, getState) => {
+  const {
+    auth: { token: persistedToken },
+  } = getState();
 
-//   if (!persistedToken) {
-//     return;
-//   }
+  if (!persistedToken) {
+    return;
+  }
 
-//   token.set(persistedToken);
-//   dispatch(getCurrentUserRequest());
-//   try {
-//     const response = await axios.get('/users/current');
-//     dispatch(getCurrentUserSuccess(response.data));
-//   } catch (error) {
-//     dispatch(getCurrentUserError(error.message));
-//   }
-// };
+  token.set(persistedToken);
+  dispatch(authActions.getCurrentUserRequest());
+  try {
+    const response = await axios.get('/users/current');
+    dispatch(authActions.getCurrentUserSuccess(response.data));
+  } catch (error) {
+    dispatch(authActions.getCurrentUserError(alert(error.message)));
+  }
+};
+// eslint-disable-next-line import/no-anonymous-default-export
+export default { register, login, logout, getCurrentUser };
 
-// const authOperations = { register, login, logout, getCurrentUser };
-const authOperations = { register, login };
-
-export default authOperations;

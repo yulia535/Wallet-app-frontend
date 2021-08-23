@@ -1,4 +1,12 @@
+// import { lazy } from 'react';
 import './App.css';
+import Currency from './components/Currency';
+import Ballance from './components/Balance';
+// import DashBoardPage from './views/DashboardPage';
+
+// const DashboardPage = lazy(() =>
+//   import('./views/DashboardPage' /* webpackChunkName: "dashboard-page" */),
+// );
 import routes from './routes/';
 import { Switch, Route } from 'react-router-dom';
 import TransactionPage from './components/HomeTab/TransactionPage';
@@ -7,8 +15,12 @@ import TransactionPage from './components/HomeTab/TransactionPage';
 function App() {
   return (
     <div className="App">
+
+
       <header className="App-header">
         <Switch>
+     <Ballance />
+      <Currency />
           <TransactionPage />
           {/* <Route exact path={routes.home} component={HomeView} /> */}
           {/* <Route exact path={routes.login} component={LoginView} />
@@ -16,6 +28,7 @@ function App() {
             <Route exact path={routes.diagram} component={DiagramView} /> */}
         </Switch>
       </header>
+
     </div>
   );
 }
