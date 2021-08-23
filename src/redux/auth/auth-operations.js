@@ -25,7 +25,8 @@ const register = credentials => async dispatch => {
     dispatch(authActions.registerSuccess(response.data));
   } catch (error) {
     dispatch(authActions.registerError(error.message));
-
+  }
+};
 
 const login = credentials => async dispatch => {
   dispatch(authActions.loginRequest());

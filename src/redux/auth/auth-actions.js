@@ -17,7 +17,7 @@ const getCurrentUserSuccess = createAction('auth/getCurrentUserSuccess');
 const getCurrentUserError = createAction('auth/getCurrentUserError');
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export default {
+const authActions =  {
   registerRequest,
   registerSuccess,
   registerError,
@@ -32,3 +32,4 @@ export default {
   getCurrentUserError,
 };
 
+export default authActions;

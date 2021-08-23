@@ -3,7 +3,9 @@ import { NavLink } from 'react-router-dom';
 // import { authOperations } from '../../redux/auth';
 // import { walletActions } from '../../redux/actions';
 
+
 import s from './FormButtons.module.css';
+
 
 const FormButtons = ({
   firtsButtonText,
