@@ -2,12 +2,14 @@ import './App.css';
 import routes from './routes/';
 import { Switch, Route } from 'react-router-dom';
 import TransactionPage from './components/HomeTab/TransactionPage';
+import DiagramTab from './components/DiagramTab';
 // import HomeView from './views/HomeView';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <DiagramTab />
         <Switch>
           <TransactionPage />
           {/* <Route exact path={routes.home} component={HomeView} /> */}
