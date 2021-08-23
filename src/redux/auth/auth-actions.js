@@ -31,3 +31,4 @@ export default {
   getCurrentUserSuccess,
   getCurrentUserError,
 };
+

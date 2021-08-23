@@ -2,6 +2,10 @@ import axios from 'axios';
 import authActions from './auth-actions';
 
 axios.defaults.baseURL = '';
+
+
+// axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
+
 const token = {
   set(token) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -10,6 +14,7 @@ const token = {
     axios.defaults.headers.common.Authorization = '';
   },
 };
+
 const register = credentials => async dispatch => {
   dispatch(authActions.registerRequest());
   try {
@@ -20,8 +25,7 @@ const register = credentials => async dispatch => {
     dispatch(authActions.registerSuccess(response.data));
   } catch (error) {
     dispatch(authActions.registerError(error.message));
-  }
-};
+
 
 const login = credentials => async dispatch => {
   dispatch(authActions.loginRequest());
@@ -67,3 +71,4 @@ const getCurrentUser = () => async (dispatch, getState) => {
 };
 // eslint-disable-next-line import/no-anonymous-default-export
 export default { register, login, logout, getCurrentUser };
+
