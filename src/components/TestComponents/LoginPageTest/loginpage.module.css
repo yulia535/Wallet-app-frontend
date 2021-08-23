@@ -1,0 +1,39 @@
+.login {
+  /* width: 1280px; */
+  height: 100vh;
+  background-color: #e5e5e5;
+  margin: 0 auto;
+}
+
+.container {
+     width: 1280px;
+     margin: 0 auto;
+  height: 100vh;
+  align-items: center;
+  display: flex;
+}
+
+.sidebar {
+  width: 100%;
+   /* align-items: center; */
+  /* width: 436px; */
+  padding: 150px 48px 78px 76px;
+}
+
+
+.img {
+  /* // display: block; */
+  width: 435px;
+  height: 420px;
+  margin-bottom: 28px;
+}
+
+.title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 1.5;
+  text-align: center;
+  color: #000000;
+
+}
