@@ -1,7 +1,7 @@
 import './App.css';
 import routes from './routes/';
 import { Switch, Route } from 'react-router-dom';
-import TransactionPage from './components/HomeTab/TransactionPage'
+import TransactionPage from './components/HomeTab/TransactionPage';
 // import HomeView from './views/HomeView';
 
 function App() {
@@ -9,12 +9,12 @@ function App() {
     <div className="App">
       <header className="App-header">
         <Switch>
-          <TransactionPage/>
+          <TransactionPage />
           {/* <Route exact path={routes.home} component={HomeView} /> */}
-            {/* <Route exact path={routes.login} component={LoginView} />
+          {/* <Route exact path={routes.login} component={LoginView} />
             <Route exact path={routes.register} component={RegistrationView} />
             <Route exact path={routes.diagram} component={DiagramView} /> */}
-       </Switch>
+        </Switch>
       </header>
     </div>
   );
