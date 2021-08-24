@@ -1,0 +1,23 @@
+.logoSvg {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+
+  @media screen and (min-width: 768px) {
+    width: 40px;
+    height: 40px;
+    margin-right: 20px;
+  }
+}
+
+.logoText {
+  color: main-text-color;
+  font-family: 'Montserrat';
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+
+  @media screen and (min-width: 768px) {
+    font-size: 30px;
+  }
+}
