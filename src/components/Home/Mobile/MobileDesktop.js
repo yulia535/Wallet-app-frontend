@@ -1,10 +1,13 @@
+import Balance from '../../Balance';
 import TransactionPage from '../../HomeTab/TransactionPage';
-const HomeDesktop = () => {
+
+const HomeMobile = () => {
   return (
     <>
+      <Balance />
       <TransactionPage />
     </>
   );
 };
 
-export default HomeDesktop;
+export default HomeMobile;
