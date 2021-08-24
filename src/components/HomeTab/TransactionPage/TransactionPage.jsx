@@ -5,6 +5,8 @@ import trans from '../TransactionHistory/transactions.json';
 import { nanoid } from 'nanoid';
 import styles from './transactionPage.module.css';
 import ModalContainer from '../ModalContainer/ModalContainer';
+import { ThemeProvider } from '@material-ui/styles';
+import theme from '../customMuiTheme'
 // import axios from 'axios';
 
 const TransactionPage = () => {
@@ -40,7 +42,7 @@ const TransactionPage = () => {
         const newFormData = { ...addFormData };
         newFormData[fieldName] = fieldValue;
         setAddFormData(newFormData);
-      
+        
         // console.log(e)
     };
 
@@ -85,7 +87,7 @@ const TransactionPage = () => {
         setModalActive(true)
     }
 
-    return (
+    return (<ThemeProvider theme={theme}>
         <div className={styles.container}>
             <TransactionHistory items={transactions} />
             <OpenModalBtn onClick={handleOpenModal}>
@@ -96,6 +98,7 @@ const TransactionPage = () => {
                 handleFormCancel={handleFormCancel}/>
      
         </div>
+        </ThemeProvider>
     );
 };
 
