@@ -1,10 +1,11 @@
 import styles from './modalAddTransaction.module.css';
 import TextField from '@material-ui/core/TextField';
-import { withStyles } from '@material-ui/core/styles';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Switch from '@material-ui/core/Switch';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
+// import { withStyles } from '@material-ui/core/styles';
+// import FormControlLabel from '@material-ui/core/FormControlLabel';
+// import Switch from '@material-ui/core/Switch';
+// import Grid from '@material-ui/core/Grid';
+// import Typography from '@material-ui/core/Typography';
+import ToggleCustom from '../UI/ToggleCustom'
 
 const ModalAddTransactions = ({
     setActive,
@@ -24,43 +25,43 @@ const ModalAddTransactions = ({
         { value: 'Остальные', name: 'Остальные' },
     ];
 
-    const AntSwitch = withStyles((theme) => ({
-        root: {
-          width: 80,
-          height: 40,
-          padding: 0,
-          display: 'flex',
-        },
-        switchBase: {
-          padding: 1,
-          color: theme.palette.primary.main ,
-          '&$checked': {
-            transform: 'translateX(12px)',
-            color: theme.palette.common.white,
-            '& + $track': {
-              opacity: 1,
-              backgroundColor: theme.palette.common.white,
-              color:'#FF6596',
-              borderColor: '#e0e0e0',
-              borderRadius: 30,
-            },
-          },
-        },
-        thumb: {
-          width: 44,
-          height: 44,
-          boxShadow: 'none',
-        },
-        track: {
-          border: `1px solid #e0e0e0`,
-          borderRadius: 30 ,
-          width: 80,
-          height: 40,
-          opacity: 1,
-          backgroundColor: theme.palette.common.white,
-        },
-        checked: {},
-      }))(Switch);
+    // const AntSwitch = withStyles((theme) => ({
+    //     root: {
+    //       width: 80,
+    //       height: 40,
+    //       padding: 0,
+    //       display: 'flex',
+    //     },
+    //     switchBase: {
+    //       padding: 1,
+    //       color: theme.palette.primary.main ,
+    //       '&$checked': {
+    //         transform: 'translateX(12px)',
+    //         color: theme.palette.common.white,
+    //         '& + $track': {
+    //           opacity: 1,
+    //           backgroundColor: theme.palette.common.white,
+    //           color:'#FF6596',
+    //           borderColor: '#e0e0e0',
+    //           borderRadius: 30,
+    //         },
+    //       },
+    //     },
+    //     thumb: {
+    //       width: 44,
+    //       height: 44,
+    //       boxShadow: 'none',
+    //     },
+    //     track: {
+    //       border: `1px solid #e0e0e0`,
+    //       borderRadius: 30 ,
+    //       width: 80,
+    //       height: 40,
+    //       opacity: 1,
+    //       backgroundColor: theme.palette.common.white,
+    //     },
+    //     checked: {},
+    //   }))(Switch);
 
 
     return (
@@ -74,13 +75,18 @@ const ModalAddTransactions = ({
             placeholder="type"
             onChange={e => onHandleChange(e)}
           ></input> */}
-<div className={styles.chooseTypeToggle}>
+{/* <div className={styles.chooseTypeToggle}><span>Доход</span><ToggleCustom/><span>Расход</span> </div> */}
+<ToggleCustom/> 
+
+
+
+{/* <div className={styles.chooseTypeToggle}>
 
               <span>Доход</span>  <AntSwitch name="checkedC" /> <span>Расход</span>
-</div>
+</div> */}
 
 
-
+       
           <select className={styles.selectCategory} name="category" onChange={e => onHandleChange(e)}>
             {categoryData.map((e, key) => {
               return (
