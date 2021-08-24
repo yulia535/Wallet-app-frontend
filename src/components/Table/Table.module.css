@@ -1,0 +1,49 @@
+.header_table {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  height: 58px;
+  width: 280px;
+  margin-bottom: 9px;
+  border-radius: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-family: Circe, sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #000000;
+}
+
+.table_list {
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-bottom: 15px;
+}
+
+.final_statistic {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-family: Circe, sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.statistic_name {
+  color: #000000;
+}
+
+.statistic_consumption {
+  margin-bottom: 10px;
+  color: #ff6596;
+}
+
+.statistic_income {
+  color: #24cca7;
+}

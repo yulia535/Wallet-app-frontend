@@ -1,0 +1,40 @@
+.table_item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 54px;
+  border-bottom: 1px solid #dcdcdf;
+}
+
+.marker_color {
+  width: 24px;
+  height: 24px;
+  /* background-color: #fed057; */
+  margin-right: 16px;
+}
+
+.description_consumption {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 200px;
+}
+
+.name_consumption {
+  width: 100px;
+  font-family: Circe, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.125;
+  color: #000000;
+}
+
+.quantity_consumption {
+  font-family: Circe, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #000000;
+}
