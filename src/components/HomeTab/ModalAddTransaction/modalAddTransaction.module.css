@@ -34,6 +34,47 @@
     cursor: pointer;
 
 }
+.chooseTypeToggle{
+    display: flex;
+    margin:0 auto;
+    width: 220px;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+.btnsModal{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+input{
+    border:none;
+    border-bottom: 1px solid grey;
+}
+.selectCategory{
+margin-top: 40px;
+border:none;
+border-bottom: 1px solid grey;
+}
+
+.amountDate{
+    display: flex;
+    justify-content: space-between;
+    margin: 40px 0;
+}
+.inputDate{
+    margin-left: 50px;
+}
+.inputDate, .inputAmount{
+width: 190px;
+
+
+}
+::-webkit-calendar-picker-indicator {
+    color: transparent;
+    opacity: 1;
+    background: url('./Vector.png') no-repeat center;
+    background-size: contain;
+  }
 
 /* .commentField{
     margin-bottom: 50px;
