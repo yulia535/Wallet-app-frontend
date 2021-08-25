@@ -1,21 +1,24 @@
-.ballance-div {
+.ballanceContainer {
   width: 100%;
   padding: 8px 10px 13px 40px;
   margin: 0 auto;
   border-radius: 30px;
-  background-color: getColor('third-text-color');
+  background-color: #ffffff;
   margin-top: 13px;
-
-  @media (min-width: 768px) {
+}
+@media (min-width: 768px) {
+  .ballanceContainer {
     margin-top: 20px;
   }
+}
 
-  @media (min-width: 1280px) {
+@media (min-width: 1280px) {
+  .ballanceContainer {
     margin-top: 30px;
   }
 }
 
-.ballance-title {
+.ballanceTitle {
   margin-bottom: 10px;
   font-size: 12px;
   line-height: 1.5;
@@ -27,7 +30,7 @@
   font-weight: 700;
   line-height: 1.29;
 }
-.hryvnia-sign {
+.hryvnia {
   margin-right: 5px;
   font-weight: 700;
 }

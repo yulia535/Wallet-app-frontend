@@ -1,33 +1,28 @@
-// import { lazy } from 'react';
+import { lazy, Suspense } from 'react';
+import { Switch } from 'react-router-dom';
 import './App.css';
-import Currency from './components/Currency';
-import Ballance from './components/Balance';
-import Header from './components/Header';
-// import DashBoardPage from './views/DashboardPage';
+// import Ballance from './components/Balance';
+import DashBoardPage from './views/DashboardPage';
+// import PrivateRouter from './components/PrivateRouter';
+// import PublicRouter from './components/PublicRouter';
 
-// const DashboardPage = lazy(() =>
-//   import('./views/DashboardPage' /* webpackChunkName: "dashboard-page" */),
-// );
 // import routes from './routes/';
-import { Switch, Route } from 'react-router-dom';
 import TransactionPage from './components/HomeTab/TransactionPage';
 import DiagramTab from './components/DiagramTab';
-// import HomeView from './views/HomeView';
+import HomeView from './views/HomeView';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Header />
+        <DashBoardPage />
         <DiagramTab />
-        <Ballance />
-        <Currency />
         <TransactionPage />
         <Switch>
-          {/* <Route exact path={routes.home} component={HomeView} /> */}
-          {/* <Route exact path={routes.login} component={LoginView} />
-            <Route exact path={routes.register} component={RegistrationView} />
-            <Route exact path={routes.diagram} component={DiagramView} /> */}
+          {/* <Route exact path={routes.home} component={HomeView} />
+          <Route exact path={routes.login} component={LoginView} />
+          <Route exact path={routes.register} component={RegistrationView} />
+          <Route exact path={routes.diagram} component={DiagramView} /> */}
         </Switch>
       </header>
     </div>

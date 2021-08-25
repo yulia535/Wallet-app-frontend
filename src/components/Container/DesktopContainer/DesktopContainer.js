@@ -1,14 +1,14 @@
 import { Suspense, lazy } from 'react';
 import { NavLink, Switch, Route } from 'react-router-dom';
 
-import HomeIcon from '@material-ui/icons/Home'
+import HomeIcon from '@material-ui/icons/Home';
 import TimelineIcon from '@material-ui/icons/Timeline';
 
 import Balance from '../../Balance';
 import Currency from '../../Currency';
 import Loading from '../../Loader';
 
-import './DesktopContainer.scss';
+import s from './DesktopContainer.module.css';
 
 const HomeDesktop = lazy(() =>
   import('../../Home/Desktop' /* webpackChunkName: "home-page" */),
@@ -19,31 +19,31 @@ const DiagramTab = lazy(() =>
 
 const DesktopContainer = () => {
   return (
-    <div className="dashboard-container">
-      <div className="background-ellipse">
-        <div className="bg_filter">
-          <div className="dashboard-top-container">
-            <div className="home-wrap-desktop">
+    <div className={s.dashboardContainer}>
+      <div className={s.backgroundEllipse}>
+        <div className={s.bg_filter}>
+          <div className={s.dashboardTopContainer}>
+            <div className={s.homeWrapDesktop}>
               <ul>
-                <li className="icons-list">
+                <li className={s.icons}>
                   <NavLink
                     to="/dashboard/home"
-                    className="link"
-                    activeClassName="active-link"
+                    className={s.link}
+                    activeClassName={s.active}
                   >
                     <HomeIcon fontSize="small" />
-                    <span className="icons-title">Главная</span>
+                    <span className={s.iconTitle}>Главная</span>
                   </NavLink>
                 </li>
 
-                <li className="icons-list">
+                <li className={s.icons}>
                   <NavLink
                     to="/dashboard/statistics"
-                    className="link"
-                    activeClassName="active-link"
+                    className={s.link}
+                    activeClassName={s.active}
                   >
                     <TimelineIcon fontSize="small" />
-                    <span className="icons-title">Статистика</span>
+                    <span className={s.iconTitle}>Статистика</span>
                   </NavLink>
                 </li>
               </ul>
