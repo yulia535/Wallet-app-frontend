@@ -2,7 +2,7 @@
 import './App.css';
 import Currency from './components/Currency';
 import Ballance from './components/Balance';
-import Header from './components/Header'
+import Header from './components/Header';
 // import DashBoardPage from './views/DashboardPage';
 
 // const DashboardPage = lazy(() =>
@@ -19,13 +19,13 @@ import RegistrationView from '../src/views/RegistartionView'
 function App() {
   return (
     <div className="App">
-      {/* <header className="App-header">
-        <Header/>
+      <header className="App-header">
+        <Header />
         <DiagramTab />
         <Ballance />
         <Currency />
         <TransactionPage />
-      </header> */}
+      </header> 
         <Switch>
           {/* <Route exact path={routes.home} component={HomeView} />
           {/* <Route exact path={routes.login} component={LoginView} /> */}

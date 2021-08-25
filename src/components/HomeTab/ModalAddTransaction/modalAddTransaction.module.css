@@ -19,6 +19,10 @@
     outline: none;
     border: none;
 }
+.addBtn:hover, .addBtn:focus{
+    box-shadow: 0px 1px 15px 0px rgba(36,204,167, 0.7)
+
+}
 
 .cancelBtn{
     background-color: transparent;
@@ -34,6 +38,59 @@
     cursor: pointer;
 
 }
+.cancelBtn:hover, .cancelBtn:focus {
+    box-shadow:  0px 1px 15px 0px rgba(74,86,226,0.88);
+    border: none;
+}
+/* .chooseTypeToggle{
+    display: flex;
+    margin:0 auto;
+    width: 220px;
+    justify-content: space-between;
+    margin-top: 40px;
+    align-items: center;
+
+} */
+.btnsModal{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+input{
+    border:none;
+    border-bottom: 1px solid grey;
+}
+.selectCategory{
+margin-top: 40px;
+border:none;
+border-bottom: 1px solid grey;
+background: transparent;
+}
+
+
+.amountDate{
+    display: flex;
+    justify-content: space-between;
+    margin: 40px 0;
+}
+.inputDate{
+    margin-left: 50px;
+    padding: 10px;
+}
+.inputAmount{
+    text-align: center;
+}
+.inputDate, .inputAmount{
+width: 190px;
+
+
+}
+::-webkit-calendar-picker-indicator {
+    color: transparent;
+    opacity: 1;
+    background: url('./Vector.png') no-repeat center;
+    background-size: contain;
+  }
 
 /* .commentField{
     margin-bottom: 50px;

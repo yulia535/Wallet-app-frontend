@@ -1,7 +1,9 @@
+import styles from './openModalBtn.module.css'
+
 const OpenModalBtn=({onClick, children})=>{
     return(
         <>
-        <button onClick={onClick}>{children}</button>
+        <button className ={styles.openModal} onClick={onClick}>{children}</button>
         </>
     )
 }
