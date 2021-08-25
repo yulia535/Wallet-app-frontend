@@ -1,0 +1,22 @@
+.month {
+  width: 280px;
+  height: 50px;
+  border-radius: 30px;
+  font-family: Circe, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: red;
+  text-transform: none;
+  border: 1px solid #000000;
+}
+
+.menu_list {
+  border-radius: 30px;
+  width: 280px;
+}
+
+.menu_item {
+  width: 280px;
+}
