@@ -47,3 +47,16 @@
 .statistic_income {
   color: #24cca7;
 }
+
+@media screen and (min-width: 768px) {
+  .table {
+    width: 350px;
+  }
+
+  .header_table {
+    width: 350px;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-bottom: 15px;
+  }
+}

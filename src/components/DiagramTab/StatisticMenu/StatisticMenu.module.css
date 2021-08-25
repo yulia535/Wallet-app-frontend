@@ -1,22 +1,22 @@
-.month {
-  width: 280px;
-  height: 50px;
-  border-radius: 30px;
-  font-family: Circe, sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.5;
-  color: red;
-  text-transform: none;
-  border: 1px solid #000000;
+.wrapper_select {
+  margin-bottom: 20px;
 }
 
-.menu_list {
-  border-radius: 30px;
-  width: 280px;
+.form_control:not(:last-child) {
+  margin-bottom: 20px !important;
 }
 
-.menu_item {
-  width: 280px;
+@media screen and (min-width: 768px) {
+  .form_control {
+    width: 166px !important;
+  }
+
+  .form_control:not(:last-child) {
+    margin-bottom: 0 !important;
+    margin-right: 18px !important;
+  }
+
+  .select_input {
+    max-width: 166px !important;
+  }
 }

@@ -2,11 +2,15 @@ import React, { useState } from 'react';
 import { MenuItem, Select, FormControl } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { makeStyles } from '@material-ui/core';
-// import styles from './StatisticMenu.module.css';
+import styles from './StatisticMenu.module.css';
 
 const useStyles = makeStyles({
-  month: {
+  form_control: {
+    marginBottom: 20,
+  },
+  select_input: {
     paddingLeft: 21,
+    textAlign: 'left',
     paddingTop: 12,
     paddingBottom: 14,
     paddingRight: 20,
@@ -29,21 +33,12 @@ const useStyles = makeStyles({
   icon_expend: {
     width: 40,
     height: 20,
-    // right: 12,
-    // position: 'absolute',
     userSelect: 'none',
     pointerEvents: 'none',
   },
 });
 
 const StatisticMenu = () => {
-  const classes = useStyles();
-  const monthNow = new Date().getMonth();
-  const [month, setMonth] = useState(monthNow);
-  const handleChange = event => {
-    setMonth(event.target.value);
-  };
-
   const months = [
     'Январь',
     'Февраль',
@@ -59,17 +54,19 @@ const StatisticMenu = () => {
     'Декабрь',
   ];
 
-  // const menuProps = {
-  //   anchorOrigin: {
-  //     vertical: 'bottom',
-  //     horizontal: 'left',
-  //   },
-  //   transformOrigin: {
-  //     vertical: 'top',
-  //     horizontal: 'left',
-  //   },
-  //   getContentAnchorEl: null,
-  // };
+  const years = [2019, 2020, 2021];
+
+  const classes = useStyles();
+  const monthNow = new Date().getMonth();
+  const yearNow = new Date().getFullYear();
+  const [month, setMonth] = useState(monthNow);
+  const [year, setYear] = useState(yearNow);
+  const handleChangeMonth = event => {
+    setMonth(event.target.value);
+  };
+  const handleChangeYear = event => {
+    setYear(event.target.value);
+  };
 
   const iconComponent = props => {
     return (
@@ -78,24 +75,41 @@ const StatisticMenu = () => {
   };
 
   return (
-    <FormControl>
-      <Select
-        IconComponent={iconComponent}
-        disableUnderline
-        // MenuProps={menuProps}
-        value={month}
-        displayEmpty
-        onChange={handleChange}
-        className={classes.month}
-      >
-        <MenuItem value="">Месяц</MenuItem>
-        {months.map((month, index) => (
-          <MenuItem value={index} key={month}>
-            {month}
-          </MenuItem>
-        ))}
-      </Select>
-    </FormControl>
+    <div className={styles.wrapper_select}>
+      <FormControl className={styles.form_control}>
+        <Select
+          autoWidth
+          IconComponent={iconComponent}
+          disableUnderline
+          value={month}
+          displayEmpty
+          onChange={handleChangeMonth}
+          className={classes.select_input + ' ' + styles.select_input}
+        >
+          {months.map((month, index) => (
+            <MenuItem value={index} key={month}>
+              {month}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
+      <FormControl>
+        <Select
+          IconComponent={iconComponent}
+          disableUnderline
+          value={year}
+          displayEmpty
+          onChange={handleChangeYear}
+          className={classes.select_input + ' ' + styles.select_input}
+        >
+          {years.map(year => (
+            <MenuItem value={year} key={year}>
+              {year}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
+    </div>
   );
 };
 export default StatisticMenu;

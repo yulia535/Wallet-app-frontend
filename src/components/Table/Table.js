@@ -2,7 +2,7 @@ import styles from './Table.module.css';
 import TableItem from './TableItem';
 const Table = () => {
   const arrConsumption = [
-    { color: '#FED057', type: 'Основный расходы', quantity: '8 700.00' },
+    { color: '#FED057', type: 'Основныe расходы', quantity: '8 700.00' },
     { color: '#FFD8D0', type: 'Продукты', quantity: '3 800.74' },
     { color: '#FD9498', type: 'Машина', quantity: '1 500,00' },
     { color: '#C5BAFF', type: 'Забота о себе', quantity: '8.00' },
@@ -13,7 +13,7 @@ const Table = () => {
     { color: '#00AD84', type: 'Другие расходы', quantity: '610.00' },
   ];
   return (
-    <div>
+    <div className={styles.table}>
       <p className={styles.header_table}>
         <span>Категория</span>
         <span>Сумма</span>
