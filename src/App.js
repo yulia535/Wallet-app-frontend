@@ -3,6 +3,7 @@ import './App.css';
 import Currency from './components/Currency';
 import Ballance from './components/Balance';
 import Header from './components/Header';
+import LoginPage from './components/LoginPage';
 // import DashBoardPage from './views/DashboardPage';
 
 // const DashboardPage = lazy(() =>
@@ -18,6 +19,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <LoginPage/>
         <Header />
         <DiagramTab />
         <Ballance />
