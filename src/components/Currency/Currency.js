@@ -43,7 +43,7 @@ function Currency() {
 
             <tbody className="currency-tbody">
               {rates.map(({ ccy, buy, sale }) => (
-                <tr key={buy}>
+                <tr key={ccy}>
                   <td>{ccy}</td>
                   <td>{Number(buy).toFixed(2)}</td>
                   <td>{Number(sale).toFixed(2)}</td>
