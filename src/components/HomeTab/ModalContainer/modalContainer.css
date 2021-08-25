@@ -9,6 +9,8 @@
     align-items:center;
     justify-content: center;
     transform: scale(0);
+    z-index:900;
+    
   
     /* display:none; */
 }
@@ -18,11 +20,10 @@
 }
 
 .modal_content{
-    padding: 20px;
-    padding-left: 65px;
-    padding-right: 65px;
+
     border-radius:12px;
     background-color: white;
+    padding: 40px 65px 60px 65px;
     /* height:617px;
     width: 540px; */
   

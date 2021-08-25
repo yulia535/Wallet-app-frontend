@@ -91,12 +91,12 @@ const TransactionPage = () => {
         <div className={styles.container}>
             <TransactionHistory items={transactions} />
             <OpenModalBtn onClick={handleOpenModal}>
-                OPEN MODAL
+                
             </OpenModalBtn>
             <ModalContainer active={modalActive} setActive={setModalActive}  onHandleChange={handleAddForm}
                 onHandleSubmit={handleFormAddSubmit}
                 handleFormCancel={handleFormCancel}/>
-     
+
         </div>
         </ThemeProvider>
     );
