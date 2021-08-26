@@ -3,10 +3,8 @@ import { useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import Media from 'react-media';
 
-import Header from '../components/Header';
-
-import MobileContainer from '../components/Container/MobilContainer';
-import DesktopContainer from '../components/Container/DesktopContainer';
+import MobileContainer from '../Container/MobilContainer';
+import DesktopContainer from '../Container/DesktopContainer';
 
 const DashBoardPage = () => {
   const dispatch = useDispatch();
@@ -14,8 +12,6 @@ const DashBoardPage = () => {
   useEffect(() => {}, [dispatch]);
   return (
     <>
-      <Header />
-
       <div>
         <Media
           queries={{
@@ -29,7 +25,7 @@ const DashBoardPage = () => {
 
               {matches.medium && (
                 <>
-                  <Redirect to="/dashboard/home" />
+                  <Redirect to="/home" />
                   <DesktopContainer />
                 </>
               )}
