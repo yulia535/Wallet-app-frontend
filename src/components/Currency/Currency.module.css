@@ -1,0 +1,78 @@
+.currencyTbody {
+  border: none;
+  height: 100%;
+}
+
+tr:first-child td {
+  padding-top: 20px;
+}
+
+td {
+  border: none;
+  padding-bottom: 23px;
+}
+
+.currencyContainer {
+  margin-top: 30px;
+  z-index: 2;
+  position: relative;
+}
+.currencyTable {
+  border-radius: 30px;
+  text-align: center;
+  color: #ffffff;
+  background-color: #4a56e2;
+  width: 100%;
+  border-spacing: 0px;
+  overflow: hidden;
+
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+.currencyTable::before {
+  position: absolute;
+  content: '';
+  background-image: url(../../image/mount_currency.svg);
+
+  left: 0;
+  bottom: 0;
+
+  width: 100%;
+  height: 111px;
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.currencyColumn {
+  padding: 15px;
+  font-size: 18px;
+  line-height: 26.53px;
+}
+.currencyRow {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.2) -8.67%,
+    rgba(255, 255, 255, 0) 116.22%
+  );
+  width: 100%;
+}
+
+@media (max-width: 767px) {
+  .currencyContainer {
+    height: calc(100vh - 60px);
+  }
+}
+@media (min-width: 1280px) {
+  .currencyTable {
+    display: block;
+    height: 348px;
+    width: 347px;
+  }
+  .currencyRow {
+    width: 348px;
+  }
+  .currencyColumn {
+    padding: 16px 19px 17px 18px;
+  }
+}

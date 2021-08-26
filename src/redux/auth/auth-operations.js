@@ -1,10 +1,10 @@
 import axios from 'axios';
 import authActions from './auth-actions';
 
-axios.defaults.baseURL = '';
+// axios.defaults.baseURL = '';
 
 
-// axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
+axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
 const token = {
   set(token) {

@@ -1,2 +1,3 @@
-export { default as walletActions } from './wallet-actions';
-export { default as walletSelectors } from './wallet-selectors';
+export * as walletActions from './wallet-actions';
+export * as walletSelectors from './wallet-selectors';
+export * as walletReduser from './wallet-reduser';

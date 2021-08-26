@@ -1,0 +1,23 @@
+.logoSvg {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.logoText {
+  color: #000000;
+  font-family: 'Poppins';
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+}
+@media screen and (min-width: 768px) {
+  .logoSvg {
+    width: 40px;
+    height: 40px;
+    margin-right: 20px;
+  }
+  .logoText {
+    font-size: 30px;
+  }
+}

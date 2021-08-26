@@ -7,8 +7,8 @@ import MonetizationOnOutlinedIcon from '@material-ui/icons/MonetizationOnOutline
 
 import Loading from '../../Loader';
 
-import '../../Container/DesktopContainer/DesktopContainer.scss';
-import '../../Container/DesktopContainer/DesktopContainer.scss';
+import s from '../../Container/DesktopContainer/DesktopContainer.module.css';
+import style from '../../Container/DesktopContainer/DesktopContainer.module.css';
 
 const HomeMobile = lazy(() =>
   import('../../Home/Mobile' /* webpackChunkName: "home-page" */),
@@ -30,33 +30,33 @@ const Currency = lazy(() =>
 const MobileContainer = () => {
   return (
     <>
-      <div className="dashboard-container">
-        <div className="bg_filter">
-          <ul className="icons">
-            <li className="icons-item">
+      <div className={s.dashboardContainer}>
+        <div className={s.bg_filter}>
+          <ul className={style.icons}>
+            <li className={style.iconsItem}>
               <NavLink
                 to="/dashboard/home"
-                className="link"
-                activeClassName="active-link"
+                className={style.link}
+                activeClassName={style.active}
               >
                 <HomeIcon fontSize="large" />
               </NavLink>
             </li>
-            <li className="icons-item">
+            <li className={style.iconsItem}>
               <NavLink
                 to="/dashboard/statistics"
-                className="link"
-                activeClassName="active-link"
+                className={style.link}
+                activeClassName={style.active}
               >
                 <TimelineIcon fontSize="large" />
               </NavLink>
             </li>
 
-            <li className="icons-item">
+            <li className={style.iconsItem}>
               <NavLink
                 to="/dashboard/currency"
-                className="link"
-                activeClassName="active-link"
+                className={style.link}
+                activeClassName={style.active}
               >
                 <MonetizationOnOutlinedIcon fontSize="large" />
               </NavLink>

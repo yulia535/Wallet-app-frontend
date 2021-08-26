@@ -1,11 +1,9 @@
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-// import { authOperations } from '../../redux/auth';
-// import { walletActions } from '../../redux/actions';
-
+import { authOperations } from '../../redux/auth';
+import { walletActions } from '../../redux/actions';
 
 import s from './FormButtons.module.css';
-
 
 const FormButtons = ({
   firtsButtonText,
@@ -14,11 +12,11 @@ const FormButtons = ({
   secondLinkButton,
   canselAction,
 }) => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // function closeModal() {
-  //   dispatch(walletActions.ModalLogoutAction());
-  // }
+  function closeModal() {
+    dispatch(walletActions.ModalLogoutAction());
+  }
 
   return (
     <>
@@ -46,8 +44,8 @@ const FormButtons = ({
               type="button"
               className={[s.buttons, s.buttonAddTransaction].join(' ')}
               onClick={() => {
-                // dispatch(authOperations.logout());
-                // closeModal();
+                dispatch(authOperations.logout());
+                closeModal();
               }}
             >
               {firtsButtonText}

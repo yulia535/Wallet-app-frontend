@@ -18,6 +18,7 @@ ReactDOM.render(
         </BrowserRouter>
       </PersistGate>
     </Provider>
+    ,
   </React.StrictMode>,
   document.getElementById('root'),
 );
