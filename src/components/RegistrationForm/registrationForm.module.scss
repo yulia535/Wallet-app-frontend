@@ -1,0 +1,59 @@
+.formContainer{
+  padding-top: 50px;
+  width: 280px;
+}
+
+.inputForm{
+  display: block;
+  width: 100%;
+  padding-left: 50px;
+  padding-bottom: 10px;
+  margin-bottom: 40px;
+  color: #E0E0E0;
+  font-family: 'Circe';
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.47;
+  border: none;
+  border-bottom: 1px solid #BDBDBD;
+}
+.inputForm::placeholder{
+  color: #BDBDBD;
+}
+.imputBox{
+  position: relative;
+}
+.iconSvg{
+position: absolute;
+left: 6px;
+}
+.button{
+  width: 280px;
+  height: 50px;
+  border-radius: 20px;
+  font-family: 'Circe';
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.47;
+  color: #FFF;
+  background-color:#24CCA7;
+  border: none;
+  margin-bottom: 20px;
+}
+.linkButton{
+  display: block;
+  text-decoration: none;
+  width: 280px;
+  height: 50px;
+  border-radius: 20px;
+  padding: 13px 13px;
+  text-transform: uppercase;
+  font-family: 'Circe';
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.47;
+  color:  #4A56E2;
+  background-color:  #fff;
+  border: solid 1px  #4A56E2;
+
+}
