@@ -1,0 +1,24 @@
+@media (min-width: 768px){
+  .viewContainer{
+    background: #E5E5E5;
+  }
+}
+@media (min-width: 768px) and (max-width: 1279px){
+  .viewContainer{
+    background-image: url(../../image/Frame.png), url(../../image/Ellipse_purpure_tablet.png), url(../../image/Ellipse_roze.png);
+    background-position: top 60px left 114px, top 585px left, top right;
+    background-attachment: scroll;
+    background-repeat: no-repeat;
+    padding: 360px 114px 48px 114px;
+  }
+}
+@media (min-width: 1280px){
+  .viewContainer{
+    background-image: url(../../image/register_desktop.png), url(../../image/Ellipse_imac.png), url(../../image/Ellipse_rose_imac.png);
+    background-position: top 153px left 66px, top 271px left, top right;
+    background-attachment: scroll;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction:row-reverse;
+  }
+}

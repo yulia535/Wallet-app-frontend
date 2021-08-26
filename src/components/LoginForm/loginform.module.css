@@ -1,144 +1,110 @@
-.wrapper {
-  /* height: 100vh; */
-}
-
-.form {
-  display: flex;
-  flex-direction: column;
-  background-color: #ffffff;
-}
-
-.title {
-  display: inline-block;
-  /* font-family: 'Circe'; */
-  font-weight: 700;
-  font-size: 26px;
-  /* line-height: 1.5; */
-  color: #000000;
-
-  margin-top: 40px;
-  margin-bottom: 50px;
-  text-align: center;
-}
-
-.title::before {
-  content: '';
-  display: inline-block;
-  width: 30px;
-  height: 30px;
-  margin-right: 15px;
-  vertical-align: top;
-  background-position: center;
-
-  background-image: url(../../image/logo.svg);
-}
-
-.input {
-  border-top: none;
-  border-left: none;
-  border-right: none;
-  height: 34px;
-  padding-left: 55px;
-  margin: 0 auto;
-  margin-bottom: 40px;
-  border-bottom: 1px solid #e0e0e0;
-  font-weight: normal;
-  font-size: 18px;
-  line-height: 27px;
-  color: #bdbdbd;
-}
-.input:hover,
-.input:focus {
-  border-bottom: 1px solid #24cca7;
-}
-
-.button {
-  display: block;
-
-  height: 50px;
-  margin: 0 auto;
-  background: #ffffff;
-  border: 1px solid #4a56e2;
-  box-sizing: border-box;
-  border-radius: 20px;
-  font-size: 18px;
-  line-height: 27px;
-  color: #4a56e2;
-  text-transform: uppercase;
-}
-.button:hover,
-.button:focus {
-  color: #ffffff;
-  background-color: #24cca7;
-  border: 1px solid #24cca7;
-}
-.button:not(:last-child) {
-  margin-bottom: 20px;
-}
-
-@media (max-width: 767px) {
-  .wrapper {
+.formContainer{
+    padding: 110px 20px 110px 20px;
+    width: 320px;
+    margin: auto;
+    background-color: #fff;
+    }
+  
+  .logoContainer{
+    margin: auto;
     display: flex;
-    align-items: center;
-  }
-
-  .form {
-    width: 280px;
-  }
-
-  .input {
-    width: 280px;
-  }
-
-  .button {
-    width: 280px;
-  }
-}
-
-@media (min-width: 768px) {
-  .wrapper {
-    /* margin-top: 50px; */
-    margin-left: 114px;
-  }
-    .form {
-    width: 540px;
-    height: 468px;
-
-    border-radius: 20px;
-  }
-
-  .input:last-child {
+    justify-content: center;
+    align-items:flex-end;
     margin-bottom: 50px;
   }
-
-  .button {
-    width: 300px;
+  .inputForm{
+    display: block;
+    width: 100%;
+    padding-left: 50px;
+    padding-bottom: 10px;
+    margin-bottom: 40px;
+    color: #E0E0E0;
+    font-family: 'Circe';
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.47;
+    border: none;
+    border-bottom: 1px solid #BDBDBD;
   }
-
-  .input {
-    width: 410px;
+  .inputForm::placeholder{
+    color: #BDBDBD;
   }
-}
-
-@media (min-width: 1280px) {
-  .wrapper {
-    /* margin-top: 50px; */
-    margin-left: 95px;
-    margin-top: 136px;
+  .imputBox{
+    position: relative;
   }
-}
-
-
-
-
-.visuallyHidden {
+  .iconSvg{
   position: absolute;
-  clip: rect(0 0 0 0);
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-}
+  left: 6px;
 
-.link {
-  text-decoration: none;
-}
+  }
+ 
+  .button{
+    display: block;
+    width: 280px;
+    height: 50px;
+    border-radius: 20px;
+    font-family: 'Circe';
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.47;
+    color: #FFF;
+    background-color:#24CCA7;
+    border: none;
+    margin:auto;
+    margin-bottom:20px;
+    
+  }
+  .linkButton{
+    display: block;
+    text-decoration: none;
+    width: 280px;
+    height: 50px;
+    margin: auto;
+    border-radius: 20px;
+    padding: 13px 13px;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Circe';
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.47;
+    color:  #4A56E2;
+    background-color:  #fff;
+    border: solid 1px  #4A56E2;
+  
+  }
+
+  @media (max-width: 767px){
+  }
+  @media (min-width: 768px){
+    .formContainer{
+      width: 540px;
+      height: 468px;
+      padding: 40px 65px 60px 65px;
+      margin: auto;
+      background-color: #fff;
+      border-radius: 20px;
+      }
+    .button{
+      width: 300px;
+    }
+    .linkButton{
+      width: 300px;
+    }
+    /* .formSection::before{
+      content: 'Finance App';
+      display: block;
+      width: 187px;
+      height: 45px;
+      position: absolute;
+    } */
+  
+  }
+  @media (min-width: 1280px){
+  .formSection{
+    width: 56%;
+    padding: 136px 85px 116px 95px;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(50px);
+  }
+  }

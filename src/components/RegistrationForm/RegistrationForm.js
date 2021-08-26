@@ -2,10 +2,12 @@ import React, { useState, useCallback } from 'react';
 import { NavLink } from "react-router-dom";
 // import { useDispatch } from 'react-redux';
 // import authOperations from '../../redux/auth/auth-operations';
-import styles from '../RegistrationForm/registrationForm.module.scss';
+import Logo from '../Header/Logo'
+import styles from '../RegistrationForm/registrationForm.module.css';
 import iconMail from '../../image/baseline-email-24px 1.svg'
 import iconUser from '../../image/baseline-account_box-24px 1.svg'
 import iconLock from '../../image/baseline-lock-24px 1.svg'
+
 export default function RegistrationForm() {
   const [newUser, setNewUser] = useState({
     name:'',
@@ -38,8 +40,9 @@ export default function RegistrationForm() {
 
 
   return (
-      <div className={styles.formContainer}>
-
+<div className={styles.formSection}>
+<div className={styles.formContainer}>
+        <div className={styles.logoContainer} ><Logo/></div>
         <form
          // onSubmit={handleSubmit}
           className={styles.form}
@@ -76,7 +79,9 @@ export default function RegistrationForm() {
             //   name="password"
             //   value={newUser.password}
             //   onChange={handleChange}
-            /></div>
+            />
+            <hr className={styles.lineBasic}/>
+            </div>
             <div className={styles.imputBox}>
             <img src={iconUser} alt="icon mail" className={styles.iconSvg} /> 
             <input
@@ -92,5 +97,6 @@ export default function RegistrationForm() {
               <NavLink className={styles.linkButton} to='/login'exact>Вход</NavLink>
         </form>
       </div>
+</div>
     );
 }
