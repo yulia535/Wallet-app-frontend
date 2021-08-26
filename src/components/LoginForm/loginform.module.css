@@ -25,6 +25,7 @@
     line-height: 1.47;
     border: none;
     border-bottom: 1px solid #BDBDBD;
+    outline:none;
   }
   .inputForm::placeholder{
     color: #BDBDBD;
