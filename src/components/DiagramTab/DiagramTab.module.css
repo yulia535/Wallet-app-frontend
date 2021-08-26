@@ -12,4 +12,38 @@
   color: #000000;
   margin: 0;
   margin-bottom: 10px;
+  text-align: left;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    width: 722px;
+    padding-left: 17px;
+  }
+  .title {
+    margin-bottom: 20px;
+  }
+
+  .wrapper_statistic {
+    display: flex;
+  }
+
+  .wrapper_table {
+    margin-left: 35px;
+  }
+
+  .table {
+    width: 350px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .container {
+    margin-left: 0;
+    margin-right: 0;
+    width: 700px;
+  }
+  .wrapper_table {
+    margin-left: 30px;
+  }
 }

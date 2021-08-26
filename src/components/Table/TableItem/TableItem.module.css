@@ -18,23 +18,30 @@
   justify-content: space-between;
   align-items: center;
   width: 200px;
-}
-
-.name_consumption {
-  width: 100px;
   font-family: Circe, sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
+}
+
+.name_consumption {
+  width: 130px;
   line-height: 1.125;
   color: #000000;
 }
 
 .quantity_consumption {
-  font-family: Circe, sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
   line-height: 1.5;
   color: #000000;
+}
+
+@media screen and (min-width: 768px) {
+  .name_consumption {
+    width: 150px;
+    text-align: left;
+    line-height: 1.5;
+  }
+  .description_consumption {
+    width: 260px;
+  }
 }

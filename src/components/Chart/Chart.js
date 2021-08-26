@@ -21,7 +21,7 @@ const Chart = () => {
         backgroundColor: arrColors,
         borderColor: arrColors,
         borderWidth: 1,
-        cutout: 90,
+        cutout: 100,
       },
     ],
   };
