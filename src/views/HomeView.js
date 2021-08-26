@@ -1,9 +1,11 @@
-import TransactionPage from '../components/HomeTab/TransactionPage';
+import Header from '../components/Header';
+import DashboardPage from '../components/DashBoardPage';
 
-export default function Homeview() {
+export default function HomeView() {
   return (
     <>
-      <TransactionPage />
+      <Header />
+      <DashboardPage/>
     </>
   );
 }

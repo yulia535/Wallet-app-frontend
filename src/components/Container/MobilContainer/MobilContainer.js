@@ -35,7 +35,7 @@ const MobileContainer = () => {
           <ul className={style.icons}>
             <li className={style.iconsItem}>
               <NavLink
-                to="/dashboard/home"
+                to="/home"
                 className={style.link}
                 activeClassName={style.active}
               >
@@ -44,7 +44,7 @@ const MobileContainer = () => {
             </li>
             <li className={style.iconsItem}>
               <NavLink
-                to="/dashboard/statistics"
+                to="/diagram"
                 className={style.link}
                 activeClassName={style.active}
               >
@@ -54,7 +54,7 @@ const MobileContainer = () => {
 
             <li className={style.iconsItem}>
               <NavLink
-                to="/dashboard/currency"
+                to="/currency"
                 className={style.link}
                 activeClassName={style.active}
               >
@@ -65,11 +65,11 @@ const MobileContainer = () => {
 
           <Suspense fallback={<Loading />}>
             <Switch>
-              <Route path="/dashboard/home" component={HomeMobile} />
+              <Route path="/home" component={HomeMobile} />
 
-              <Route path="/dashboard/statistics" component={Statistics} />
+              <Route path="/diagram" component={Statistics} />
 
-              <Route path="/dashboard/currency" component={Currency} />
+              <Route path="/currency" component={Currency} />
             </Switch>
           </Suspense>
         </div>
