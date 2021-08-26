@@ -1,14 +1,27 @@
 import { Suspense, lazy } from 'react';
 import { NavLink, Switch, Route } from 'react-router-dom';
 
+import { makeStyles } from '@material-ui/core';
 import HomeIcon from '@material-ui/icons/Home';
 import TimelineIcon from '@material-ui/icons/Timeline';
-import MonetizationOnOutlinedIcon from '@material-ui/icons/MonetizationOnOutlined';
+import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 
 import Loading from '../../Loader';
 
 import s from '../../Container/DesktopContainer/DesktopContainer.module.css';
-import style from '../../Container/DesktopContainer/DesktopContainer.module.css';
+import style from '../../Container/MobilContainer/MobilContainer.module.css';
+
+const useStyles = makeStyles({
+  root: {
+    color: '#FFFF',
+    backgroundColor: '#4A56E2',
+    borderRadius: '5px',
+    '&:hover, &:focus': {
+      transition: 'background-color 250ms linear',
+      backgroundColor: '#6E78E8',
+    },
+  },
+});
 
 const HomeMobile = lazy(() =>
   import('../../Home/Mobile' /* webpackChunkName: "home-page" */),
@@ -28,6 +41,7 @@ const Currency = lazy(() =>
 );
 
 const MobileContainer = () => {
+  const classes = useStyles();
   return (
     <>
       <div className={s.dashboardContainer}>
@@ -39,7 +53,7 @@ const MobileContainer = () => {
                 className={style.link}
                 activeClassName={style.active}
               >
-                <HomeIcon fontSize="large" />
+                <HomeIcon fontSize="large" className={classes.root} />
               </NavLink>
             </li>
             <li className={style.iconsItem}>
@@ -48,7 +62,7 @@ const MobileContainer = () => {
                 className={style.link}
                 activeClassName={style.active}
               >
-                <TimelineIcon fontSize="large" />
+                <TimelineIcon fontSize="large" className={classes.root} />
               </NavLink>
             </li>
 
@@ -58,7 +72,7 @@ const MobileContainer = () => {
                 className={style.link}
                 activeClassName={style.active}
               >
-                <MonetizationOnOutlinedIcon fontSize="large" />
+                <AttachMoneyIcon fontSize="large" className={classes.root} />
               </NavLink>
             </li>
           </ul>

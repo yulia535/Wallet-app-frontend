@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { walletActions } from '../../../redux/actions';
 import s from './ModalLogout.module.css';
-import FormButtons from '../../FormButtons';
+import FormButtons from '../../ModalLogoutBt';
 
 const ModalLogout = () => {
   const dispatch = useDispatch();
