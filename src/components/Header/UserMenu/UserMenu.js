@@ -1,15 +1,28 @@
-// import { useSelector } from 'react-redux';
-// import { getUserName } from '../../../redux/auth/auth-selectors';
-import './UserMenu.scss';
-import exitSvg from '../../../image/exit.svg';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { getUserName } from '../../../redux/auth/auth-selectors';
+import { walletActions } from '../../../redux/actions';
+
+import s from './UserMenu.module.css';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 const UserMenu = () => {
-  //   const name = useSelector(getUserName);
+  const name = useSelector(getUserName);
+  const dispatch = useDispatch();
+  const openModal = () => dispatch(walletActions.ModalLogoutAction());
+
   return (
-    <div className="header_container">
-      {/* <span className={s.user_name_text}>{name}</span> */}
-      <svg src={exitSvg}></svg>
-      <span className="title_exit">Выйти</span>
+    <div className={s.header}>
+      <span className={s.user_name_text}>{name}</span>
+      <button
+        className={s.btnLogout}
+        name="addOperation"
+        type="button"
+        onClick={openModal}
+      >
+        <ExitToAppIcon className={s.icon_btn_logout} />
+        <span className={s.title_exit}>Выйти</span>
+      </button>
     </div>
   );
 };

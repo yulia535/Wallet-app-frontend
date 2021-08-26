@@ -1,5 +1,5 @@
-import { Fragment } from 'react';
-// import { useDispatch } from 'react-redux';
+import { Fragment, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import Media from 'react-media';
 
@@ -9,10 +9,9 @@ import MobileContainer from '../components/Container/MobilContainer';
 import DesktopContainer from '../components/Container/DesktopContainer';
 
 const DashBoardPage = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  // }, [dispatch]);
+  useEffect(() => {}, [dispatch]);
   return (
     <>
       <Header />

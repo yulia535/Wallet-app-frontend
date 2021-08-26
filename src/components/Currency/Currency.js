@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 // API
 import currencyApi from '../../api/pb-api';
 
-import './Currency.scss';
+import s from './Currency.module.css';
 
 function Currency() {
   const [rates, setRates] = useState([]);
@@ -21,7 +21,7 @@ function Currency() {
       setIsLoading(true);
 
       const data = await currencyApi.fetchRates();
-      data.length = 3; //переделать
+      data.length = 3;
       setRates([...rates, ...data]);
     } catch (error) {
       setError(error);
@@ -31,17 +31,17 @@ function Currency() {
   return (
     <>
       {isLoading && (
-        <div className="currency-div">
-          <table className="currency-table">
+        <div className={s.currencyContainer}>
+          <table className={s.currencyTable}>
             <thead>
-              <tr className="currency-row">
-                <th className="currency-column">Валюта</th>
-                <th className="currency-column">Покупка</th>
-                <th className="currency-column">Продажа</th>
+              <tr className={s.currencyRow}>
+                <th className={s.currencyColumn}>Валюта</th>
+                <th className={s.currencyColumn}>Покупка</th>
+                <th className={s.currencyColumn}>Продажа</th>
               </tr>
             </thead>
 
-            <tbody className="currency-tbody">
+            <tbody className={s.currencyTbody}>
               {rates.map(({ ccy, buy, sale }) => (
                 <tr key={ccy}>
                   <td>{ccy}</td>

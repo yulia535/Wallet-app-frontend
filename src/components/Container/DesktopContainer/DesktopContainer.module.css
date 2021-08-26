@@ -1,0 +1,117 @@
+.dashboardContainer {
+  background-color: #e1e1e1;
+  position: relative;
+  min-height: calc(100vh - 60px);
+}
+
+.dashboardTopContainer {
+  display: flex;
+  align-items: baseline;
+}
+.homeWrapDesktop {
+  width: calc((100% - 2 * 30px) / 2);
+}
+.bg_filter {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(50px);
+  padding-right: 20px;
+  padding-left: 20px;
+  min-height: calc(100vh - 60px);
+  position: sticky;
+}
+
+.icons {
+  display: flex;
+  margin: 0;
+}
+.icons:not(:first-child) {
+  margin-top: 10px;
+}
+
+.link {
+  font-size: 18px;
+  line-height: 1.5;
+  text-decoration: none;
+}
+
+.active {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.iconTitle {
+  margin-left: 20px;
+  font-size: 18px;
+  color: #000000;
+}
+
+@media (min-width: 768px) {
+  .dashboardContainer {
+    min-height: calc(100vh - 80px);
+    position: relative;
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+  .dashboardContainer::before {
+    position: absolute;
+    content: '';
+    background-image: url(../../../image/Ellipse_purpure.png);
+
+    right: 0;
+    top: 0;
+
+    width: 618px;
+    height: 547px;
+    background-repeat: no-repeat;
+    background-size: 618px 547px;
+  }
+  .backgroundEllipse::before {
+    position: absolute;
+    content: '';
+    background-image: url(../../../image/Ellipse_roze.png);
+
+    left: 0;
+    bottom: 0;
+
+    width: 618px;
+    height: 547px;
+    background-repeat: no-repeat;
+    background-size: 618px 547px;
+  }
+  .bg_filter {
+    padding-bottom: 55px;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  .dashboardTopContainer {
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .homeWrapDesktop {
+    margin-top: 30px;
+  }
+  li {
+    margin: 0;
+  }
+}
+@media (min-width: 1280px) {
+  .bg_filter {
+    display: flex;
+    padding-left: 85px;
+    padding-right: 85px;
+  }
+  .dashboardTopContainer {
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-right: 30px;
+    border-right: 1px solid #dcdcdf;
+    box-shadow: 5px 0 4px -5px rgba(255, 255, 255, 0.6);
+  }
+  .homeWrapDesktop {
+    width: 100%;
+  }
+  li {
+    margin-bottom: 0px;
+  }
+}
