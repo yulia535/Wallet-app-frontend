@@ -20,7 +20,7 @@ const Header = () => {
 
   return (
     <header className={s.header}>
-      <NavLink exact to="/dashboard" className={s.homeLink}>
+      <NavLink exact to="/home" className={s.homeLink}>
         <Logo />
       </NavLink>
       <UserMenu />

@@ -27,7 +27,7 @@ const DesktopContainer = () => {
               <ul>
                 <li className={s.icons}>
                   <NavLink
-                    to="/dashboard/home"
+                    to="/home"
                     className={s.link}
                     activeClassName={s.active}
                   >
@@ -38,7 +38,7 @@ const DesktopContainer = () => {
 
                 <li className={s.icons}>
                   <NavLink
-                    to="/dashboard/statistics"
+                    to="/diagram"
                     className={s.link}
                     activeClassName={s.active}
                   >
@@ -55,9 +55,9 @@ const DesktopContainer = () => {
 
           <Suspense fallback={<Loading />}>
             <Switch>
-              <Route path="/dashboard/home" component={HomeDesktop} />
+              <Route path="/home" component={HomeDesktop} />
 
-              <Route path="/dashboard/statistics" component={DiagramTab} />
+              <Route path="/diagram" component={DiagramTab} />
             </Switch>
           </Suspense>
         </div>
