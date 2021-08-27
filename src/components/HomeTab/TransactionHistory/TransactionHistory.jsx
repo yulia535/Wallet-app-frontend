@@ -13,19 +13,19 @@ import styles from './transaction.module.css';
 const TransactionHistory = ( {items} ) => {
     console.log(items)
     return (
-        <table className={styles.transactionHistory}>
-            <thead className={styles.titleBlock}>
-                <tr className={styles.titleItems}>
-                    <th className={styles.titleItem}>Дата</th>
-                    <th className={styles.titleItem}>Тип</th>
-                    <th className={styles.titleItem}>Категория</th>
-                    <th className={styles.titleItem}>Комментарий</th>
-                    <th className={styles.titleItem}>Сумма</th>
-                    <th className={styles.titleItem}>Баланс</th>
+        <table className={`${styles.transactionHistory} ${styles.table}`}>
+            <thead className={`${styles.titleBlock} ${styles.thead}`}>
+                <tr className={`${styles.titleItems} ${styles.tr}`}>
+                    <th className={`${styles.titleItem} ${styles.th}`}>Дата</th>
+                    <th className={`${styles.titleItem} ${styles.th}`}>Тип</th>
+                    <th className={`${styles.titleItem} ${styles.th}`}>Категория</th>
+                    <th className={`${styles.titleItem} ${styles.th}`}>Комментарий</th>
+                    <th className={`${styles.titleItem} ${styles.th}`}>Сумма</th>
+                    <th className={`${styles.titleItem} ${styles.th}`}>Баланс</th>
                 </tr>
             </thead>
 
-            <tbody>
+            <tbody className={styles.tbody}>
                 {items.map(item => {
                     //     const status = (item.type==='+') ? (styles.incomeItem): (styles.outcomeItem);
                     //  const trStyle = (item.type==='+') ? (styles.income): (styles.outcome)
@@ -41,23 +41,23 @@ const TransactionHistory = ( {items} ) => {
                     }
 
                     return (
-                        <tr key={item.id} className={trStyle}>
-                            <td className={styles.item} datelabel="Дата">
+                        <tr key={item.id} className={`${trStyle} ${styles.tr}`}>
+                            <td className={`${styles.item} ${styles.td}`} datelabel="Дата">
                                 {item.date}
                             </td>
-                            <td className={styles.item} datelabel="Тип">
+                            <td className={`${styles.item} ${styles.td}`} datelabel="Тип">
                                 {item.type === false ? '+' : '-'}
                             </td>
-                            <td className={styles.item} datelabel="Категория">
+                            <td className={`${styles.item} ${styles.td}`} datelabel="Категория">
                                 {item.category}
                             </td>
-                            <td className={styles.item} datelabel="Комментарий">
+                            <td className={`${styles.item} ${styles.td}`} datelabel="Комментарий">
                                 {item.comment}
                             </td>
-                            <td className={status} datelabel="Сумма">
+                            <td className={`${status} ${styles.td}`} datelabel="Сумма">
                                 {item.amount}
                             </td>
-                            <td className={styles.item} datelabel="Баланс">
+                            <td className={`${styles.item} ${styles.td}`} datelabel="Баланс">
                                 {item.balancy}
                             </td>
                         </tr>
