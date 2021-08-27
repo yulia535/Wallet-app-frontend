@@ -26,7 +26,24 @@
     box-shadow: 0px 1px 15px 0px rgba(36,204,167, 0.7)
 
 }
+.amount, .date{
+    display:flex;
+    flex-direction: column;
+    position: relative;
+}
 
+.errorFieldInfo, .errorFieldDate{
+    display:flex;
+    position: sticky;
+    top:20px;
+    max-width: 190px;
+   flex-wrap: wrap;
+    color:red;
+    font-size: 10px;
+}
+.errorFieldDate{
+padding-left: 50px;
+}
 .cancelBtn{
     background-color: transparent;
     border-radius: 20px;
@@ -64,6 +81,8 @@ input{
     border-bottom: 1px solid grey;
 }
 .selectCategory{
+    position: relative;
+
 margin-top: 40px;
 border:none;
 border-bottom: 1px solid grey;
@@ -82,6 +101,8 @@ background: transparent;
 }
 .inputAmount{
     text-align: center;
+    padding: 10px;
+
 }
 .inputDate, .inputAmount{
 width: 190px;
