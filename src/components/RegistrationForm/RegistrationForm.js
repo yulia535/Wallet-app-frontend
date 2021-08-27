@@ -1,102 +1,208 @@
-import React, { useState, useCallback } from 'react';
+import React from 'react';
 import { NavLink } from "react-router-dom";
+import {Formik, Field, Form, ErrorMessage} from "formik";
+import * as Yup from 'yup';
 // import { useDispatch } from 'react-redux';
 // import authOperations from '../../redux/auth/auth-operations';
 import Logo from '../Header/Logo'
 import styles from '../RegistrationForm/registrationForm.module.css';
-import iconMail from '../../image/baseline-email-24px 1.svg'
-import iconUser from '../../image/baseline-account_box-24px 1.svg'
-import iconLock from '../../image/baseline-lock-24px 1.svg'
+import iconMail from '../../image/baseline-email-24px 1.svg';
+import iconUser from '../../image/baseline-account_box-24px 1.svg';
+import iconLock from '../../image/baseline-lock-24px 1.svg';
 
-export default function RegistrationForm() {
-  const [newUser, setNewUser] = useState({
-    name:'',
-    email: '',
-    password:''
-  });
+function RegistrationForm() {
 
-  const handleChange = useCallback( e => {
-            const { name, value } = e.target;
-            setNewUser(prev => ({
-                ...prev,
-                [name]: value
-            }));
-        }
-    
-  , []);
-
-//   const dispatch = useDispatch();
-
-//      const  handleSubmit = useCallback( e => {
-//     e.preventDefault();
-
-//       dispatch(authOperations.register(newUser));
-//   setNewUser( { name:'',
-//     email: '',
-//     password:''})
-   
-//   }, [dispatch,newUser ]);
-
-
+const validationsSchema = Yup.object().shape({
+  email: Yup.string().email('Invalid email').required('Required'),
+  password:Yup.string().min(6, 'Too Short!').max(12, 'Too Long!').required('Required'),
+  confirmPassword:Yup.string().oneOf([Yup.ref('password')],'Passwords do not match').required('Required'),
+  name:Yup.string().min(1, 'Too Short!').max(12, 'Too Long!').required('Required'),
+});
 
   return (
 <div className={styles.formSection}>
 <div className={styles.formContainer}>
         <div className={styles.logoContainer} ><Logo/></div>
-        <form
-         // onSubmit={handleSubmit}
-          className={styles.form}
-          autoComplete="off"
+        <Formik 
+        initialValues={{
+          email:'',
+          password:'',
+          confirmPassword:'',
+          name:'',
+        }}
+        
+        validateOnBlur
+        onSubmit={(values)=>{console.log(values, validationsSchema)}}
+        validationsSchema={validationsSchema}
         >
-           <div className={styles.imputBox}>
-           <img src={iconMail} alt="icon mail" className={styles.iconSvg} />
-        <input
-            className={styles.inputForm}
-            placeholder="E-mail"
-              type="email"
-              name="email"
-              value={newUser.email}
-              onChange={handleChange}
-            />
-                </div>
           
-                <div className={styles.imputBox}>
-                <img src={iconLock} alt="icon mail" className={styles.iconSvg} />
-            <input
-            className={styles.inputForm}
-            placeholder="Пароль"
-              type="password"
-              name="password"
-              value={newUser.password}
-              onChange={handleChange}
-            /></div>
-            <div className={styles.imputBox}>
-            <img src={iconLock} alt="icon mail" className={styles.iconSvg} /> 
-            <input
-            className={styles.inputForm}
-            placeholder="Подтвердите пароль"
-            type="password"
-            //   name="password"
-            //   value={newUser.password}
-            //   onChange={handleChange}
-            />
-            <hr className={styles.lineBasic}/>
-            </div>
-            <div className={styles.imputBox}>
-            <img src={iconUser} alt="icon mail" className={styles.iconSvg} /> 
-            <input
-             className={styles.inputForm}
-             placeholder="Ваше имя"
-              type="text"
-              name="name"
-              value={newUser.name}
-            onChange={handleChange}
-            /></div>
+         {({values, errors, touched, handleChange, handleBlur, isValid, handleSubmit, dirty})=>(
+            <Form
+             className={styles.form}
+           >
+              <div className={styles.imputBox}>
+              <img src={iconMail} alt="icon mail" className={styles.iconSvg} />
+           <Field
+               className={styles.inputForm}
+               placeholder="E-mail"
+                 type="email"
+                 name="email"
+                 value={values.email}
+                 onChange={handleChange}
+                 onBlur={handleBlur}
+               />
+               <ErrorMessage name = "email" />
+                   </div>
+                   
+              <div className={styles.imputBox}>
+              <img src={iconLock} alt="icon mail" className={styles.iconSvg} />
+               <input
+               className={styles.inputForm}
+               placeholder="Пароль"
+                 type="password"
+                 name="password"
+                 value={values.password}
+                 onChange={handleChange}
+                 onBlur={handleBlur}
+               /></div>
+               <ErrorMessage name = "password" />
 
-              <button className={styles.button} type="submit">РЕГИСТРАЦИЯ</button>
-              <NavLink className={styles.linkButton} to='/login'exact>Вход</NavLink>
-        </form>
+               <div className={styles.imputBox}>
+               <img src={iconLock} alt="icon mail" className={styles.iconSvg} /> 
+               <input
+               className={styles.inputForm}
+               placeholder="Подтвердите пароль"
+               type="password"
+               name="confirmPassword"
+                value={values.confirmPassword}
+                onChange={handleChange}
+                onBlur={handleBlur}
+               />
+               <hr className={styles.lineBasic}/>
+               </div>
+               <ErrorMessage name="confirmPassword" />
+
+               <div className={styles.imputBox}>
+               <img src={iconUser} alt="icon mail" className={styles.iconSvg} /> 
+               <input
+                className={styles.inputForm}
+                placeholder="Ваше имя"
+                 type="text"
+                 name="name"
+                 value={values.name}
+               onChange={handleChange}
+               onBlur={handleBlur}
+               /></div>
+                <ErrorMessage name = "name" />
+              
+                 <button className={styles.button}
+                 disabled={!isValid && !dirty}
+                 onClick={handleSubmit} 
+                 type={"submit"}>РЕГИСТРАЦИЯ</button>
+                 <NavLink className={styles.linkButton} to='/login'exact>Вход</NavLink>
+                 </Form>
+         )}
+        </Formik>
       </div>
 </div>
     );
 }
+
+export default RegistrationForm;
+
+
+
+
+
+// export default function RegistrationForm() {
+//   const [newUser, setNewUser] = useState({
+//     name:'',
+//     email: '',
+//     password:''
+//   });
+
+//   const handleChange = useCallback( e => {
+//             const { name, value } = e.target;
+//             setNewUser(prev => ({
+//                 ...prev,
+//                 [name]: value
+//             }));
+//         }
+    
+//   , []);
+
+// //   const dispatch = useDispatch();
+
+// //      const  handleSubmit = useCallback( e => {
+// //     e.preventDefault();
+
+// //       dispatch(authOperations.register(newUser));
+// //   setNewUser( { name:'',
+// //     email: '',
+// //     password:''})
+   
+// //   }, [dispatch,newUser ]);
+
+
+
+//   return (
+// <div className={styles.formSection}>
+// <div className={styles.formContainer}>
+//         <div className={styles.logoContainer} ><Logo/></div>
+//         <form
+//          // onSubmit={handleSubmit}
+//           className={styles.form}
+//           autoComplete="off"
+//         >
+//            <div className={styles.imputBox}>
+//            <img src={iconMail} alt="icon mail" className={styles.iconSvg} />
+//         <input
+//             className={styles.inputForm}
+//             placeholder="E-mail"
+//               type="email"
+//               name="email"
+//               value={newUser.email}
+//               onChange={handleChange}
+//             />
+//                 </div>
+          
+//                 <div className={styles.imputBox}>
+//                 <img src={iconLock} alt="icon mail" className={styles.iconSvg} />
+//             <input
+//             className={styles.inputForm}
+//             placeholder="Пароль"
+//               type="password"
+//               name="password"
+//               value={newUser.password}
+//               onChange={handleChange}
+//             /></div>
+//             <div className={styles.imputBox}>
+//             <img src={iconLock} alt="icon mail" className={styles.iconSvg} /> 
+//             <input
+//             className={styles.inputForm}
+//             placeholder="Подтвердите пароль"
+//             type="password"
+//             //   name="password"
+//             //   value={newUser.password}
+//             //   onChange={handleChange}
+//             />
+//             <hr className={styles.lineBasic}/>
+//             </div>
+//             <div className={styles.imputBox}>
+//             <img src={iconUser} alt="icon mail" className={styles.iconSvg} /> 
+//             <input
+//              className={styles.inputForm}
+//              placeholder="Ваше имя"
+//               type="text"
+//               name="name"
+//               value={newUser.name}
+//             onChange={handleChange}
+//             /></div>
+
+//               <button className={styles.button} type="submit">РЕГИСТРАЦИЯ</button>
+//               <NavLink className={styles.linkButton} to='/login'exact>Вход</NavLink>
+//         </form>
+//       </div>
+// </div>
+//     );
+// }
