@@ -3,13 +3,16 @@
   height: 100%;
 }
 
-tr:first-child td {
+.currencyTr:first-child .currencyTd {
   padding-top: 20px;
 }
-
-td {
+.currencyTr {
+  box-shadow: none;
+}
+.currencyTd {
   border: none;
   padding-bottom: 23px;
+  color: #ffffff;
 }
 
 .currencyContainer {
@@ -74,5 +77,8 @@ td {
   }
   .currencyColumn {
     padding: 16px 19px 17px 18px;
+  }
+  .currencyTbody {
+    height: 40%;
   }
 }

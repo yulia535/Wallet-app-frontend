@@ -1,6 +1,6 @@
 import TransactionHistory from '../TransactionHistory/TransactionHistory';
 import OpenModalBtn from '../UI/openModalBtn';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import trans from '../TransactionHistory/transactions.json';
 import { nanoid } from 'nanoid';
 import styles from './transactionPage.module.css';

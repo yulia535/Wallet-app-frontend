@@ -1,17 +1,17 @@
-import { lazy, Suspense } from 'react';
+//import { lazy, Suspense } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import './App.css';
 import routes from './routes/';
 // import PrivateRouter from './components/PrivateRouter';
 // import PublicRouter from './components/PublicRouter';
 import HomeView from './views/HomeView';
-import RegistrationView from './views/RegistartionView' 
+import RegistrationView from './views/RegistrationView';
 import LoginView from './views/LoginView'; 
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+      {/* <header className="App-header"/> */}
         <Switch>
           <Route exact path={routes.register} component={RegistrationView} />
           <Route exact path={routes.login} component={LoginView} />
@@ -21,9 +21,7 @@ function App() {
             component={HomeView}
           />
 
-       
         </Switch>
-      </header>
     </div>
   );
 }
