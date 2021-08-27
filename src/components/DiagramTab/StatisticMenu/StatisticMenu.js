@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { MenuItem, Select, FormControl } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { makeStyles } from '@material-ui/core';
 import styles from './StatisticMenu.module.css';
+import { transactionsActions } from '../../../redux/transactions';
 
 const useStyles = makeStyles({
   form_control: {
@@ -57,15 +59,19 @@ const StatisticMenu = () => {
   const years = [2019, 2020, 2021];
 
   const classes = useStyles();
+  const dispatch = useDispatch();
+
   const monthNow = new Date().getMonth();
   const yearNow = new Date().getFullYear();
   const [month, setMonth] = useState(monthNow);
   const [year, setYear] = useState(yearNow);
   const handleChangeMonth = event => {
     setMonth(event.target.value);
+    dispatch(transactionsActions.changeMonth(event.target.value));
   };
   const handleChangeYear = event => {
     setYear(event.target.value);
+    dispatch(transactionsActions.changeYear(event.target.value));
   };
 
   const iconComponent = props => {

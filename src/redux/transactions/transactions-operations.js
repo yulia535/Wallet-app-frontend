@@ -1,10 +1,15 @@
 import axios from 'axios';
 import transactionsActions from './transactions-actions';
 
-const fetchTransactions = () => async dispatch => {
+const fetchTransactions = (month, year) => async dispatch => {
   dispatch(transactionsActions.fetchTransactionsRequest());
+  // const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6I…kZWZojP1c';
   try {
-    const { data } = await axios.get('/transactions');
+    const { data } = await axios.get(
+      '/transactions',
+      { month, year },
+      // { headers: { Authorization: `Bearer ${token}` } },
+    );
     dispatch(transactionsActions.fetchTransactionsSuccess(data));
   } catch (error) {
     dispatch(transactionsActions.fetchTransactionsError(error.message));
