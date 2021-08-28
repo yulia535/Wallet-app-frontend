@@ -34,9 +34,14 @@ function App() {
 
       <Suspense fallback={<Loader />}>
         <Switch>
-          <Route exact path={routes.register} component={RegistrationView} />
-          <Route exact path={routes.login} component={LoginView} />
-          <Route path={routes.home} redirectTo="/login" component={HomeView} />
+        <PublicRouter path={routes.register}  restricted redirectTo={routes.home} component={RegistrationView}/>
+          <PublicRouter path={routes.login}  restricted redirectTo={routes.home} component={LoginView}/>
+          
+          <PrivateRouter
+            path={routes.home}
+            redirectTo="/login"
+            component={HomeView}
+          />
 
         </Switch>
       </Suspense>

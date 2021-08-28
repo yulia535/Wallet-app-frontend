@@ -18,7 +18,7 @@
   padding-left: 50px;
   padding-bottom: 10px;
   margin-bottom: 40px;
-  color: black;
+  color:  #4A56E2;
   font-family: 'Circe';
   font-weight: 400;
   font-size: 18px;
@@ -30,8 +30,10 @@
 .inputForm::placeholder{
   color: #BDBDBD;
 }
-.error{
+.errorMessage{
+  position: absolute;
   color: red;
+  bottom: -20px;
 }
 .imputBox{
   position: relative;
