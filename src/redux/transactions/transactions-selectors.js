@@ -6,6 +6,16 @@ const getMonth = state => state.transactions.month;
 const getYear = state => state.transaction.year;
 const getLoading = state => state.transaction.loading;
 
+
+const getBalance = state => state.transactions.balance;
+
+const getVisibleTransactions = createSelector(
+  [getAllTransactions, getMonth, getYear],
+  (items, month, year) => {
+    console.log(items, month, year);
+  },
+);
+
 const getVisibleTransactions = createSelector([getAllTransactions], items => {
   const colors = [
     '#FED057',
@@ -51,11 +61,13 @@ const getVisibleTransactions = createSelector([getAllTransactions], items => {
   };
 });
 
+
 const transactionsSelectors = {
   getAllTransactions,
   getMonth,
   getYear,
   getLoading,
   getVisibleTransactions,
+  getBalance,
 };
 export default transactionsSelectors;

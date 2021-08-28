@@ -15,7 +15,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 
-import { authReducer } from './auth';
+import authReducer  from './auth/auth-reducer';
 import { transactionsReducer } from './transactions';
 import storage from 'redux-persist/lib/storage';
 
