@@ -1,4 +1,5 @@
 import { createSelector } from '@reduxjs/toolkit';
+import formatCurrency from '../../utils';
 
 const getAllTransactions = state => state.transactions.items;
 const getMonth = state => state.transactions.month;
@@ -17,17 +18,6 @@ const getVisibleTransactions = createSelector([getAllTransactions], items => {
     '#24CCA7',
     '#00AD84',
   ];
-  const formatCurrency = currency => {
-    const point = currency.toFixed(2);
-    const arr = point.split('');
-    if (arr.length > 6) {
-      arr.splice(arr.length - 6, 0, ' ');
-      if (arr.length > 10) {
-        arr.splice(arr.length - 10, 0, ' ');
-      }
-    }
-    return arr.join('');
-  };
 
   const arrConsumptions = items.filter(item => !item.type);
   const totalConsumption = formatCurrency(
@@ -50,7 +40,15 @@ const getVisibleTransactions = createSelector([getAllTransactions], items => {
     return newItem;
   });
 
-  return { arrConsumptions, totalConsumption, totalIncome, arrStatistic };
+  const arrChart = arrConsumptions.map(item => item.amount);
+
+  return {
+    totalConsumption,
+    totalIncome,
+    arrStatistic,
+    colors,
+    arrChart,
+  };
 });
 
 const transactionsSelectors = {

@@ -6,22 +6,17 @@ import routes from './routes/';
 // import PublicRouter from './components/PublicRouter';
 import HomeView from './views/HomeView';
 import RegistrationView from './views/RegistrationView';
-import LoginView from './views/LoginView'; 
+import LoginView from './views/LoginView';
 
 function App() {
   return (
     <div className="App">
       {/* <header className="App-header"/> */}
-        <Switch>
-          <Route exact path={routes.register} component={RegistrationView} />
-          <Route exact path={routes.login} component={LoginView} />
-          <Route
-            path={routes.home}
-            redirectTo="/login"
-            component={HomeView}
-          />
-
-        </Switch>
+      <Switch>
+        <Route exact path={routes.register} component={RegistrationView} />
+        <Route exact path={routes.login} component={LoginView} />
+        <Route path={routes.home} redirectTo="/login" component={HomeView} />
+      </Switch>
     </div>
   );
 }
