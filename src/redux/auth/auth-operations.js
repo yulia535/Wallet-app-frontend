@@ -1,10 +1,10 @@
 import axios from 'axios';
 import authActions from './auth-actions';
 
-// axios.defaults.baseURL = '';
+ axios.defaults.baseURL = 'http://localhost:3001';
 
 
-axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
+ // axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
 const token = {
   set(token) {
@@ -18,9 +18,10 @@ const token = {
 const register = credentials => async dispatch => {
   dispatch(authActions.registerRequest());
   try {
-    const response = await axios.post('/users/registration', credentials);
-
+    const response = await axios.post('api/auth/signup', credentials);
+    
     token.set(response.data.token);
+    
 
     dispatch(authActions.registerSuccess(response.data));
   } catch (error) {
@@ -31,10 +32,9 @@ const register = credentials => async dispatch => {
 const login = credentials => async dispatch => {
   dispatch(authActions.loginRequest());
   try {
-    const response = await axios.post('/users/login', credentials);
-
-    token.set(response.data.token);
-    dispatch(authActions.loginSuccess(response.data));
+    const response = await axios.post('api/auth/login', credentials);
+   // token.set(response.data.result);
+    dispatch(authActions.loginSuccess(response.data.data));
   } catch (error) {
     dispatch(authActions.loginError(alert(error.message)));
   }
@@ -44,7 +44,7 @@ const logout = () => async dispatch => {
   dispatch(authActions.logoutRequest());
 
   try {
-    await axios.post('/users/logout');
+    await axios.post('/auth/logout');
     token.unset();
     dispatch(authActions.logoutSuccess());
   } catch (error) {

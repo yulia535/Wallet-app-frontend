@@ -2,22 +2,35 @@ import React from 'react';
 import { NavLink } from "react-router-dom";
 import {Formik, Field, Form, ErrorMessage} from "formik";
 import * as Yup from 'yup';
-// import { useDispatch } from 'react-redux';
-// import authOperations from '../../redux/auth/auth-operations';
+ import { useDispatch } from 'react-redux';
+ import authOperations from '../../redux/auth/auth-operations';
 import Logo from '../Header/Logo'
 import styles from '../RegistrationForm/registrationForm.module.css';
 import iconMail from '../../image/baseline-email-24px 1.svg';
 import iconUser from '../../image/baseline-account_box-24px 1.svg';
 import iconLock from '../../image/baseline-lock-24px 1.svg';
 
-function RegistrationForm() {
-
-const validationsSchema = Yup.object().shape({
+const validSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Required'),
   password:Yup.string().min(6, 'Too Short!').max(12, 'Too Long!').required('Required'),
   confirmPassword:Yup.string().oneOf([Yup.ref('password')],'Passwords do not match').required('Required'),
   name:Yup.string().min(1, 'Too Short!').max(12, 'Too Long!').required('Required'),
 });
+
+function RegistrationForm() {
+
+    const dispatch = useDispatch();
+
+
+function validateEmail(value) {
+  let error;
+  if (!value) {
+    error = 'Required';
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
+    error = 'Invalid email address';
+  }
+  return error;
+}
 
   return (
 <div className={styles.formSection}>
@@ -30,33 +43,37 @@ const validationsSchema = Yup.object().shape({
           confirmPassword:'',
           name:'',
         }}
-        
-        validateOnBlur
-        onSubmit={(values)=>{console.log(values, validationsSchema)}}
-        validationsSchema={validationsSchema}
+        validationsSchema={validSchema}
+        validateOnChange={true}
+        validateOnBlur={true}
+       onSubmit={(values)=>{dispatch(authOperations.register({email:values.email, password:values.password, name:values.name} ))}}
+        // onSubmit={(values)=>{console.log({email:values.email, password:values.password, name:values.name})}}
+        // validationsSchema={validSchema}
         >
           
-         {({values, errors, touched, handleChange, handleBlur, isValid, handleSubmit, dirty})=>(
+         {({values, errors, touched, isValidating,  handleChange, handleBlur, isValid, handleSubmit, dirty})=>(
             <Form
              className={styles.form}
            >
               <div className={styles.imputBox}>
               <img src={iconMail} alt="icon mail" className={styles.iconSvg} />
            <Field
+           validate={validateEmail}
                className={styles.inputForm}
                placeholder="E-mail"
-                 type="email"
+                 type="text"
                  name="email"
                  value={values.email}
                  onChange={handleChange}
                  onBlur={handleBlur}
                />
-               <ErrorMessage name = "email" />
+               {errors.email && touched.email && <div>{errors.email}</div>}
                    </div>
                    
               <div className={styles.imputBox}>
               <img src={iconLock} alt="icon mail" className={styles.iconSvg} />
-               <input
+               <Field
+              id='password'
                className={styles.inputForm}
                placeholder="Пароль"
                  type="password"
@@ -64,8 +81,10 @@ const validationsSchema = Yup.object().shape({
                  value={values.password}
                  onChange={handleChange}
                  onBlur={handleBlur}
-               /></div>
-               <ErrorMessage name = "password" />
+               />
+               {errors.password && touched.password && <div>{errors.password}</div>}
+               </div>
+               {/* <ErrorMessage name = "password" /> */}
 
                <div className={styles.imputBox}>
                <img src={iconLock} alt="icon mail" className={styles.iconSvg} /> 
