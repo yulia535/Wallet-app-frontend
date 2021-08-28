@@ -8,7 +8,7 @@ const loader = () => {
       <div className={styles.center}>
         <Loader
           type="Puff"
-          color = '#4A56E2'
+          color="#4A56E2"
           height={100}
           width={100}
           timeout={1000000} //3 secs
@@ -19,8 +19,3 @@ const loader = () => {
 };
 
 export default loader;
-
-
-
-
- 

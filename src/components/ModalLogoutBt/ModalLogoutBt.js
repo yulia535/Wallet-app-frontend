@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { authOperations } from '../../redux/auth';
-import { walletActions } from '../../redux/actions';
+import { walletActions } from '../../redux/wallet';
 
 import s from './ModalLogoutBt.module.css';
 

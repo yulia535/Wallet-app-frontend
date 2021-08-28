@@ -1,14 +1,44 @@
 import styles from './modalAddTransaction.module.css';
 // import TextField from '@material-ui/core/TextField';
+import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
-
 import ToggleCustom from '../UI/ToggleCustom';
-
 import { Formik, Form,  Field } from 'formik';
 import * as Yup from 'yup';
-import { date } from 'yup/lib/locale';
+// import DatePickers from '../UI/calendar'
+import { MuiPickersUtilsProvider } from '@material-ui/pickers';
+import DateFnsUtils from '@date-io/date-fns';
+import 'date-fns';
+import { useState } from 'react';
+import moment from 'moment';
+import Box from '@material-ui/core/Box';
+import {
+  KeyboardDatePicker,
+} from '@material-ui/pickers';
+import { alpha } from '@material-ui/core/styles'
+
+const useStyles = makeStyles(() => ({
+  root: {
+    color: '#fffefe',
+  },
+  uderline: {
+    '&&:before': {
+      borderBottom: 'none',
+    },
+    '&&:after': {
+      borderBottom: 'none',
+    },
+  },
+  input: {
+    textAlign: 'center',
+    color: '#fffefe',
+  },
+}));
+
 
 const ModalAddTransactions = ({ setActive, handleFormCancel }) => {
+  const classes = useStyles();
+
   const categoryData = [
     { name: 'Выберите категорию' },
     { value: 'main', name: 'Основной' },
@@ -22,6 +52,15 @@ const ModalAddTransactions = ({ setActive, handleFormCancel }) => {
   ];
   const yesterday = new Date(Date.now() -86400000);
   const tomorrow = new Date(Date.now() +43200000);
+ 
+
+  const [selectedDate, setSelectedDate] = useState();
+  // const date= moment(selectedDate).format();
+
+  const handleDateChange = date => {
+    // setSelectedDate(date);
+    setSelectedDate(moment(date).format('L'));
+  };
 
   return (
     <>
@@ -37,9 +76,7 @@ const ModalAddTransactions = ({ setActive, handleFormCancel }) => {
           balancy: '',
         }}
         validationSchema={Yup.object().shape({
-          // date: Yup.date().default(function () {
-          //   return new Date();
-          // }).required('Field Date is Required'),
+       
           date: Yup.date().min(yesterday, "Date cannot be in the past").max(tomorrow, "Date cannot be in the future").required('Field Date is Required'),
 
           amount: Yup.number({message: 'Is not in correct format'}).positive('Is not in correct format').required('Field Sum is required'),
@@ -63,12 +100,24 @@ const ModalAddTransactions = ({ setActive, handleFormCancel }) => {
         onSubmit={async (value, { setSubmitting, resetForm }) => {
           setSubmitting(true);
           // async request
+          
+
+          const correctValue = {
+            ...value,
+            // date: moment(date).format(),
+            date: selectedDate,
+
+          };
           resetForm();
+          
           console.log(value);
+          console.log(correctValue)
           setSubmitting(false);
+          // setSelectedDate('')
         }}
       >
         {({ errors, touched }) => (
+           <MuiPickersUtilsProvider  utils={DateFnsUtils}>
           <Form className={styles.form}>
             <ToggleCustom name="type" />
             <Field
@@ -101,7 +150,12 @@ const ModalAddTransactions = ({ setActive, handleFormCancel }) => {
                 ) : null}
               </div>
 
+
+
               <div className={styles.date}>
+
+
+
                 <Field
                   type="date"
                   name="date"
@@ -110,11 +164,41 @@ const ModalAddTransactions = ({ setActive, handleFormCancel }) => {
                   placeholder="2019-07-07"
                   // value="2021-08-07"
                 ></Field>
-                {errors.date ? (
+
+
+
+{/* <KeyboardDatePicker name="date"
+                margin="normal"
+                format="dd.MM.yyyy"
+                value={selectedDate}
+                autoOk
+                invalidDateMessage
+                defaultValue="2017-05-24"
+                required
+                onChange={handleDateChange}
+                disablePast
+                className={styles.inputDate}
+                variant="inline"
+                disableToolbar
+
+                classes={{
+                  root: classes.root,
+                }}
+                KeyboardButtonProps={{
+                  'aria-label': 'change date',
+                }}
+
+              /> */}
+
+                {touched.date && errors.date ? (
                   <span className={styles.errorFieldDate}>{errors.date}</span>
                 ) : null}
               </div>
             </div>
+
+
+
+
             <Field
               type="text"
               name="comment"
@@ -141,6 +225,7 @@ const ModalAddTransactions = ({ setActive, handleFormCancel }) => {
               </button>
             </div>
           </Form>
+          </MuiPickersUtilsProvider>
         )}
       </Formik>
     </>

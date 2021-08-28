@@ -76,6 +76,7 @@
     width: 348px;
   }
   .currencyColumn {
+    width: 100%;
     padding: 16px 19px 17px 18px;
   }
   .currencyTbody {

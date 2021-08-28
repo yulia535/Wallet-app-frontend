@@ -1,8 +1,8 @@
-import React, { useState, useCallback } from 'react';
+import React from 'react';
 import { NavLink } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import authOperations from '../../redux/auth/auth-operations';
-import {Formik, Field, Form, ErrorMessage} from "formik";
+import {Formik, Field, Form} from "formik";
 import * as Yup from 'yup';
 import Logo from '../Header/Logo'
 import styles from '../LoginForm/loginForm.module.css';
@@ -19,17 +19,6 @@ export default function LoginForm() {
  
 
    const dispatch = useDispatch();
-
-//    const  handleSubmit = useCallback( e => {
-//     e.preventDefault();
-
-//  dispatch(authOperations.login(user));  
-//      setUser({
-//        email: '',
-//     password:''
-//      })
-   
-//   }, [dispatch, user]);
   
       return (
         <div className={styles.formSection}>
@@ -44,14 +33,11 @@ export default function LoginForm() {
         validateOnChange={true}
         validateOnBlur={true}
        onSubmit={(values)=>{dispatch(authOperations.login({email:values.email, password:values.password, name:values.name} ))}}
-        // onSubmit={(values)=>{console.log({email:values.email, password:values.password, name:values.name})}}
-        // validationsSchema={validSchema}
         >
           {({values, errors, touched, isValidating,  handleChange, handleBlur, isValid, handleSubmit, dirty})=>(
                 <Form
-                 // onSubmit={handleSubmit}
                   className={styles.form}
-                  // autoComplete="off"
+                  autoComplete="off"
                 >
                    <div className={styles.imputBox}>
                    <img src={iconMail} alt="icon mail" className={styles.iconSvg} />
@@ -83,6 +69,6 @@ export default function LoginForm() {
                 </Form>)}
                 </Formik>
               </div>
-        </div>
-    );
-}
+              </div>
+)}
+

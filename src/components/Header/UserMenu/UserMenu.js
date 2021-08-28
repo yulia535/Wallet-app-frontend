@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 
 import { getUserName } from '../../../redux/auth/auth-selectors';
-import { walletActions } from '../../../redux/actions';
+import { walletActions } from '../../../redux/wallet';
 
 import s from './UserMenu.module.css';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
