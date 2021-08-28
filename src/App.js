@@ -20,6 +20,8 @@ const LoginView = lazy(() =>
   import('./views/LoginView' /* webpackChunkName: "login-page" */),
 );
 
+
+
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -32,6 +34,7 @@ function App() {
           <Route exact path={routes.register} component={RegistrationView} />
           <Route exact path={routes.login} component={LoginView} />
           <Route path={routes.home} redirectTo="/login" component={HomeView} />
+
         </Switch>
       </Suspense>
     </div>
