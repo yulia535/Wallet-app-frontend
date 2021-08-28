@@ -117,6 +117,10 @@ const loading = createReducer(false, {
   [transactionsActions.addTransactionError]: () => false,
 });
 
+const balance = createReducer(null, {
+  [transactionsActions.fetchBalanceSuccess]: (_, { payload }) => payload,
+});
+
 const month = createReducer(monthNow, {
   [transactionsActions.changeMonth]: (_, { payload }) => payload,
 });
@@ -124,4 +128,4 @@ const year = createReducer(yearNow, {
   [transactionsActions.changeYear]: (_, { payload }) => payload,
 });
 
-export default combineReducers({ items, error, loading, month, year });
+export default combineReducers({ items, error, loading, month, year, balance });

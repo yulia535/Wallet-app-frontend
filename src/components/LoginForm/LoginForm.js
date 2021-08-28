@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from 'react';
+
 import { NavLink } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import authOperations from '../../redux/auth/auth-operations';
@@ -20,8 +21,10 @@ export default function LoginForm() {
 
    const dispatch = useDispatch();
 
-//    const  handleSubmit = useCallback( e => {
-//     e.preventDefault();
+  //    const  handleSubmit = useCallback( e => {
+  //     e.preventDefault();
+
+
 
 //  dispatch(authOperations.login(user));  
 //      setUser({
@@ -83,6 +86,44 @@ export default function LoginForm() {
                 </Form>)}
                 </Formik>
               </div>
+
         </div>
-    );
+        <form
+          // onSubmit={handleSubmit}
+          className={styles.form}
+          autoComplete="off"
+        >
+          <div className={styles.imputBox}>
+            <img src={iconMail} alt="icon mail" className={styles.iconSvg} />
+            <input
+              className={styles.inputForm}
+              placeholder="E-mail"
+              type="email"
+              name="email"
+              value={user.email}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className={styles.imputBox}>
+            <img src={iconLock} alt="icon mail" className={styles.iconSvg} />
+            <input
+              className={styles.inputForm}
+              placeholder="Пароль"
+              type="password"
+              name="password"
+              value={user.password}
+              onChange={handleChange}
+            />
+          </div>
+          <button className={styles.button} type="submit">
+            Вход
+          </button>
+          <NavLink className={styles.linkButton} to="/register" exact>
+            РЕГИСТРАЦИЯ
+          </NavLink>
+        </form>
+      </div>
+    </div>
+  );
 }

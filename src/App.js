@@ -1,28 +1,42 @@
-//import { lazy, Suspense } from 'react';
+import { useDispatch } from 'react-redux';
+import { lazy, Suspense, useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import './App.css';
+
+import { authOperations } from './redux/auth';
+
 import routes from './routes/';
+import Loader from './components/Loader';
+
 import PrivateRouter from './components/PrivateRouter';
 import PublicRouter from './components/PublicRouter';
-import HomeView from './views/HomeView';
-import RegistrationView from './views/RegistrationView';
-import LoginView from './views/LoginView'; 
+
+const HomeView = lazy(() =>
+  import('./views/HomeView' /* webpackChunkName: "dashboard-page" */),
+);
+const RegistrationView = lazy(() =>
+  import('./views/RegistrationView' /* webpackChunkName: "register-page" */),
+);
+const LoginView = lazy(() =>
+  import('./views/LoginView' /* webpackChunkName: "login-page" */),
+);
+
+
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(authOperations.getCurrentUser());
+  }, [dispatch]);
   return (
     <div className="App">
-      {/* <header className="App-header"/> */}
+      <Suspense fallback={<Loader />}>
         <Switch>
-          <PublicRouter path={routes.register}  restricted redirectTo={routes.home} component={RegistrationView}/>
-          <PublicRouter path={routes.login}  restricted redirectTo={routes.home} component={LoginView}/>
-          
-          <PrivateRouter
-            path={routes.home}
-            redirectTo="/login"
-            component={HomeView}
-          />
+          <Route exact path={routes.register} component={RegistrationView} />
+          <Route exact path={routes.login} component={LoginView} />
+          <Route path={routes.home} redirectTo="/login" component={HomeView} />
 
         </Switch>
+      </Suspense>
     </div>
   );
 }

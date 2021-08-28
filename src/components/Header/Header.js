@@ -6,7 +6,7 @@ import Logo from './Logo';
 import s from './Header.module.css';
 import Modal from '../HomeTab/ModalAddTransaction/ModalAddTransaction.jsx';
 import ModalLogout from './ModalLogout';
-import { walletSelectors } from '../../redux/actions';
+import { walletSelectors } from '../../redux/wallet';
 import { authOperations } from '../../redux/auth';
 
 const Header = () => {

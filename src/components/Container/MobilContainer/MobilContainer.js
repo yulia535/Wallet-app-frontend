@@ -28,9 +28,7 @@ const HomeMobile = lazy(() =>
 );
 
 const Statistics = lazy(() =>
-  import(
-    '../../HomeTab/TransactionHistory/TransactionHistory.jsx' /* webpackChunkName: "statistics-page" */
-  ),
+  import('../../DiagramTab' /* webpackChunkName: "statistics-page" */),
 );
 
 const Currency = lazy(() =>
