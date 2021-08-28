@@ -2,7 +2,6 @@ import TransactionHistory from '../TransactionHistory/TransactionHistory';
 import OpenModalBtn from '../UI/openModalBtn';
 import { useState } from 'react';
 import trans from '../TransactionHistory/transactions.json';
-import { nanoid } from 'nanoid';
 import styles from './transactionPage.module.css';
 import ModalContainer from '../ModalContainer/ModalContainer';
 import { ThemeProvider } from '@material-ui/styles';
@@ -16,8 +15,6 @@ const TransactionPage = () => {
   
     const [transactions, setTransactions] = useState(trans);
     // const [transactions, setTransactions] = useState([]);
-    const [type, setType] = useState(false);
-    // console.log(type)
     const [addFormData, setAddFormData] = useState({
         date: '',
         type: false,
@@ -28,7 +25,6 @@ const TransactionPage = () => {
     });
 
     const [modalActive, setModalActive] = useState(false);
-    // const [category, setCategory] = useState(false);
 
 
 
@@ -95,10 +91,7 @@ console.log(addFormData)
                 <ModalContainer
                     active={modalActive}
                     setActive={setModalActive}
-                    // onHandleChange={handleAddForm}
-                    // onHandleSubmit={handleFormAddSubmit}
                     handleFormCancel={handleFormCancel}
-                    // setType={setType}
                 />
             </div>
         </ThemeProvider>
