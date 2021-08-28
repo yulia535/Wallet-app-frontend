@@ -5,6 +5,8 @@ const getMonth = state => state.transactions.month;
 const getYear = state => state.transaction.year;
 const getLoading = state => state.transaction.loading;
 
+const getBalance = state => state.transactions.balance;
+
 const getVisibleTransactions = createSelector(
   [getAllTransactions, getMonth, getYear],
   (items, month, year) => {
@@ -18,5 +20,6 @@ const transactionsSelectors = {
   getYear,
   getLoading,
   getVisibleTransactions,
+  getBalance,
 };
 export default transactionsSelectors;

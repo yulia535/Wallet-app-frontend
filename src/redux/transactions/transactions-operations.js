@@ -24,5 +24,26 @@ const addTransaction =
       dispatch(transactionsActions.addTransactionError(error.message));
     }
   };
-const transactionsOperations = { fetchTransactions, addTransaction };
+
+const fetchBalance = () => async dispatch => {
+  dispatch(transactionsActions.fetchBalanceRequest());
+
+  try {
+    const {
+      data: {
+        response: { totalBalance },
+      },
+    } = await axios.get('/transactions');
+
+    dispatch(transactionsActions.fetchBalanceSuccess(totalBalance));
+  } catch (e) {
+    dispatch(transactionsActions.fetchBalanceError(e.message));
+  }
+};
+
+const transactionsOperations = {
+  fetchTransactions,
+  addTransaction,
+  fetchBalance,
+};
 export default transactionsOperations;

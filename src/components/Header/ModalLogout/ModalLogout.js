@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import { walletActions } from '../../../redux/actions';
+import { walletActions } from '../../../redux/wallet';
 import s from './ModalLogout.module.css';
 import FormButtons from '../../ModalLogoutBt';
 
