@@ -48,6 +48,15 @@
   color: #24cca7;
 }
 
+.empty {
+  font-family: Circe, sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #000000;
+}
+
 @media screen and (min-width: 768px) {
   .table {
     width: 350px;

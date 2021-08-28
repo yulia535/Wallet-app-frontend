@@ -1,7 +1,21 @@
 .wrapper {
+  position: relative;
   height: 280px;
   width: 280px;
   margin-bottom: 30px;
+}
+
+.balance {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: Circe, sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #000000;
 }
 
 @media screen and (min-width: 768px) {

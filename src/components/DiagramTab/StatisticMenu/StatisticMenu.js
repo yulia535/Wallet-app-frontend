@@ -7,15 +7,11 @@ import styles from './StatisticMenu.module.css';
 import { transactionsActions } from '../../../redux/transactions';
 
 const useStyles = makeStyles({
-  form_control: {
-    marginBottom: 20,
-  },
   select_input: {
     paddingLeft: 21,
     textAlign: 'left',
     paddingTop: 12,
     paddingBottom: 14,
-    paddingRight: 20,
     width: 280,
     height: 50,
     background: 'trasparent',
@@ -28,6 +24,26 @@ const useStyles = makeStyles({
     color: '#000000',
     textTransform: 'none',
     border: '1px solid #000000',
+    '&:hover': {
+      borderColor: '#4A56E2',
+      backgroundColor: '#4A56E2',
+      color: '#FFFFFF',
+      // transition: 'color 0.4s ease',
+      transition: 'background-color 0.4s ease',
+      // transition: 'border-color 0.4s ease',
+    },
+    '&:focus': {
+      borderColor: '#4A56E2',
+      backgroundColor: '#4A56E2',
+      color: '#FFFFFF',
+      transition: 'color 0.4s ease',
+    },
+  },
+
+  list: {
+    paddingTop: 0,
+    paddingBottom: 0,
+    background: 'white',
   },
   menu_item: {
     width: 280,
@@ -35,8 +51,9 @@ const useStyles = makeStyles({
   icon_expend: {
     width: 40,
     height: 20,
-    userSelect: 'none',
-    pointerEvents: 'none',
+    '&:hover': {
+      fill: 'red',
+    },
   },
 });
 
@@ -63,8 +80,10 @@ const StatisticMenu = () => {
 
   const monthNow = new Date().getMonth();
   const yearNow = new Date().getFullYear();
+
   const [month, setMonth] = useState(monthNow);
   const [year, setYear] = useState(yearNow);
+
   const handleChangeMonth = event => {
     setMonth(event.target.value);
     dispatch(transactionsActions.changeMonth(event.target.value));
@@ -73,6 +92,10 @@ const StatisticMenu = () => {
     setYear(event.target.value);
     dispatch(transactionsActions.changeYear(event.target.value));
   };
+
+  // useEffect(() => {
+  //   dispatch(transactionsOperations.fetchTransactions(month, year));
+  // }, [dispatch, month, year]);
 
   const iconComponent = props => {
     return (

@@ -5,6 +5,7 @@ import { Switch, Route } from 'react-router-dom';
 import { authOperations } from './redux/auth';
 
 import routes from './routes/';
+
 import Loader from './components/Loader';
 
 import PrivateRouter from './components/PrivateRouter';
@@ -22,6 +23,7 @@ const LoginView = lazy(() =>
 
 
 
+
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -29,6 +31,7 @@ function App() {
   }, [dispatch]);
   return (
     <div className="App">
+
       <Suspense fallback={<Loader />}>
         <Switch>
           <Route exact path={routes.register} component={RegistrationView} />
@@ -37,6 +40,7 @@ function App() {
 
         </Switch>
       </Suspense>
+
     </div>
   );
 }
