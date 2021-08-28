@@ -5,7 +5,7 @@ import authOperations from '../../redux/auth/auth-operations';
 import {Formik, Field, Form, ErrorMessage} from "formik";
 import * as Yup from 'yup';
 import Logo from '../Header/Logo'
-import styles from '../LoginForm/loginForm.module.css';
+import styles from '../LoginForm/loginform.module.css';
 import iconMail from '../../image/baseline-email-24px 1.svg'
 import iconLock from '../../image/baseline-lock-24px 1.svg'
 

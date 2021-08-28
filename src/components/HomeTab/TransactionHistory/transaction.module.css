@@ -1,9 +1,38 @@
-.transactionHistory {
-    /* display: flex;
+.tbody{
+    display: flex;
     flex-direction: column;
-    border-collapse: collapse; */
-    /* border-spacing: 0; */
-    /* border: 0; */
+    justify-content: space-evenly;
+}
+.tr{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    /* border-bottom: 1px solid grey */
+
+}
+.tr:not(:first-child){
+    /* border-top: 1px solid grey; */
+    border-top: 1px solid #DCDCDF;
+box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6)
+}
+.th{
+    /* width: 15%; */
+}
+.table .td{
+    width: 100%;
+}
+.td{
+
+    padding: 10px; 
+    color: black;
+}
+
+.tr:nth-child(2n) {
+    /* background-color: rgb(203, 234, 240); */
+}
+
+.transactionHistory {
+
     margin-top: 40px;
 
     table-layout: fixed;
@@ -21,52 +50,17 @@ width: 100%;
     height: 58px;
 
 }
-tbody{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-}
-tr{
-    display: flex;
-    width: 100%;
-    justify-content: space-around;
-    /* border-bottom: 1px solid grey */
 
-}
-tr:not(:first-child){
-    /* border-top: 1px solid grey; */
-    border-top: 1px solid #DCDCDF;
-box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6)
-}
-th{
-    /* width: 15%; */
-}
-table td{
-    width: 100%;
-}
-td{
-    /* display: flex;
-    justify-content: normal;
-    vertical-align: middle;
-    width: 15%;
-    /* text-align: center; */
-    padding: 10px; 
-}
 .titleItems{
  
 }
 .titleItem {
-    /* display: flex; */
-    /* flex-direction: row; */
-    /* display: inline;
-    width: 60px;
-    height: 40px; */
+
     color: #000000;
     font-family: 'Courier New', Courier, monospace;
     font-size: 18px;
     font-weight: 700;
-    /* margin-left:50px; */
-    /* background-color:  #FFFFFF; */
+
 }
 
 .item {
@@ -80,12 +74,7 @@ align-items: center;
 justify-content: start;
 }
 
-td{
-    color: black;
-}
-tr:nth-child(2n) {
-    /* background-color: rgb(203, 234, 240); */
-}
+
 .income{
 color: #24CCA7
 }
@@ -127,12 +116,12 @@ justify-content: center;
         display:none
     }
 
-    table, tr, tbody, .item, .income, .outcome, .incomeItem, .outcomeItem{
+    .table, .tr, .tbody, .item, .income, .outcome, .incomeItem, .outcomeItem{
         display: block;
         width: 100%
     }
 
-    tr{
+    .tr{
         border-left: 5px solid;
         border-radius: 10px;
         padding-top: 10px;
@@ -145,7 +134,7 @@ justify-content: center;
        
     }
 
-    td{
+    .td{
         text-align: right;
         /* padding-left: 50%; */
         position: relative;
@@ -154,11 +143,11 @@ justify-content: center;
 
     }
 
-    td:not(:last-child){
+    .td:not(:last-child){
         border-bottom: 0.5px solid grey;
 
     }
-    td::before{
+    .td::before{
         content: attr(datelabel);
         position: absolute;
         left:0;
