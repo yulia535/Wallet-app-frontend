@@ -1,10 +1,9 @@
 import axios from 'axios';
 import authActions from './auth-actions';
 
- axios.defaults.baseURL = 'http://localhost:3001';
+axios.defaults.baseURL = 'http://localhost:3001';
 
-
- // axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
+// axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
 const token = {
   set(token) {
@@ -19,9 +18,8 @@ const register = credentials => async dispatch => {
   dispatch(authActions.registerRequest());
   try {
     const response = await axios.post('api/auth/signup', credentials);
-    
+
     token.set(response.data.token);
-    
 
     dispatch(authActions.registerSuccess(response.data));
   } catch (error) {
@@ -33,7 +31,7 @@ const login = credentials => async dispatch => {
   dispatch(authActions.loginRequest());
   try {
     const response = await axios.post('api/auth/login', credentials);
-   // token.set(response.data.result);
+    // token.set(response.data.result);
     dispatch(authActions.loginSuccess(response.data.data));
   } catch (error) {
     dispatch(authActions.loginError(alert(error.message)));
@@ -44,7 +42,7 @@ const logout = () => async dispatch => {
   dispatch(authActions.logoutRequest());
 
   try {
-    await axios.post('/auth/logout');
+    await axios.post('api/auth/logout');
     token.unset();
     dispatch(authActions.logoutSuccess());
   } catch (error) {
@@ -72,4 +70,3 @@ const getCurrentUser = () => async (dispatch, getState) => {
 };
 // eslint-disable-next-line import/no-anonymous-default-export
 export default { register, login, logout, getCurrentUser };
-
