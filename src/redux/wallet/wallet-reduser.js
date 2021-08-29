@@ -1,8 +1,8 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { ModalLogoutAction } from './wallet-actions';
+import { ModalLogout } from './wallet-actions';
 
 const modalLogout = createReducer(false, {
-  [ModalLogoutAction]: (state, _) => !state,
+  [ModalLogout]: (state, _) => !state,
 });
 
 export { modalLogout };
