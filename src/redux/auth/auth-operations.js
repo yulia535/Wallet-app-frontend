@@ -33,8 +33,8 @@ const login = credentials => async dispatch => {
   dispatch(authActions.loginRequest());
   try {
     const response = await axios.post('api/auth/login', credentials);
-   // token.set(response.data.result);
-    dispatch(authActions.loginSuccess(response.data.data));
+    token.set(response.data.token);
+    dispatch(authActions.loginSuccess(response.data));
   } catch (error) {
     dispatch(authActions.loginError(alert(error.message)));
   }
