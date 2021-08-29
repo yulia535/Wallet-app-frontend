@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
 import styles from './transaction.module.css';
+import {  useSelector } from 'react-redux';
+import transactionsSelectors from '../../../redux/transactions/transactions-selectors';
 
 // const TransactionHistory = ({ items, headingColumns, breakOn = 'medium' }) => {
 // let tableClass = 'table-container';
@@ -10,7 +12,10 @@ import styles from './transaction.module.css';
 // }else if(breakOn==='large'){
 //     tableClass+='table-container__break-lg'
 // }
-const TransactionHistory = ( {items} ) => {
+// const TransactionHistory = ( {items} ) => {
+    const TransactionHistory = (  ) => {
+
+    const items = useSelector(transactionsSelectors.getAllTransactions);
     console.log(items)
     return (
         <table className={`${styles.transactionHistory} ${styles.table}`}>
@@ -58,7 +63,7 @@ const TransactionHistory = ( {items} ) => {
                                 {item.amount}
                             </td>
                             <td className={`${styles.item} ${styles.td}`} datelabel="Баланс">
-                                {item.balancy}
+                                {item.balanceAfter}
                             </td>
                         </tr>
                     );
