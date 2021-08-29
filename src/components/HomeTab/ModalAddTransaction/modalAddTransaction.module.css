@@ -4,7 +4,9 @@
     border-radius: 20px;
 }
 
-
+.titleModal{
+    text-align: center;
+}
 
 
 .addBtn{
@@ -41,9 +43,9 @@
     color:red;
     font-size: 10px;
 }
-.errorFieldDate{
+/* .errorFieldDate{
 padding-left: 50px;
-}
+} */
 .cancelBtn{
     background-color: transparent;
     border-radius: 20px;
@@ -54,7 +56,6 @@ padding-left: 50px;
     font-weight:400;
     color: #4A56E2;
     text-align: center;
-    margin-bottom: 20px;
     cursor: pointer;
 
 }
@@ -62,15 +63,7 @@ padding-left: 50px;
     box-shadow:  0px 1px 15px 0px rgba(74,86,226,0.88);
     border: none;
 }
-/* .chooseTypeToggle{
-    display: flex;
-    margin:0 auto;
-    width: 220px;
-    justify-content: space-between;
-    margin-top: 40px;
-    align-items: center;
 
-} */
 .btnsModal{
     display: flex;
     flex-direction: column;
@@ -90,32 +83,133 @@ background: transparent;
 }
 
 
-.amountDate{
+/* .amountDate{
     display: flex;
     justify-content: space-between;
     margin: 40px 0;
-}
+    align-items: baseline;
+} */
 .inputDate{
-    margin-left: 50px;
+    margin-left: 30px;
     padding: 10px;
+    padding-bottom: 7px;
 }
-.inputAmount{
+/* .inputAmount{
     text-align: center;
     padding: 10px;
 
-}
-.inputDate, .inputAmount{
+} */
+/* .inputDate, .inputAmount{
 width: 190px;
+outline: none;
 
+} */
 
-}
 ::-webkit-calendar-picker-indicator {
     color: transparent;
     opacity: 1;
     background: url('./Vector.png') no-repeat center;
     background-size: contain;
   }
+  .closeBtn{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 16px;
+    height: 16px;
+    background: url('./../../../image/closeBtn.svg') no-repeat center;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background-color: white;
+    
+  }
+  .closeBtn:hover, .closeBtn:focus{
+    transform: scale(1.2);
+    /* padding: 15px; */
+  
+    /* background-color: rgba(36,204,167, 0.7); */
+  }
+.commentField{
+outline:none;
+}
 
-/* .commentField{
-    margin-bottom: 50px;
-} */
+@media screen and (max-width:767px){
+    .titleModal{
+        font-weight:400;
+        font-size:24px;
+       height:1.5;
+       text-align: center;
+
+        } 
+.closeBtn{
+    display:none;
+}
+.inputDate, .inputAmount, .commentField{
+    /* width: 280px; */
+    width: 100%;
+
+    margin:0;
+    /* padding:0; */
+    text-align: start;
+    padding: 10px;
+    outline: none;
+
+}
+.amountDate{
+    display: flex;
+    flex-direction: column;
+}
+.btnsModal{
+    width: 300px;
+}
+.addBtn, .cancelBtn{
+    width: 300px;
+}
+.amount{
+    margin-bottom: 40px;
+}
+.inputAmount{
+padding-left: 10px;
+text-align: start;
+}
+.date{
+    margin-bottom:40px;
+}
+
+.commentField{
+    height: 74px;
+}
+/* .errorFieldDate{
+    padding-left: 50px;
+    } */
+}
+
+
+
+@media screen and (min-width: 768px) {
+    .inputDate, .inputAmount{
+        width: 190px;
+        outline: none;
+        
+        }
+
+        .amountDate{
+            display: flex;
+            justify-content: space-between;
+            margin: 40px 0;
+        
+            align-items: baseline;
+        }
+
+        .inputAmount{
+            text-align: center;
+            padding: 10px;
+        
+        }
+        .errorFieldDate{
+            padding-left: 50px;
+            }
+
+       
+}
