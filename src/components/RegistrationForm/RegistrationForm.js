@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from "react-router-dom";
-import {Formik, Field, Form, ErrorMessage} from "formik";
- // import * as Yup from 'yup';
+import { useFormik } from 'formik';
+ import * as Yup from 'yup';
  import { useDispatch } from 'react-redux';
  import authOperations from '../../redux/auth/auth-operations';
 import Logo from '../Header/Logo'
@@ -10,54 +10,41 @@ import iconMail from '../../image/baseline-email-24px 1.svg';
 import iconUser from '../../image/baseline-account_box-24px 1.svg';
 import iconLock from '../../image/baseline-lock-24px 1.svg';
 
-// const validSchema = Yup.object().shape({
-//   email: Yup.string().email('Invalid email').required('Required'),
-//   password:Yup.string().min(6, 'Too Short!').max(12, 'Too Long!').required('Required'),
-//   confirmPassword:Yup.string().oneOf([Yup.ref('password')],'Passwords do not match').required('Required'),
-//   name:Yup.string().min(1, 'Too Short!').max(12, 'Too Long!').required('Required'),
-// });
-
 function RegistrationForm() {
-
-    const dispatch = useDispatch();
-
-
-function validateEmail(value) {
-  let error;
-  if (!value) {
-    error = 'Required';
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
-    error = 'Invalid email address';
-  }
-  return error;
-}
+  const {values, errors, touched,  handleChange, handleBlur, isValid, handleSubmit, dirty} = useFormik({
+    initialValues:{
+      email:'',
+      password:'',
+      confirmPassword:'',
+      name:'',
+    },
+    validationSchema: Yup.object().shape({
+      email: Yup.string().email('Invalid email').required('Required'),
+      password:Yup.string().min(6, 'Too Short!').max(12, 'Too Long!').required('Required'),
+      confirmPassword:Yup.string().oneOf([Yup.ref('password')],'Passwords do not match').required('Required'),
+      name:Yup.string().min(1, 'Too Short!').max(12, 'Too Long!').required('Required'),
+    }),
+    onSubmit:(values)=>{dispatch(authOperations.register({email:values.email, password:values.password, name:values.name} ))}
+    
+  })
+    
+  
+  
+  const dispatch = useDispatch();
 
 
   return (
 <div className={styles.formSection}>
 <div className={styles.formContainer}>
         <div className={styles.logoContainer} ><Logo/></div>
-        <Formik 
-        initialValues={{
-          email:'',
-          password:'',
-          confirmPassword:'',
-          name:'',
-        }}
-       // validationsSchema={validSchema}
-        validateOnChange={true}
-        validateOnBlur={true}
-       onSubmit={(values)=>{dispatch(authOperations.register({email:values.email, password:values.password, name:values.name} ))}}
-        >
-          
-         {({values, errors, touched, isValidating,  handleChange, handleBlur, isValid, handleSubmit, dirty})=>(
-            <Form
+
+            <form
              className={styles.form}
            >
               <div className={styles.imputBox}>
               <img src={iconMail} alt="icon mail" className={styles.iconSvg} />
-           <Field
-           validate={validateEmail}
+           <input
+    
                className={styles.inputForm}
                placeholder="E-mail"
                  type="text"
@@ -71,7 +58,7 @@ function validateEmail(value) {
                    
               <div className={styles.imputBox}>
               <img src={iconLock} alt="icon mail" className={styles.iconSvg} />
-               <Field
+               <input
               id='password'
                className={styles.inputForm}
                placeholder="Пароль"
@@ -81,12 +68,14 @@ function validateEmail(value) {
                  onChange={handleChange}
                  onBlur={handleBlur}
                />
-               {errors.password && touched.password && <div>{errors.password}</div>}
+               {errors.password && touched.password && <div className={styles.errorMessage}>{errors.password}</div>}
                </div>
-               {/* <ErrorMessage name = "password" /> */}
+              
 
                <div className={styles.imputBox}>
                <img src={iconLock} alt="icon mail" className={styles.iconSvg} /> 
+               <hr className={styles.lineBasic}/>
+
                <input
                className={styles.inputForm}
                placeholder="Подтвердите пароль"
@@ -96,9 +85,9 @@ function validateEmail(value) {
                 onChange={handleChange}
                 onBlur={handleBlur}
                />
-               <hr className={styles.lineBasic}/>
+              {errors.confirmPassword && touched.confirmPassword && <div className={styles.errorMessage}>{errors.confirmPassword}</div>}
+
                </div>
-               <ErrorMessage name="confirmPassword" />
 
                <div className={styles.imputBox}>
                <img src={iconUser} alt="icon mail" className={styles.iconSvg} /> 
@@ -110,17 +99,17 @@ function validateEmail(value) {
                  value={values.name}
                onChange={handleChange}
                onBlur={handleBlur}
-               /></div>
-                <ErrorMessage name = "name" />
+               />
+                              {errors.name && touched.name && <div className={styles.errorMessage}>{errors.name}</div>}
+
+               </div>
               
                  <button className={styles.button}
                  disabled={!isValid && !dirty}
                  onClick={handleSubmit} 
                  type={"submit"}>РЕГИСТРАЦИЯ</button>
                  <NavLink className={styles.linkButton} to='/login'exact>Вход</NavLink>
-                 </Form>
-         )}
-        </Formik>
+                 </form>
       </div>
 </div>
     );
