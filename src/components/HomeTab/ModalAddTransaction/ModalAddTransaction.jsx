@@ -75,7 +75,7 @@ setType(e.target.checked)
             .positive('Is not in correct format')
             .required('Field Sum is required'),
 
-          category: Yup.string()
+             category: (type===true) ? (Yup.string()
             .oneOf(
               [
                 'main',
@@ -89,17 +89,29 @@ setType(e.target.checked)
               ],
               'Invalid Category',
             )
-            .required('Field Category is Required'),
+            .required('Field Category is Required')) : null
         })}
-        onSubmit={async (values, { setSubmitting, resetForm }) => {
+        onSubmit={(values, { setSubmitting, resetForm }) => {
           setSubmitting(true);
           // async request
           alert(JSON.stringify(values, null, 2));
+          const valuess = JSON.stringify(values, null, 2)
+          // dispatch(
+          //   transactionsOperations.addTransaction(
+          //     {  date: valuess.date,
+          //     type: valuess.type,
+          //     category: valuess.category,
+          //     comment: valuess.comment,
+          //     amount: valuess.amount,},
+          //   ),
+          // );
           dispatch(
             transactionsOperations.addTransaction(
-              JSON.stringify(values, null, 2),
+              values
             ),
           );
+
+          
 
           // const correctValue = {
           //   ...value,
@@ -116,10 +128,10 @@ setType(e.target.checked)
           // setSelectedDate('')
         }}
       >
-        {({ errors, touched }) => (
+        {({ values, errors, touched, dirty }) => (
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <Form className={styles.form}>
-              <ToggleCustom name="type" onChange={onTypeChange} />
+              <ToggleCustom name="type" onChange={onTypeChange} value={values.type}/>
 
                   { type===true ? (<Field
                 as="select"
@@ -146,6 +158,7 @@ setType(e.target.checked)
                     name="amount"
                     required="required"
                     placeholder="0.00"
+                    value={values.amount}
                   ></Field>
                   {touched.amount && errors.amount ? (
                     <span className={styles.errorFieldInfo}>
@@ -161,6 +174,7 @@ setType(e.target.checked)
                     className={styles.inputDate}
                     required="required"
                     placeholder="2019-07-07"
+                    value={values.date}
                     // value="2021-08-07"
                   ></Field>
 
@@ -197,6 +211,7 @@ setType(e.target.checked)
                 name="comment"
                 placeholder="Комментарий"
                 className={styles.commentField}
+                values={values.comment}
               ></Field>
               <div className={styles.btnsModal}>
                 <button
@@ -204,6 +219,7 @@ setType(e.target.checked)
                   variant="contained"
                   className={styles.addBtn}
                   onClick={() => setActive(false)}
+                  disabled={!dirty}
                 >
                   Добавить
                 </button>
