@@ -113,17 +113,24 @@ import transactionsActions from './transactions-actions';
 //     balanceAfter: 2000,
 //   },
 // ];
-const transactionsHolder = []
+const transactionsHolder = [];
 
 const monthNow = new Date().getMonth();
 const yearNow = new Date().getFullYear();
 
 const items = createReducer(transactionsHolder, {
-
-  [transactionsActions.fetchTransactionsSuccess]: (_, { payload }) => payload,
-  [transactionsActions.addTransactionSuccess]: (state, { payload }) => {
+  [transactionsActions.fetchTransactionsSuccess]: (_, { payload }) => {
+    console.log(payload);
+    return payload;
+  },
+  [transactionsActions.addTransactionsSuccess]: (state, { payload }) => {
     return [...state, payload];
   },
+});
+
+const itemsByDate = createReducer([], {
+  [transactionsActions.fetchTransactionsByDateSuccess]: (_, { payload }) =>
+    payload,
 });
 
 const error = createReducer(null, {
@@ -139,14 +146,14 @@ const error = createReducer(null, {
   [transactionsActions.addTransactionSuccess]: () => null,
 });
 
-const loading = createReducer(false, {
-  [transactionsActions.fetchTransactionsRequest]: () => true,
-  [transactionsActions.fetchTransactionsSuccess]: () => false,
-  [transactionsActions.fetchTransactionsError]: () => false,
-  [transactionsActions.addTransactionRequest]: () => true,
-  [transactionsActions.addTransactionSuccess]: () => false,
-  [transactionsActions.addTransactionError]: () => false,
-});
+// const loading = createReducer(false, {
+//   [transactionsActions.fetchTransactionsRequest]: () => true,
+//   [transactionsActions.fetchTransactionsSuccess]: () => false,
+//   [transactionsActions.fetchTransactionsError]: () => false,
+//   [transactionsActions.addTransactionRequest]: () => true,
+//   [transactionsActions.addTransactionSuccess]: () => false,
+//   [transactionsActions.addTransactionError]: () => false,
+// });
 
 const balance = createReducer(null, {
   [transactionsActions.fetchBalanceSuccess]: (_, { payload }) => payload,
@@ -159,4 +166,12 @@ const year = createReducer(yearNow, {
   [transactionsActions.changeYear]: (_, { payload }) => payload,
 });
 
-export default combineReducers({ items, error, loading, month, year, balance });
+export default combineReducers({
+  items,
+  itemsByDate,
+  error,
+  // loading,
+  month,
+  year,
+  balance,
+});
