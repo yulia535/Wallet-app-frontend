@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import UserMenu from './UserMenu';
 import Logo from './Logo';
 import s from './Header.module.css';
-import Modal from '../ModalLogoutBt';
+import Modal from '../ModalAdd';
 import ModalLogout from './ModalLogout';
 import { walletSelectors } from '../../redux/wallet';
 import { authOperations } from '../../redux/auth';
@@ -12,10 +12,10 @@ import { authOperations } from '../../redux/auth';
 const Header = () => {
   const dispatch = useDispatch();
 
-  // const modalLogout = useSelector(walletSelectors.modalLogout);
-  // const onLogout = useCallback(() => {
-  //   dispatch(authOperations.logout());
-  // }, [dispatch]);
+  const modalLogout = useSelector(walletSelectors.logoutModalAction);
+  const onLogout = useCallback(() => {
+    dispatch(authOperations.logout());
+  }, [dispatch]);
 
   return (
     <header className={s.header}>
@@ -24,11 +24,11 @@ const Header = () => {
       </NavLink>
       <UserMenu />
 
-      {/* {modalLogout && (
+      {modalLogout && (
         <Modal modalValue={modalLogout} modalAction={onLogout}>
           <ModalLogout />
         </Modal>
-      )} */}
+      )}
     </header>
   );
 };
