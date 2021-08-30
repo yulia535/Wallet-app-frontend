@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { lazy, Suspense, useEffect } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 
 import { authOperations } from './redux/auth';
 

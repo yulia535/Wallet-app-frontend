@@ -33,7 +33,7 @@
 .errorMessage{
   position: absolute;
   color: red;
-  bottom: -20px;
+  bottom: -25px;
 }
 .imputBox{
   position: relative;
@@ -56,8 +56,17 @@ left: 6px;
   border: none;
   margin:auto;
   margin-bottom:20px;
-  
+  cursor: pointer;
+
 }
+.button:hover{
+  transform:scale(1.1,1.1);
+  -webkit-transform:scale(1.1,1.1);
+  -moz-transform:scale(1.1,1.1);
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+
+}
+
 .linkButton{
   display: block;
   text-decoration: none;
@@ -75,6 +84,13 @@ left: 6px;
   color:  #4A56E2;
   background-color:  #fff;
   border: solid 1px  #4A56E2;
+
+}
+.linkButton:hover{
+  transform:scale(1.1,1.1);
+  -webkit-transform:scale(1.1,1.1);
+  -moz-transform:scale(1.1,1.1);
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
 
 }
 .lineBasic{
