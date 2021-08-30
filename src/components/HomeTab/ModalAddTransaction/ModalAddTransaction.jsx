@@ -38,12 +38,22 @@ const ModalAddTransactions = ({ setActive, handleFormCancel }) => {
   const tomorrow = new Date(Date.now() +43200000);
  
 
-  const [type, setType] = useState(false);
-const onTypeChange =(e)=>{
-setType(e.target.checked)
-// console.log(type)
-}
+  const [chooseType, setType] = useState(false);
+  const [correctType, setCorrectType]= useState(false);
+  // let correctType;
+const onTypeChange =async (e)=>{
+await setType(e.target.checked)
+console.log(chooseType)
+// correctType = (chooseType===true) ? "true" : "false";
+setCorrectType((chooseType===true) ? "true" : "false")
 
+console.log(correctType)
+}
+// console.log(correctType)
+
+// let correctValue={
+//   type: correctType,
+// }
 
   return (
     <>
@@ -60,7 +70,7 @@ setType(e.target.checked)
       <Formik
         initialValues={{
           date: '',
-          type: false,
+          type: true,
           category: '',
           comment: '',
           amount: '',
@@ -75,7 +85,7 @@ setType(e.target.checked)
             .positive('Is not in correct format')
             .required('Field Sum is required'),
 
-             category: (type===true) ? (Yup.string()
+             category: (chooseType===true) ? (Yup.string()
             .oneOf(
               [
                 'main',
@@ -93,47 +103,59 @@ setType(e.target.checked)
         })}
         onSubmit={(values, { setSubmitting, resetForm }) => {
           setSubmitting(true);
-          // async request
-          alert(JSON.stringify(values, null, 2));
-          const valuess = JSON.stringify(values, null, 2)
-          // dispatch(
-          //   transactionsOperations.addTransaction(
-          //     {  date: valuess.date,
-          //     type: valuess.type,
-          //     category: valuess.category,
-          //     comment: valuess.comment,
-          //     amount: valuess.amount,},
-          //   ),
-          // );
-          dispatch(
-            transactionsOperations.addTransaction(
-              values
-            ),
-          );
 
-          
 
-          // const correctValue = {
-          //   ...value,
-          //   // date: moment(date).format(),
-          //   date: selectedDate,
+          // correctValue =   {  
+          //   // type: correctType ? correctType : 'false',
+          //   type: chooseType,
+          //   date: values.date,
+          // category: values.category,
+          // comment: values.comment,
+          // amount: values.amount}
 
-          // };
+
+         const correctValue =   {  
+            date: values.date,
+          category: values.category,
+          comment: values.comment,
+          amount: values.amount,
+            type: correctType,
+           }
+
+console.log(values)
+console.log(correctType)
+console.log(correctValue)
+// alert(JSON.stringify(correctValue, null, 2));
+alert(correctValue);
+
+
+// dispatch(
+//   transactionsOperations.addTransaction(
+//     (JSON.stringify(correctValue, null, 2))
+//   ),
+// );
+
+// dispatch(
+//   transactionsOperations.addTransaction(
+//     correctValue
+//   ),
+// );
+
+     
           resetForm();
 
-          // console.log(values);
-          console.log(JSON.stringify(values));
-          // console.log(correctValue)
+
           setSubmitting(false);
-          // setSelectedDate('')
+   
         }}
       >
         {({ values, errors, touched, dirty }) => (
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <Form className={styles.form}>
               <ToggleCustom name="type" onChange={onTypeChange} value={values.type}/>
+              {/* <ToggleCustom name="type" /> */}
 
-                  { type===true ? (<Field
+                  { chooseType===true ? (<Field
                 as="select"
                 className={styles.selectCategory}
                 name="category"
@@ -146,7 +168,7 @@ setType(e.target.checked)
                   );
                 })}
               </Field>) : null}
-              {type===true && touched.category && errors.category ? (
+              {chooseType===true && touched.category && errors.category ? (
                 <span className={styles.errorFieldInfo}>{errors.category}</span>
               ) : null} 
               
@@ -211,7 +233,7 @@ setType(e.target.checked)
                 name="comment"
                 placeholder="Комментарий"
                 className={styles.commentField}
-                values={values.comment}
+                value={values.comment}
               ></Field>
               <div className={styles.btnsModal}>
                 <button
