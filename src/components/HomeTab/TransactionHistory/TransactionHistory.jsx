@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import styles from './transaction.module.css';
-import { useSelector } from 'react-redux';
+import {  useSelector } from 'react-redux';
 import transactionsSelectors from '../../../redux/transactions/transactions-selectors';
 
 // const TransactionHistory = ({ items, headingColumns, breakOn = 'medium' }) => {
@@ -13,22 +13,7 @@ import transactionsSelectors from '../../../redux/transactions/transactions-sele
 //     tableClass+='table-container__break-lg'
 // }
 // const TransactionHistory = ( {items} ) => {
-const TransactionHistory = () => {
-  const items = useSelector(transactionsSelectors.getAllTransactions);
-  console.log(items);
-  return (
-    <table className={`${styles.transactionHistory} ${styles.table}`}>
-      <thead className={`${styles.titleBlock} ${styles.thead}`}>
-        <tr className={`${styles.titleItems} ${styles.tr}`}>
-          <th className={`${styles.titleItem} ${styles.th}`}>Дата</th>
-          <th className={`${styles.titleItem} ${styles.th}`}>Тип</th>
-          <th className={`${styles.titleItem} ${styles.th}`}>Категория</th>
-          <th className={`${styles.titleItem} ${styles.th}`}>Комментарий</th>
-          <th className={`${styles.titleItem} ${styles.th}`}>Сумма</th>
-          <th className={`${styles.titleItem} ${styles.th}`}>Баланс</th>
-        </tr>
-      </thead>
-
+    const TransactionHistory = (  ) => {
 
     const items = useSelector(transactionsSelectors.getAllTransactions);
     // console.log(items.data.result)
@@ -87,23 +72,23 @@ const TransactionHistory = () => {
             </tbody>
         </table>
     );
-
 };
 
 TransactionHistory.propTypes = {
-  items: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      date: PropTypes.string.isRequired,
-      // type: PropTypes.symbol.isRequired,
-      category: PropTypes.string.isRequired,
-      comment: PropTypes.string.isRequired,
-      // amount: PropTypes.number.isRequired,
-      // balancy: PropTypes.number.isRequired,
-    }),
-  ).isRequired,
-  // headingColumns: PropTypes.arrayOf(PropTypes.string).isRequired,
-  // breakOn: PropTypes.oneOf(['small', 'medium', 'large'])
+    items: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.string.isRequired,
+            date: PropTypes.string.isRequired,
+            // type: PropTypes.symbol.isRequired,
+            category: PropTypes.string.isRequired,
+            comment: PropTypes.string.isRequired,
+            // amount: PropTypes.number.isRequired,
+            // balancy: PropTypes.number.isRequired,
+        }),
+    ).isRequired,
+    // headingColumns: PropTypes.arrayOf(PropTypes.string).isRequired,
+    // breakOn: PropTypes.oneOf(['small', 'medium', 'large'])
 };
 
 export default TransactionHistory;
+
