@@ -1,7 +1,10 @@
 .container{
     /* background-color: #E7EAF2; */
-    max-width: 700px;
+   
+    width: 100%;
     margin: 0 auto;
     position: relative;
     min-height: 640px;
+
+    
 }
