@@ -3,21 +3,23 @@ import transactionsActions from './transactions-actions';
 
 axios.defaults.baseURL = 'http://localhost:3001';
 
-const token =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMmI5ZmE2MzE2NzgxMzNjY2M4OWNjNyIsImlhdCI6MTYzMDMyNzg5MX0.JULfcldUUMVYlvJM8W_6FWy1oc2xcR9q0OliONKDEE4';
 // const token =
-//   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMmM4NDQ1ODNlOGQzMjAzOGRmOTg4MCIsImlhdCI6MTYzMDMxNzMxMn0.1n6Hkj-flMQjyDRTg3P8qtLpua-KKkEqI4g_mV9DVsA';
-const config = {
-  headers: { Authorization: `Bearer ${token}` },
-};
+//   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMmI5ZmE2MzE2NzgxMzNjY2M4OWNjNyIsImlhdCI6MTYzMDMyNzg5MX0.JULfcldUUMVYlvJM8W_6FWy1oc2xcR9q0OliONKDEE4';
+// // const token =
+// //   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMmM4NDQ1ODNlOGQzMjAzOGRmOTg4MCIsImlhdCI6MTYzMDMxNzMxMn0.1n6Hkj-flMQjyDRTg3P8qtLpua-KKkEqI4g_mV9DVsA';
+// const config = {
+//   headers: { Authorization: `Bearer ${token}` },
+// };
 
 const fetchTransactions = () => async dispatch => {
   dispatch(transactionsActions.fetchTransactionsRequest());
   // const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6I…kZWZojP1c';
 
   try {
-    const response = await axios.get('api/transactions/all', config, {
-      headers: { Authorization: `Bearer ${token}` },
+    const response = await axios.get('api/transactions/all', {
+
+    // const response = await axios.get('api/transactions/all', config, {
+      // headers: { Authorization: `Bearer ${token}` },
     });
     dispatch(
       transactionsActions.fetchTransactionsSuccess(response.data.data.result),
@@ -32,10 +34,10 @@ const fetchTransactionsByDate = (year, month) => async dispatch => {
   try {
     const response = await axios.get(
       `/api/transactions?year=${year}&month=${month}`,
-      config,
-      {
-        headers: { Authorization: `Bearer ${token}` },
-      },
+      // config,
+      // {
+      //   headers: { Authorization: `Bearer ${token}` },
+      // },
     );
     dispatch(
       transactionsActions.fetchTransactionsByDateSuccess(
@@ -49,15 +51,16 @@ const fetchTransactionsByDate = (year, month) => async dispatch => {
 
 const addTransaction =
   // (amount, category, comment, date, type) => async (dispatch, getState) => {
-  values => async (dispatch, getState) => {
+    (correctValue )=> async (dispatch, getState) => {
     // const transaction = { amount, category, comment, date, type };
     const state = getState();
     console.log(state);
-    console.log(values);
+    console.log(correctValue);
+    // console.log(transaction)
     dispatch(transactionsActions.addTransactionRequest());
     try {
       // const { data } = await axios.post('/transactions', transaction);
-      const { data } = await axios.post('api/transactions', values, config);
+      const { data } = await axios.post('api/transactions', correctValue);
 
       dispatch(transactionsActions.addTransactionSuccess(data));
     } catch (error) {

@@ -115,33 +115,27 @@ console.log(correctType)
 
 
          const correctValue =   {  
+          type: correctType,
             date: values.date,
           category: values.category,
           comment: values.comment,
           amount: values.amount,
-            type: correctType,
+            
            }
 
 console.log(values)
 console.log(correctType)
 console.log(correctValue)
-// alert(JSON.stringify(correctValue, null, 2));
-alert(correctValue);
+alert(JSON.stringify(correctValue, null, 2));
 
 
-// dispatch(
-//   transactionsOperations.addTransaction(
-//     (JSON.stringify(correctValue, null, 2))
-//   ),
-// );
-
-// dispatch(
-//   transactionsOperations.addTransaction(
-//     correctValue
-//   ),
-// );
-
-     
+dispatch(
+  transactionsOperations.addTransaction(
+    // (JSON.stringify(correctValue, null, 2))
+    // correctValue
+    values
+  ),
+);
           resetForm();
 
 
