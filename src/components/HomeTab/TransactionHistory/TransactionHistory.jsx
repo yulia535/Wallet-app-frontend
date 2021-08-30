@@ -29,53 +29,65 @@ const TransactionHistory = () => {
         </tr>
       </thead>
 
-      <tbody className={styles.tbody}>
-        {items.map(item => {
-          //     const status = (item.type==='+') ? (styles.incomeItem): (styles.outcomeItem);
-          //  const trStyle = (item.type==='+') ? (styles.income): (styles.outcome)
-          let status;
-          let trStyle;
 
-          if (item.type === '+') {
-            status = styles.incomeItem;
-            trStyle = styles.income;
-          } else {
-            status = styles.outcomeItem;
-            trStyle = styles.outcome;
-          }
+    const items = useSelector(transactionsSelectors.getAllTransactions);
+    // console.log(items.data.result)
+    return (
+        <table className={`${styles.transactionHistory} ${styles.table}`}>
+            <thead className={`${styles.titleBlock} ${styles.thead}`}>
+                <tr className={`${styles.titleItems} ${styles.tr}`}>
+                    <th className={`${styles.titleItem} ${styles.th}`}>Дата</th>
+                    <th className={`${styles.titleItem} ${styles.th}`}>Тип</th>
+                    <th className={`${styles.titleItem} ${styles.th}`}>Категория</th>
+                    <th className={`${styles.titleItem} ${styles.th}`}>Комментарий</th>
+                    <th className={`${styles.titleItem} ${styles.th}`}>Сумма</th>
+                    <th className={`${styles.titleItem} ${styles.th}`}>Баланс</th>
+                </tr>
+            </thead>
 
-          return (
-            <tr key={item.id} className={`${trStyle} ${styles.tr}`}>
-              <td className={`${styles.item} ${styles.td} `} datelabel="Дата">
-                {item.date}
-              </td>
-              <td className={`${styles.item} ${styles.td}`} datelabel="Тип">
-                {item.type === false ? '+' : '-'}
-              </td>
-              <td
-                className={`${styles.item} ${styles.td}`}
-                datelabel="Категория"
-              >
-                {item.category}
-              </td>
-              <td
-                className={`${styles.item} ${styles.td}`}
-                datelabel="Комментарий"
-              >
-                {item.comment}
-              </td>
-              <td className={`${status} ${styles.td}`} datelabel="Сумма">
-                {item.amount}
-              </td>
-              <td className={`${styles.item} ${styles.td}`} datelabel="Баланс">
-                {item.balanceAfter}
-              </td>
-            </tr>
-          );
-        })}
-      </tbody>
-    </table>
-  );
+            <tbody className={styles.tbody}>
+                {items.map(item => {
+                    console.log(item)
+                    //     const status = (item.type==='+') ? (styles.incomeItem): (styles.outcomeItem);
+                    //  const trStyle = (item.type==='+') ? (styles.income): (styles.outcome)
+                    let status;
+                    let trStyle;
+
+                    if (item.type === '+') {
+                        status = styles.incomeItem;
+                        trStyle = styles.income;
+                    } else {
+                        status = styles.outcomeItem;
+                        trStyle = styles.outcome;
+                    }
+
+                    return (
+                        <tr key={item.data.result.id} className={`${trStyle} ${styles.tr}`}>
+                            <td className={`${styles.item} ${styles.td}`} datelabel="Дата">
+                                {item.data.result.date}
+                            </td>
+                            <td className={`${styles.item} ${styles.td}`} datelabel="Тип">
+                                {item.data.result.type === false ? '+' : '-'}
+                            </td>
+                            <td className={`${styles.item} ${styles.td}`} datelabel="Категория">
+                                {item.data.result.category}
+                            </td>
+                            <td className={`${styles.item} ${styles.td}`} datelabel="Комментарий">
+                                {item.data.result.comment}
+                            </td>
+                            <td className={`${status} ${styles.td}`} datelabel="Сумма">
+                                {item.data.result.amount}
+                            </td>
+                            <td className={`${styles.item} ${styles.td}`} datelabel="Баланс">
+                                {item.data.result.balanceAfter}
+                            </td>
+                        </tr>
+                    );
+                })}
+            </tbody>
+        </table>
+    );
+
 };
 
 TransactionHistory.propTypes = {

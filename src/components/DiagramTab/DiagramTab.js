@@ -1,13 +1,31 @@
-import { useSelector } from 'react-redux';
-import { transactionsSelectors } from '../../redux/transactions';
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import {
+  transactionsOperations,
+  transactionsSelectors,
+} from '../../redux/transactions';
+import formatDataForStatistic from '../../utils/formatDataForStatistic';
 import styles from './DiagramTab.module.css';
 import StatisticMenu from './StatisticMenu';
 import Chart from '../Chart';
 import Table from '../Table';
 
 const DiagramTab = () => {
+  const dispatch = useDispatch();
+  const month = useSelector(transactionsSelectors.getMonth);
+  const year = useSelector(transactionsSelectors.getYear);
+
+  useEffect(() => {
+    dispatch(transactionsOperations.fetchTransactionsByDate(year, month + 1));
+  }, [dispatch, year, month]);
+
+  const transactionsByDate = useSelector(
+    transactionsSelectors.getTransactionsByDate,
+  );
+
   const { totalConsumption, totalIncome, arrStatistic, arrChart, colors } =
-    useSelector(transactionsSelectors.getVisibleTransactions);
+    formatDataForStatistic(transactionsByDate);
+
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>Статистика</h2>
