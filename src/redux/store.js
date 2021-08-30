@@ -15,9 +15,11 @@ import {
   REGISTER,
 } from 'redux-persist';
 
-import authReducer  from './auth/auth-reducer';
+import authReducer from './auth/auth-reducer';
 import { transactionsReducer } from './transactions';
 import storage from 'redux-persist/lib/storage';
+import { modalLogout } from './wallet/wallet-reduser';
+// import isLoading from './isLoading/isLoading-reducer';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -47,6 +49,8 @@ const authPersistConfig = {
 const rootReducer = combineReducers({
   auth: persistReducer(authPersistConfig, authReducer),
   transactions: transactionsReducer,
+  logoutModalAction: modalLogout,
+  // isLoading,
 });
 
 export const store = configureStore({

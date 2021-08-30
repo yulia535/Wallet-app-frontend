@@ -13,11 +13,11 @@ const UserMenu = () => {
   const name = useSelector(getUserName);
   const dispatch = useDispatch();
 
-  const onlogout = useCallback(() => {
-    dispatch(authOperations.logout());
-  }, [dispatch]);
+  // const onlogout = useCallback(() => {
+  //   dispatch(authOperations.logout());
+  // }, [dispatch]);//////////////////////////////////
 
-  const openModal = () => dispatch(walletActions.ModalLogout());
+  const openModal = () => dispatch(walletActions.logoutModalAction());
 
   return (
     <div className={s.header}>
@@ -26,7 +26,7 @@ const UserMenu = () => {
         className={s.btnLogout}
         name="onLogout"
         type="button"
-        onClick={onlogout}
+        onClick={openModal}
       >
         <ExitToAppIcon className={s.icon_btn_logout} />
         <span className={s.title_exit}>Выйти</span>
