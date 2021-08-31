@@ -13,14 +13,8 @@ axios.defaults.baseURL = 'http://localhost:3001';
 
 const fetchTransactions = () => async dispatch => {
   dispatch(transactionsActions.fetchTransactionsRequest());
-  // const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6I…kZWZojP1c';
-
   try {
-    const response = await axios.get('api/transactions/all', {
-
-    // const response = await axios.get('api/transactions/all', config, {
-      // headers: { Authorization: `Bearer ${token}` },
-    });
+    const response = await axios.get('api/transactions/all');
     dispatch(
       transactionsActions.fetchTransactionsSuccess(response.data.data.result),
     );
@@ -29,21 +23,11 @@ const fetchTransactions = () => async dispatch => {
   }
 };
 
-
-
-
-
-
-
 const fetchTransactionsByDate = (year, month) => async dispatch => {
   dispatch(transactionsActions.fetchTransactionsByDateRequest());
   try {
     const response = await axios.get(
       `/api/transactions?year=${year}&month=${month}`,
-      // config,
-      // {
-      //   headers: { Authorization: `Bearer ${token}` },
-      // },
     );
     dispatch(
       transactionsActions.fetchTransactionsByDateSuccess(
@@ -57,7 +41,7 @@ const fetchTransactionsByDate = (year, month) => async dispatch => {
 
 const addTransaction =
   // (amount, category, comment, date, type) => async (dispatch, getState) => {
-    (correctValue )=> async (dispatch, getState) => {
+  correctValue => async (dispatch, getState) => {
     // const transaction = { amount, category, comment, date, type };
     const state = getState();
     console.log(state);
@@ -74,26 +58,9 @@ const addTransaction =
     }
   };
 
-const fetchBalance = () => async dispatch => {
-  dispatch(transactionsActions.fetchBalanceRequest());
-
-  try {
-    const {
-      data: {
-        response: { totalBalance },
-      },
-    } = await axios.get('api/transactions');
-
-    dispatch(transactionsActions.fetchBalanceSuccess(totalBalance));
-  } catch (e) {
-    dispatch(transactionsActions.fetchBalanceError(e.message));
-  }
-};
-
 const transactionsOperations = {
   fetchTransactions,
   fetchTransactionsByDate,
   addTransaction,
-  fetchBalance,
 };
 export default transactionsOperations;

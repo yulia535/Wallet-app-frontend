@@ -2,14 +2,16 @@ import { Fragment, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import Media from 'react-media';
-
+import { transactionsOperations } from '../../redux/transactions';
 import MobileContainer from '../Container/MobilContainer';
 import DesktopContainer from '../Container/DesktopContainer';
 
 const DashBoardPage = () => {
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(transactionsOperations.fetchTransactions());
+  }, [dispatch]);
 
-  useEffect(() => {}, [dispatch]);
   return (
     <>
       <div>
