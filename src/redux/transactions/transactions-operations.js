@@ -73,7 +73,7 @@ const fetchBalance = () => async dispatch => {
       data: {
         response: { totalBalance },
       },
-    } = await axios.get('/transactions');
+    } = await axios.get('api/transactions');
 
     dispatch(transactionsActions.fetchBalanceSuccess(totalBalance));
   } catch (e) {

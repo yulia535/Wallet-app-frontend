@@ -22,10 +22,7 @@ const ModalLogoutBt = ({
     <>
       {!firstLinkButton && !secondLinkButton && (
         <div className={s.buttonsContainer}>
-          <button
-            type="submit"
-            className={[s.buttons, s.buttonAddTransaction].join(' ')}
-          >
+          <button type="submit" className={[s.buttons, s.buttonAdd].join(' ')}>
             {firtsButtonText}
           </button>
           <button
@@ -42,7 +39,7 @@ const ModalLogoutBt = ({
           <NavLink to={firstLinkButton}>
             <button
               type="button"
-              className={[s.buttons, s.buttonAddTransaction].join(' ')}
+              className={[s.buttons, s.buttonAdd].join(' ')}
               onClick={() => {
                 dispatch(authOperations.logout());
                 closeModal();
@@ -62,10 +59,7 @@ const ModalLogoutBt = ({
       )}
       {secondLinkButton && (
         <div className={s.buttonsContainer}>
-          <button
-            type="submit"
-            className={[s.buttons, s.buttonAddTransaction].join(' ')}
-          >
+          <button type="submit" className={[s.buttons, s.buttonAdd].join(' ')}>
             {firtsButtonText}
           </button>
           <NavLink to={secondLinkButton}>
