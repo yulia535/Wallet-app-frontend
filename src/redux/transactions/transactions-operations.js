@@ -17,9 +17,8 @@ const fetchTransactions = () => async dispatch => {
   dispatch(transactionsActions.fetchTransactionsRequest());
   try {
     const response = await axios.get('api/transactions/all');
-    dispatch(
-      transactionsActions.fetchTransactionsSuccess(response.data.data.result),
-    );
+    const reversed = response.data.data.result.reverse();
+    dispatch(transactionsActions.fetchTransactionsSuccess(reversed));
   } catch (error) {
     dispatch(transactionsActions.fetchTransactionsError(error.message));
   }
