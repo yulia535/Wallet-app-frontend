@@ -1,6 +1,28 @@
+@font-face {
+  font-family: "Poppins";
+  src: url("../../fonts/Poppins/Poppins-Regular.woff2") format("woff2"),
+  url("../../fonts/Poppins/Poppins-Black.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+  }
+  @media (max-width: 767px){
+    .nameApp{
+      display: none;
+    }
+  }
 @media (min-width: 768px){
   .viewContainer{
     background: #E5E5E5;
+  }
+  .nameApp{
+    position: absolute;
+    line-height: 45px;
+    color: #000000;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
   }
 }
 @media (min-width: 768px) and (max-width: 1279px){
@@ -11,6 +33,10 @@
     background-repeat: no-repeat;
     padding: 360px 114px 48px 114px;
   }
+  .nameApp{
+    top:167px;
+    right: 166px;
+  }
 }
 @media (min-width: 1280px){
   .viewContainer{
@@ -20,5 +46,9 @@
     background-repeat: no-repeat;
     display: flex;
     flex-direction:row-reverse;
+  }
+  .nameApp{
+    top: 597.5px;
+    left: 200px;
   }
 }
