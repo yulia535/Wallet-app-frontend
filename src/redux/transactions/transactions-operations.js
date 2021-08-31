@@ -50,9 +50,12 @@ const addTransaction =
     dispatch(transactionsActions.addTransactionRequest());
     try {
       // const { data } = await axios.post('/transactions', transaction);
-      const { data } = await axios.post('api/transactions', correctValue);
+      const response = await axios.post('api/transactions', correctValue);
 
-      dispatch(transactionsActions.addTransactionSuccess(data));
+      dispatch(
+        transactionsActions.addTransactionSuccess(response.data.data.result),
+        // transactionsActions.addTransactionSuccess(response.data),
+      );
     } catch (error) {
       dispatch(transactionsActions.addTransactionError(error.message));
     }

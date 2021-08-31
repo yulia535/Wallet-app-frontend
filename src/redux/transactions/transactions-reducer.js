@@ -9,7 +9,8 @@ const items = createReducer([], {
   [transactionsActions.fetchTransactionsSuccess]: (_, { payload }) => {
     return payload;
   },
-  [transactionsActions.addTransactionsSuccess]: (state, { payload }) => {
+  [transactionsActions.addTransactionSuccess]: (state, { payload }) => {
+    // return [payload, ...state];
     return [...state, payload];
   },
 });
