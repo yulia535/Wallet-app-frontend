@@ -10,8 +10,8 @@ const items = createReducer([], {
     return payload;
   },
   [transactionsActions.addTransactionSuccess]: (state, { payload }) => {
-    // return [payload, ...state];
-    return [...state, payload];
+    return [payload, ...state];
+    // return [...state, payload];
   },
 });
 
@@ -38,8 +38,11 @@ const balance = createReducer(null, {
     if (payload.length === 0) {
       return null;
     }
-    const lastTransaction = payload[payload.length - 1];
+    const lastTransaction = payload[0];
     return lastTransaction?.balanceAfter || null;
+  },
+  [transactionsActions.addTransactionSuccess]: (_, { payload }) => {
+    return payload.balanceAfter;
   },
 });
 
