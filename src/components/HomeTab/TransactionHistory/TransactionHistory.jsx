@@ -16,7 +16,7 @@ import transactionsSelectors from '../../../redux/transactions/transactions-sele
     const TransactionHistory = (  ) => {
 
     const items = useSelector(transactionsSelectors.getAllTransactions);
-    // console.log(items.data.result)
+    console.log(items)
     return (
         <table className={`${styles.transactionHistory} ${styles.table}`}>
             <thead className={`${styles.titleBlock} ${styles.thead}`}>
@@ -47,24 +47,24 @@ import transactionsSelectors from '../../../redux/transactions/transactions-sele
                     }
 
                     return (
-                        <tr key={item.data.result.id} className={`${trStyle} ${styles.tr}`}>
+                        <tr key={item.id} className={`${trStyle} ${styles.tr}`}>
                             <td className={`${styles.item} ${styles.td}`} datelabel="Дата">
-                                {item.data.result.date}
+                                {item.date}
                             </td>
                             <td className={`${styles.item} ${styles.td}`} datelabel="Тип">
-                                {item.data.result.type === false ? '+' : '-'}
+                                {item.type === false ? '+' : '-'}
                             </td>
                             <td className={`${styles.item} ${styles.td}`} datelabel="Категория">
-                                {item.data.result.category}
+                                {item.category}
                             </td>
                             <td className={`${styles.item} ${styles.td}`} datelabel="Комментарий">
-                                {item.data.result.comment}
+                                {item.comment}
                             </td>
                             <td className={`${status} ${styles.td}`} datelabel="Сумма">
-                                {item.data.result.amount}
+                                {item.amount}
                             </td>
                             <td className={`${styles.item} ${styles.td}`} datelabel="Баланс">
-                                {item.data.result.balanceAfter}
+                                {item.balanceAfter}
                             </td>
                         </tr>
                     );

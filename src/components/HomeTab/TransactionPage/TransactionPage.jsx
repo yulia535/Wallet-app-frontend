@@ -1,18 +1,19 @@
 import TransactionHistory from '../TransactionHistory/TransactionHistory';
 import OpenModalBtn from '../UI/openModalBtn';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import trans from '../TransactionHistory/transactions.json';
 import styles from './transactionPage.module.css';
 import ModalContainer from '../ModalContainer/ModalContainer';
 import { ThemeProvider } from '@material-ui/styles';
 import theme from '../customMuiTheme'
 // import axios from 'axios';
+import transactionsOperations from '../../../redux/transactions/transactions-operations';
 
-
+import { useDispatch, useSelector } from 'react-redux';
 
 const TransactionPage = () => {
 
-  
+    const dispatch = useDispatch();
     const [transactions, setTransactions] = useState(trans);
     // const [transactions, setTransactions] = useState([]);
     const [addFormData, setAddFormData] = useState({
@@ -26,45 +27,12 @@ const TransactionPage = () => {
 
     const [modalActive, setModalActive] = useState(false);
 
-
+    useEffect(() => {
+        dispatch(transactionsOperations.fetchTransactions());
+      }, [dispatch]);
 
 console.log(addFormData)
 
-
-    // const  handleAddForm = e => {
-    //     e.preventDefault();
-    //     let fieldValue;
-    //     const fieldName = e.target.getAttribute('name');
-
-    //     fieldName==="type" ? (fieldValue = type) : fieldValue = e.target.value;
-
-    //     const newFormData = { ...addFormData };
-    //     newFormData[fieldName] = fieldValue;
-    //     setAddFormData(newFormData);
-    //     console.log(fieldValue)
-
-    //     // console.log(e)
-    // };
-    
-
-    // const handleFormAddSubmit = async (e) => {
-    //     e.preventDefault();
-    //     const newTransaction = await {
-    //         id: nanoid(),
-    //         date: addFormData.date,
-    //         type: addFormData.type,
-    //         category: addFormData.category,
-    //         comment: addFormData.comment,
-    //         amount: addFormData.amount,
-    //         balancy: addFormData.balancy,
-    //     };
-
-
-    //     const newTransactions = [...transactions, newTransaction];
-    //     setTransactions(newTransactions);
-
-     
-    // };
     const handleFormCancel = e => {
         setAddFormData({
             date: '',
