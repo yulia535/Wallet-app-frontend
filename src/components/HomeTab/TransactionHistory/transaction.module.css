@@ -3,7 +3,17 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+ max-width: 688px;
   justify-content: space-evenly;
+  
+}
+
+.blockTable{
+ 
+    display: block;
+    overflow-y: scroll;
+    height: 500px;
+    width: 768px;
 }
 
 .thead {
@@ -92,14 +102,21 @@
 @media (min-width: 1280px) {
   .transactionHistory {
     margin-left: 30px;
+    max-width: 700px;
   }
+  .blockTable{
+   
+    height: 500px;
+    width: 800px;
+
+}
 }
 
 @media (max-width: 767px) {
   .transactionHistory {
     min-width: 280px;
     width: 100%;
-    max-width: 767px;
+    max-width: 280px;
   }
   .titleBlock {
     display: none;
@@ -109,6 +126,13 @@
     font-weight: 400;
     line-height: 1.5;
     height: 40px; 
+  }
+  
+  .blockTable{
+   
+      height: 320px;
+      width: 320px;
+  
   }
 
   .table,

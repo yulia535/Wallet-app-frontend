@@ -7,6 +7,7 @@ const TransactionHistory = () => {
   const items = useSelector(transactionsSelectors.getAllTransactions);
 
   return (
+    <div className={styles.blockTable}>
     <table className={`${styles.transactionHistory} ${styles.table}`}>
       <thead className={`${styles.titleBlock} ${styles.thead}`}>
         <tr className={`${styles.titleItems} ${styles.tr}`}>
@@ -74,6 +75,7 @@ const TransactionHistory = () => {
         })}
       </tbody>
     </table>
+    </div>
   );
 };
 
