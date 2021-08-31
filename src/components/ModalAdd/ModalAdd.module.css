@@ -1,0 +1,10 @@
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.paper {
+  background-color: #FFFF;
+  border-radius: 20px;
+}

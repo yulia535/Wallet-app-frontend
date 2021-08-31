@@ -5,7 +5,7 @@ import { walletActions } from '../../redux/wallet';
 
 import s from './ModalLogoutBt.module.css';
 
-const FormButtons = ({
+const ModalLogoutBt = ({
   firtsButtonText,
   secondButtonText,
   firstLinkButton,
@@ -15,7 +15,7 @@ const FormButtons = ({
   const dispatch = useDispatch();
 
   function closeModal() {
-    dispatch(walletActions.ModalLogoutAction());
+    dispatch(walletActions.logoutModalAction());
   }
 
   return (
@@ -82,4 +82,4 @@ const FormButtons = ({
   );
 };
 
-export default FormButtons;
+export default ModalLogoutBt;

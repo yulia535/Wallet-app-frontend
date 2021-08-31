@@ -32,6 +32,7 @@ import transactionsSelectors from '../../../redux/transactions/transactions-sele
 
             <tbody className={styles.tbody}>
                 {items.map(item => {
+                    console.log(item)
                     //     const status = (item.type==='+') ? (styles.incomeItem): (styles.outcomeItem);
                     //  const trStyle = (item.type==='+') ? (styles.income): (styles.outcome)
                     let status;
@@ -90,3 +91,4 @@ TransactionHistory.propTypes = {
 };
 
 export default TransactionHistory;
+

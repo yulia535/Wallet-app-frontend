@@ -7,7 +7,7 @@ import FormButtons from '../../ModalLogoutBt';
 const ModalLogout = () => {
   const dispatch = useDispatch();
   const logoutModalAction = useCallback(
-    () => dispatch(walletActions.ModalLogoutAction()),
+    () => dispatch(walletActions.logoutModalAction()),
     [dispatch],
   );
 
