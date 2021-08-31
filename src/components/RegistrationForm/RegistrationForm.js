@@ -105,7 +105,7 @@ function RegistrationForm() {
                </div>
               
                  <button className={styles.button}
-                 disabled={!isValid && !dirty}
+                 disabled={!isValid}
                  onClick={handleSubmit} 
                  type={"submit"}>РЕГИСТРАЦИЯ</button>
                  <NavLink className={styles.linkButton} to='/login'exact>Вход</NavLink>

@@ -65,7 +65,7 @@ export default function LoginForm() {
                     />
                     {errors.password && touched.password && <div className={styles.errorMessage}>{errors.password}</div>}
                     </div>
-                      <button className={styles.button} disabled={!isValid && !dirty}
+                      <button className={styles.button} disabled={!isValid }
                  onClick={handleSubmit}  type="submit">Вход</button>
                       <NavLink className={styles.linkButton} to='/register'exact>РЕГИСТРАЦИЯ</NavLink>
                 </form>
