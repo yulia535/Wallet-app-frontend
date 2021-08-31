@@ -33,6 +33,16 @@ import transactionsSelectors from '../../../redux/transactions/transactions-sele
             <tbody className={styles.tbody}>
                 {items.map(item => {
                     console.log(item)
+                    
+                    const GetFormattedDate = (date) => {
+                      const dt = new Date(date);
+                      const month = String(dt.getMonth() + 1).padStart(2, '0');
+                      const day = dt.getDate();
+                      const year = String(dt.getFullYear()).slice(2);
+                      return day + '.' + month + '.' + year;
+                    }
+                    
+
                     //     const status = (item.type==='+') ? (styles.incomeItem): (styles.outcomeItem);
                     //  const trStyle = (item.type==='+') ? (styles.income): (styles.outcome)
                     let status;
@@ -47,26 +57,44 @@ import transactionsSelectors from '../../../redux/transactions/transactions-sele
                     }
 
                     return (
-                        <tr key={item.id} className={`${trStyle} ${styles.tr}`}>
-                            <td className={`${styles.item} ${styles.td}`} datelabel="Дата">
-                                {item.date}
-                            </td>
-                            <td className={`${styles.item} ${styles.td}`} datelabel="Тип">
-                                {item.type === false ? '+' : '-'}
-                            </td>
-                            <td className={`${styles.item} ${styles.td}`} datelabel="Категория">
-                                {item.category}
-                            </td>
-                            <td className={`${styles.item} ${styles.td}`} datelabel="Комментарий">
-                                {item.comment}
-                            </td>
-                            <td className={`${status} ${styles.td}`} datelabel="Сумма">
-                                {item.amount}
-                            </td>
-                            <td className={`${styles.item} ${styles.td}`} datelabel="Баланс">
-                                {item.balanceAfter}
-                            </td>
-                        </tr>
+                      <tr key={item.id} className={`${trStyle} ${styles.tr}`}>
+                        <td
+                          className={`${styles.item} ${styles.td}`}
+                          datelabel="Дата"
+                        >
+                          {GetFormattedDate(item.date)}
+                        </td>
+                        <td
+                          className={`${styles.item} ${styles.td}`}
+                          datelabel="Тип"
+                        >
+                          {item.type === false ? '+' : '-'}
+                        </td>
+                        <td
+                          className={`${styles.item} ${styles.td}`}
+                          datelabel="Категория"
+                        >
+                          {item.category}
+                        </td>
+                        <td
+                          className={`${styles.item} ${styles.td}`}
+                          datelabel="Комментарий"
+                        >
+                          {item.comment}
+                        </td>
+                        <td
+                          className={`${status} ${styles.td}`}
+                          datelabel="Сумма"
+                        >
+                          {item.amount}
+                        </td>
+                        <td
+                          className={`${styles.item} ${styles.td}`}
+                          datelabel="Баланс"
+                        >
+                          {item.balanceAfter}
+                        </td>
+                      </tr>
                     );
                 })}
             </tbody>
