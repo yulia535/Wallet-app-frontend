@@ -64,9 +64,9 @@ const getCurrentUser = () => async (dispatch, getState) => {
   dispatch(authActions.getCurrentUserRequest());
   try {
     const response = await axios.get('api/users/current');
-    dispatch(authActions.getCurrentUserSuccess(response.data));
+    dispatch(authActions.getCurrentUserSuccess(response.data.user));
   } catch (error) {
-    dispatch(authActions.getCurrentUserError(alert(error.message)));
+    dispatch(authActions.getCurrentUserError((error.message)));
   }
 };
 // eslint-disable-next-line import/no-anonymous-default-export
