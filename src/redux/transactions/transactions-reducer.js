@@ -34,9 +34,11 @@ const error = createReducer(null, {
 
 const balance = createReducer(null, {
   [transactionsActions.fetchTransactionsSuccess]: (_, { payload }) => {
+    if (payload.length === 0) {
+      return null;
+    }
     const lastTransaction = payload[payload.length - 1];
-    const { balanceAfter } = lastTransaction;
-    return balanceAfter;
+    return lastTransaction?.balanceAfter || null;
   },
 });
 
