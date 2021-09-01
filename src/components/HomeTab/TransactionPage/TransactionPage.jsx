@@ -34,6 +34,8 @@ const TransactionPage = () => {
     }
   }, [dispatch]);
 
+ 
+
   console.log(addFormData);
 
   const handleFormCancel = e => {

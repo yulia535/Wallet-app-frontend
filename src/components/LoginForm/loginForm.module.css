@@ -112,13 +112,6 @@
   .linkButton {
     width: 300px;
   }
-  /* .formSection::before{
-      content: 'Finance App';
-      display: block;
-      width: 187px;
-      height: 45px;
-      position: absolute;
-    } */
 }
 @media (min-width: 1280px) {
   .formSection {
