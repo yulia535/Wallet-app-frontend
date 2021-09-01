@@ -1,9 +1,9 @@
 import axios from 'axios';
 import transactionsActions from './transactions-actions';
 
-// axios.defaults.baseURL = 'http://localhost:3001';
+axios.defaults.baseURL = 'http://localhost:3001';
 
-axios.defaults.baseURL = 'https://wallet-app-backend.herokuapp.com/';
+// axios.defaults.baseURL = 'https://wallet-app-backend.herokuapp.com/';
 
 // const token =
 //   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMmI5ZmE2MzE2NzgxMzNjY2M4OWNjNyIsImlhdCI6MTYzMDMyNzg5MX0.JULfcldUUMVYlvJM8W_6FWy1oc2xcR9q0OliONKDEE4';
