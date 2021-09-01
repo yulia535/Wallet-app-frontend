@@ -26,6 +26,7 @@ const renameCategories = category => {
 
     case 'mainIncome':
       return 'Регулярный доход';
+      
     case 'restIncome':
       return 'Нерегулярный доход';
 
