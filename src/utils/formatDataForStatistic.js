@@ -24,16 +24,37 @@ const formatDataForStatistic = items => {
       return acc + item.amount;
     }, 0),
   );
-  const arrStatistic = arrConsumptions.map((item, index) => {
+  const arrAllStatistic = arrConsumptions.reduce((acc, item) => {
+    const arrCategory = arrConsumptions.filter(
+      i => i.category === item.category,
+    );
+    const totalForCategory = arrCategory.reduce(
+      (acc, item) => acc + item.amount,
+      0,
+    );
+
     const newItem = {
-      amount: formatCurrency(item.amount),
+      amount: totalForCategory,
       category: item.category,
     };
-    newItem.color = colors[index];
-    return newItem;
-  });
 
-  const arrChart = arrConsumptions.map(item => item.amount);
+    acc.push(newItem);
+    return acc;
+  }, []);
+
+  const arrStat = arrAllStatistic.reduce((acc, item, index) => {
+    const boubleCategory = acc.find(i => i.category === item.category);
+    if (!boubleCategory) {
+      acc.push(item);
+    }
+    return acc;
+  }, []);
+  const arrChart = arrStat.map(item => item.amount);
+  const arrStatistic = arrStat.map((item, index) => {
+    item.color = colors[index];
+    item.amount = formatCurrency(item.amount);
+    return item;
+  });
 
   return {
     totalConsumption,
