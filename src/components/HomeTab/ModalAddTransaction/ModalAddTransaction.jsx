@@ -29,8 +29,8 @@ const ModalAddTransactions = ({ setActive, handleFormCancel }) => {
   ];
   const categoryDataDeposit = [
     { name: 'Выберите категорию' },
-    { value: 'main', name: 'Регулярный доход' },
-    { value: 'rest', name: 'Нерегулярный доход' },
+    { value: 'mainIncome', name: 'Регулярный доход' },
+    { value: 'restIncome', name: 'Нерегулярный доход' },
   ];
   const yesterday = new Date(Date.now() - 86400000);
   const tomorrow = new Date(Date.now() + 43200000);
@@ -88,7 +88,7 @@ const ModalAddTransactions = ({ setActive, handleFormCancel }) => {
                 )
                 .required('Field Category is Required')
             : Yup.string()
-                .oneOf(['main', 'rest'], 'Invalid Category')
+                .oneOf(['mainIncome', 'restIncome'], 'Invalid Category')
                 .required('Field Category is Required'),
         })}
         onSubmit={(values, { setSubmitting, resetForm }) => {
