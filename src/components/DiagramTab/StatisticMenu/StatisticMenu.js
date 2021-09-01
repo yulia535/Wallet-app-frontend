@@ -5,7 +5,10 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { makeStyles } from '@material-ui/core';
 import { useEffect } from 'react';
 import styles from './StatisticMenu.module.css';
-import { transactionsActions } from '../../../redux/transactions';
+import {
+  transactionsActions,
+  transactionsOperations,
+} from '../../../redux/transactions';
 
 const useStyles = makeStyles({
   select_input: {
@@ -84,11 +87,8 @@ const StatisticMenu = () => {
   const [year, setYear] = useState(yearNow);
 
   useEffect(() => {
-    dispatch(transactionsActions.changeMonth(month));
-  });
-  useEffect(() => {
-    dispatch(transactionsActions.changeYear(year));
-  });
+    dispatch(transactionsOperations.fetchTransactionsByDate(year, month + 1));
+  }, [dispatch, month, year]);
 
   const handleChangeMonth = event => {
     setMonth(event.target.value);
