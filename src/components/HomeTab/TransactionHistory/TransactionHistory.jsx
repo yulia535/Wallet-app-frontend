@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import styles from './transaction.module.css';
 import { useSelector } from 'react-redux';
 import transactionsSelectors from '../../../redux/transactions/transactions-selectors';
+import renameCategories from '../../../utils/renameCategories';
 
 const TransactionHistory = () => {
   const items = useSelector(transactionsSelectors.getAllTransactions);
@@ -55,7 +56,7 @@ const TransactionHistory = () => {
                 className={`${styles.item} ${styles.td}`}
                 datelabel="Категория"
               >
-                {item.category}
+                {renameCategories(item.category)}
               </td>
               <td
                 className={`${styles.item} ${styles.td}`}
