@@ -1,131 +1,123 @@
-.formContainer{
-    padding: 110px 20px 110px 20px;
-    width: 320px;
-    margin: auto;
-    background-color: #fff;
-    }
-  
-  .logoContainer{
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    align-items:flex-end;
-    margin-bottom: 50px;
-  }
-  .inputForm{
-    display: block;
-    width: 100%;
-    padding-left: 50px;
-    padding-bottom: 10px;
-    margin-bottom: 40px;
-    color:  #4A56E2;
-    font-family: 'Circe';
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 1.47;
-    border: none;
-    border-bottom: 1px solid #BDBDBD;
-    outline:none;
-  }
-  .inputForm::placeholder{
-    color: #BDBDBD;
-  }
-  .imputBox{
-    position: relative;
-  }
-  .errorMessage{
-    position: absolute;
-    color: red;
-    bottom: -20px;
-  }
-  .iconSvg{
+.formContainer {
+  padding: 110px 20px 110px 20px;
+  width: 320px;
+  margin: auto;
+  background-color: #fff;
+}
+
+.logoContainer {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin-bottom: 50px;
+}
+.inputForm {
+  display: block;
+  width: 100%;
+  padding-left: 50px;
+  padding-bottom: 10px;
+  margin-bottom: 40px;
+  color: #4a56e2;
+  font-family: 'Circe';
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.47;
+  border: none;
+  border-bottom: 1px solid #bdbdbd;
+  outline: none;
+}
+.inputForm::placeholder {
+  color: #bdbdbd;
+}
+.imputBox {
+  position: relative;
+}
+.errorMessage {
+  position: absolute;
+  color: red;
+  bottom: -20px;
+}
+.iconSvg {
   position: absolute;
   left: 6px;
+}
 
-  }
- 
-  .button{
-    display: block;
-    width: 280px;
-    height: 50px;
-    border-radius: 20px;
-    font-family: 'Circe';
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 1.47;
-    color: #FFF;
-    background-color:#24CCA7;
-    border: none;
-    margin:auto;
-    margin-bottom:20px;
-    cursor: pointer;
-    
-  }
-  .button:hover:enabled{
-    transform:scale(1.1,1.1);
-    -webkit-transform:scale(1.1,1.1);
-    -moz-transform:scale(1.1,1.1);
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+.button {
+  display: block;
+  width: 280px;
+  height: 50px;
+  border-radius: 20px;
+  font-family: 'Circe';
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.47;
+  text-transform: uppercase;
+  color: #4a56e2;
+  background-color: #fff;
+  border: solid 1px #4a56e2;
+  margin: auto;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+.button:hover:enabled {
+  transform: scale(1.1, 1.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+  background-color: #24cca7;
+  border: 1px solid #24cca7;
+}
+.linkButton {
+  display: block;
+  text-decoration: none;
+  width: 280px;
+  height: 50px;
+  margin: auto;
+  border-radius: 20px;
+  padding: 13px 13px;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: 'Circe';
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.47;
+  color: #4a56e2;
+  background-color: #fff;
+  border: solid 1px #4a56e2;
+}
+.linkButton:hover {
+  transform: scale(1.1, 1.1);
+  -webkit-transform: scale(1.1, 1.1);
+  -moz-transform: scale(1.1, 1.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+  background-color: #24cca7;
+  border: 1px solid #24cca7;
+}
 
-  }
-  .linkButton{
-    display: block;
-    text-decoration: none;
-    width: 280px;
-    height: 50px;
+@media (max-width: 767px) {
+}
+@media (min-width: 768px) {
+  .formContainer {
+    width: 540px;
+    height: 468px;
+    padding: 40px 65px 60px 65px;
     margin: auto;
+    background-color: #fff;
     border-radius: 20px;
-    padding: 13px 13px;
-    text-align: center;
-    text-transform: uppercase;
-    font-family: 'Circe';
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 1.47;
-    color:  #4A56E2;
-    background-color:  #fff;
-    border: solid 1px  #4A56E2;
-  
   }
-  .linkButton:hover{
-    transform:scale(1.1,1.1);
-    -webkit-transform:scale(1.1,1.1);
-    -moz-transform:scale(1.1,1.1);
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
-
+  .button {
+    width: 300px;
   }
-
-  @media (max-width: 767px){
+  .linkButton {
+    width: 300px;
   }
-  @media (min-width: 768px){
-    .formContainer{
-      width: 540px;
-      height: 468px;
-      padding: 40px 65px 60px 65px;
-      margin: auto;
-      background-color: #fff;
-      border-radius: 20px;
-      }
-    .button{
-      width: 300px;
-    }
-    .linkButton{
-      width: 300px;
-    }
-    /* .formSection::before{
-      content: 'Finance App';
-      display: block;
-      width: 187px;
-      height: 45px;
-      position: absolute;
-    } */
-  
-  }
-  @media (min-width: 1280px){
-  .formSection{
+}
+@media (min-width: 1280px) {
+  .formSection {
     width: 56%;
     padding: 136px 85px 116px 95px;
     background: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(50px);
   }
-  }
+}

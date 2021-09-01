@@ -5,85 +5,75 @@ import trans from '../TransactionHistory/transactions.json';
 import styles from './transactionPage.module.css';
 import ModalContainer from '../ModalContainer/ModalContainer';
 import { ThemeProvider } from '@material-ui/styles';
-import theme from '../customMuiTheme'
+import theme from '../customMuiTheme';
 // import axios from 'axios';
 import transactionsOperations from '../../../redux/transactions/transactions-operations';
-
+import { getIsAuthenticated } from '../../../redux/auth/auth-selectors';
 import { useDispatch, useSelector } from 'react-redux';
 
 const TransactionPage = () => {
+  const dispatch = useDispatch();
+  const [transactions, setTransactions] = useState(trans);
+  // const [transactions, setTransactions] = useState([]);
+  const [addFormData, setAddFormData] = useState({
+    date: '',
+    type: false,
+    category: '',
+    comment: '',
+    amount: '',
+    // balancy: '',
+  });
 
-    const dispatch = useDispatch();
-    const [transactions, setTransactions] = useState(trans);
-    // const [transactions, setTransactions] = useState([]);
-    const [addFormData, setAddFormData] = useState({
-        date: '',
-        type: false,
-        category: '',
-        comment: '',
-        amount: '',
-        // balancy: '',
-    });
+  const [modalActive, setModalActive] = useState(false);
 
-    const [modalActive, setModalActive] = useState(false);
+  const isAuth = useSelector(getIsAuthenticated);
 
-    useEffect(() => {
-        dispatch(transactionsOperations.fetchTransactions());
-      }, [dispatch]);
-
-console.log(addFormData)
-
-    const handleFormCancel = e => {
-        setAddFormData({
-            date: '',
-            type: '',
-            category: '',
-            comment: '',
-            amount: '',
-            balancy: '',
-        });
-        setModalActive(false)
-
-    };
-
-    const handleOpenModal=()=>{
-        setModalActive(true)
+  useEffect(() => {
+    if (isAuth) {
+      dispatch(transactionsOperations.fetchTransactions());
     }
+  }, [dispatch]);
 
-    return (
-        <ThemeProvider theme={theme}>
-            <div className={styles.container}>
-                <TransactionHistory items={transactions} />
-                <OpenModalBtn onClick={handleOpenModal} />
+ 
 
-                <ModalContainer
-                    active={modalActive}
-                    setActive={setModalActive}
-                    handleFormCancel={handleFormCancel}
-                />
-            </div>
-        </ThemeProvider>
-    );
+  console.log(addFormData);
+
+  const handleFormCancel = e => {
+    setAddFormData({
+      date: '',
+      type: '',
+      category: '',
+      comment: '',
+      amount: '',
+      balancy: '',
+    });
+    setModalActive(false);
+  };
+
+  const handleOpenModal = () => {
+    setModalActive(true);
+  };
+
+  return (
+    <ThemeProvider theme={theme}>
+      <div className={styles.container}>
+        <TransactionHistory items={transactions} />
+        <OpenModalBtn onClick={handleOpenModal} />
+
+        <ModalContainer
+          active={modalActive}
+          setActive={setModalActive}
+          handleFormCancel={handleFormCancel}
+        />
+      </div>
+    </ThemeProvider>
+  );
 };
 
 export default TransactionPage;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 // const TransactionPage = () => {
 
-  
 //     const [transactions, setTransactions] = useState(trans);
 //     // const [transactions, setTransactions] = useState([]);
 //     const [type, setType] = useState(false);
@@ -106,7 +96,6 @@ export default TransactionPage;
 // //     }, [])
 
 // console.log(addFormData)
-
 
 //     const  handleAddForm = e => {
 //         e.preventDefault();
@@ -146,7 +135,7 @@ export default TransactionPage;
 //         };
 //         const newTransactions = [...transactions, newTransaction];
 //         setTransactions(newTransactions);
-     
+
 //     };
 //     const handleFormCancel = e => {
 //         setAddFormData({
@@ -169,7 +158,7 @@ export default TransactionPage;
 //         <div className={styles.container}>
 //             <TransactionHistory items={transactions} />
 //             <OpenModalBtn onClick={handleOpenModal}>
-                
+
 //             </OpenModalBtn>
 //             <ModalContainer active={modalActive} setActive={setModalActive}  onHandleChange={handleAddForm}
 //                 onHandleSubmit={handleFormAddSubmit}

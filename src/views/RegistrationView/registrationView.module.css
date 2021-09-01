@@ -40,6 +40,7 @@
 }
 @media (min-width: 1280px){
   .viewContainer{
+    height: 100vh;
     background-image: url(../../image/register_desktop.png), url(../../image/Ellipse_imac.png), url(../../image/Ellipse_rose_imac.png);
     background-position: top 153px left 66px, top 271px left, top right;
     background-attachment: scroll;

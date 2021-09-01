@@ -43,9 +43,7 @@
     color:red;
     font-size: 10px;
 }
-/* .errorFieldDate{
-padding-left: 50px;
-} */
+
 .cancelBtn{
     background-color: transparent;
     border-radius: 20px;
@@ -75,35 +73,22 @@ input{
 }
 .selectCategory{
     position: relative;
-
+outline:none;
 margin-top: 40px;
+color: black;
 border:none;
 border-bottom: 1px solid grey;
 background: transparent;
 }
 
 
-/* .amountDate{
-    display: flex;
-    justify-content: space-between;
-    margin: 40px 0;
-    align-items: baseline;
-} */
+
 .inputDate{
     margin-left: 30px;
     padding: 10px;
     padding-bottom: 7px;
 }
-/* .inputAmount{
-    text-align: center;
-    padding: 10px;
 
-} */
-/* .inputDate, .inputAmount{
-width: 190px;
-outline: none;
-
-} */
 
 ::-webkit-calendar-picker-indicator {
     color: transparent;
@@ -126,9 +111,7 @@ outline: none;
   }
   .closeBtn:hover, .closeBtn:focus{
     transform: scale(1.2);
-    /* padding: 15px; */
-  
-    /* background-color: rgba(36,204,167, 0.7); */
+
   }
 .commentField{
 outline:none;
@@ -146,11 +129,9 @@ outline:none;
     display:none;
 }
 .inputDate, .inputAmount, .commentField{
-    /* width: 280px; */
     width: 100%;
 
     margin:0;
-    /* padding:0; */
     text-align: start;
     padding: 10px;
     outline: none;
@@ -180,9 +161,7 @@ text-align: start;
 .commentField{
     height: 74px;
 }
-/* .errorFieldDate{
-    padding-left: 50px;
-    } */
+
 }
 
 

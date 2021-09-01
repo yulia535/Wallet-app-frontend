@@ -1,5 +1,7 @@
 import styles from './Table.module.css';
 import TableItem from './TableItem';
+import renameCategories from '../../utils/renameCategories';
+
 
 const Table = ({ totalConsumption, totalIncome, arrStatistic }) => {
   return (
@@ -14,7 +16,7 @@ const Table = ({ totalConsumption, totalIncome, arrStatistic }) => {
             {arrStatistic.map(({ color, category, amount }) => (
               <TableItem
                 color={color}
-                category={category}
+                category={renameCategories(category)}
                 amount={amount}
                 key={color}
               />

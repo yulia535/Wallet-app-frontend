@@ -15,17 +15,20 @@
   font-size: 18px;
   font-weight: 400;
   letter-spacing: 0.1em;
-}
 
-.buttonAddTransaction {
-  border: none;
-  margin: 51px 0 20px 0;
-  background-color: #24cca7;
-  color: #ffffff;
-}
-
-.buttonCancel {
-  border-color: #e0e0e0;
-  color: #e0e0e0;
+  color: #4a56e2;
   background-color: #fff;
+  border: solid 1px #4a56e2;
+}
+
+.buttons:hover {
+  transform: scale(1.1, 1.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+  background-color: #24cca7;
+  border: 1px solid #24cca7;
+}
+
+.buttonAdd {
+  margin: 51px 0 20px 0;
 }

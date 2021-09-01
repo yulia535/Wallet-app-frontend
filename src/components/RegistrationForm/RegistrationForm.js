@@ -13,18 +13,34 @@ import iconLock from '../../image/baseline-lock-24px 1.svg';
 
 
 function RegistrationForm() {
-  const {values, errors, touched,  handleChange, handleBlur, isValid, handleSubmit, dirty} = useFormik({
-    initialValues:{
-      email:'',
-      password:'',
-      confirmPassword:'',
-      name:'',
+  const {
+    values,
+    errors,
+    touched,
+    handleChange,
+    handleBlur,
+    isValid,
+    handleSubmit,
+  } = useFormik({
+    initialValues: {
+      email: '',
+      password: '',
+      confirmPassword: '',
+      name: '',
     },
     validationSchema: Yup.object().shape({
       email: Yup.string().email('Invalid email').required('Required'),
-      password:Yup.string().min(6, 'Too Short!').max(12, 'Too Long!').required('Required'),
-      confirmPassword:Yup.string().oneOf([Yup.ref('password')],'Passwords do not match').required('Required'),
-      name:Yup.string().min(1, 'Too Short!').max(12, 'Too Long!').required('Required'),
+      password: Yup.string()
+        .min(6, 'Too Short!')
+        .max(12, 'Too Long!')
+        .required('Required'),
+      confirmPassword: Yup.string()
+        .oneOf([Yup.ref('password')], 'Passwords do not match')
+        .required('Required'),
+      name: Yup.string()
+        .min(1, 'Too Short!')
+        .max(12, 'Too Long!')
+        .required('Required'),
     }),
     onSubmit:(values)=>{dispatch(authOperations.register({email:values.email, password:values.password, name:values.name} ))}
     
@@ -138,8 +154,8 @@ function RegistrationForm() {
                  <NavLink className={styles.linkButton} to='/login'exact>Вход</NavLink>
                  </form>
       </div>
-</div>
-    );
+    </div>
+  );
 }
 
 export default RegistrationForm;
