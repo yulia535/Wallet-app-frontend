@@ -73,7 +73,7 @@ const ModalAddTransactions = ({ setActive, handleFormCancel }) => {
             .required('Field Sum is required'),
 
           category: chooseType
-            ? Yup.string()
+            ? (Yup.string()
                 .oneOf(
                   [
                     'main',
@@ -87,10 +87,10 @@ const ModalAddTransactions = ({ setActive, handleFormCancel }) => {
                   ],
                   'Invalid Category',
                 )
-                .required('Field Category is Required')
-            : Yup.string()
+                .required('Field Category is Required'))
+            : (Yup.string()
                 .oneOf(['mainIncome', 'restIncome'], 'Invalid Category')
-                .required('Field Category is Required'),
+                .required('Field Category is Required'))
         })}
         onSubmit={(values, { setSubmitting, resetForm }) => {
           setSubmitting(true);
@@ -168,7 +168,7 @@ const ModalAddTransactions = ({ setActive, handleFormCancel }) => {
                   })}
                 </Field>
               )}
-              {chooseType && touched.category && errors.category ? (
+              {touched.category && errors.category ? (
                 <span className={styles.errorFieldInfo}>{errors.category}</span>
               ) : null}
 
