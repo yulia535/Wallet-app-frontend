@@ -16,7 +16,6 @@
   background-color: #eee;
   border-radius: 30px;
   
-  /* transition: background-color 0.2s linear; */
 }
 .toggle__spin {
   width: 44px;
@@ -56,21 +55,6 @@
 }
 
 
-/* .chooseTypeToggle{
-  display: flex;
-  margin:0 auto;
-  width: 220px;
-  justify-content: space-between;
-  margin-top: 40px;
-  align-items: center;
-
-} */
-
-/* .toggleContainer{
-  display: flex;
-  margin: 0 auto;
-  margin-top: 40px;
-} */
 
 @media screen and (max-width:767px){
   .toggleContainer{

@@ -31,9 +31,7 @@ const TransactionHistory = () => {
             return day + '.' + month + '.' + year;
           };
 
-          //     const status = (item.type==='+') ? (styles.incomeItem): (styles.outcomeItem);
-          //  const trStyle = (item.type==='+') ? (styles.income): (styles.outcome)
-          let status;
+         let status;
           let trStyle;
 
           if (!item.type) {
@@ -84,15 +82,11 @@ TransactionHistory.propTypes = {
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       date: PropTypes.string.isRequired,
-      // type: PropTypes.symbol.isRequired,
       category: PropTypes.string.isRequired,
       comment: PropTypes.string.isRequired,
-      // amount: PropTypes.number.isRequired,
-      // balancy: PropTypes.number.isRequired,
     }),
   ).isRequired,
-  // headingColumns: PropTypes.arrayOf(PropTypes.string).isRequired,
-  // breakOn: PropTypes.oneOf(['small', 'medium', 'large'])
+ 
 };
 
 export default TransactionHistory;
