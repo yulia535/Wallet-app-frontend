@@ -1,20 +1,17 @@
 import styles from './modalAddTransaction.module.css';
-// import TextField from '@material-ui/core/TextField';
-import { makeStyles } from '@material-ui/core/styles';
+import './../UI/stylestoggle.css'
 import React from 'react';
 import ToggleCustom from '../UI/ToggleCustom';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
-// import DatePickers from '../UI/calendar'
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
 import 'date-fns';
 import { useState } from 'react';
-import moment from 'moment';
 
-import { KeyboardDatePicker } from '@material-ui/pickers';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import transactionsOperations from '../../../redux/transactions/transactions-operations';
+
 
 const ModalAddTransactions = ({ setActive, handleFormCancel }) => {
   const dispatch = useDispatch();
@@ -114,11 +111,34 @@ const ModalAddTransactions = ({ setActive, handleFormCancel }) => {
         {({ values, errors, touched, dirty }) => (
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <Form className={styles.form}>
+            <div className="toggleContainer">
+    <div className="chooseTypeToggle">
+      <label htmlFor="toggle-input" className="toggle">
+        <span
+          style={{
+            color: chooseType === true ? 'black' : '#24CCA7',
+          }}
+        >
+          Доход
+        </span>
               <ToggleCustom
                 name="type"
                 onChange={onTypeChange}
                 value={values.type}
               />
+
+                  
+        <span className="outcome" style={{
+            color: chooseType === true ? '#FF6596' : 'black',
+          }}>Расход</span>
+      </label>
+    </div>
+  </div>
+
+
+
+
+
               {chooseType ? (
                 <Field
                   as="select"
