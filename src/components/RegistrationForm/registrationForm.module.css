@@ -95,13 +95,13 @@
   background-color: #24cca7;
   border: 1px solid #24cca7;
 }
-.lineBasic {
-  position: absolute;
-  width: 100%;
-  height: 4px;
-  bottom: -10px;
-  border: none;
-  background-color: #e5f1ef;
+.lineBasic{
+position: absolute;
+width: 100%;
+height: 4px;
+bottom: -10px;
+/* border: none; */
+/* background-color:  #E5F1EF; */
 }
 .lineValidate {
   composes: lineBasic;
