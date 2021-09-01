@@ -101,8 +101,7 @@ const ModalAddTransactions = ({ setActive, handleFormCancel }) => {
             comment: values.comment,
             amount: values.amount,
           };
-          console.log('values : ', values);
-          alert(JSON.stringify(correctValue, null, 2));
+        
           dispatch(transactionsOperations.addTransaction(correctValue));
           resetForm();
 

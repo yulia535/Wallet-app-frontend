@@ -21,11 +21,9 @@ const itemsByDate = createReducer([], {
 
 const error = createReducer(null, {
   [transactionsActions.fetchTransactionsError]: (_, { payload }) => {
-    alert(payload);
     return payload;
   },
   [transactionsActions.addTransactionError]: (_, { payload }) => {
-    alert(payload);
     return payload;
   },
   [transactionsActions.fetchTransactionsSuccess]: () => null,

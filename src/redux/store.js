@@ -19,7 +19,6 @@ import authReducer from './auth/auth-reducer';
 import { transactionsReducer } from './transactions';
 import storage from 'redux-persist/lib/storage';
 import { modalLogout } from './wallet/wallet-reduser';
-// import isLoading from './isLoading/isLoading-reducer';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -29,16 +28,6 @@ const middleware = [
   }),
   logger,
 ];
-
-// const contactsPersistConfig = {
-//   key: "contacts",
-//   storage,
-//   blacklist: ["filter"],
-// };
-
-// const rootReducer = combineReducers({
-//   contacts: persistReducer(contactsPersistConfig, phonebookReducer),
-// });
 
 const authPersistConfig = {
   key: 'auth',
@@ -57,7 +46,6 @@ export const store = configureStore({
   reducer: rootReducer,
   middleware,
   devTools: true,
-  // devTools: process.env.NODE_ENV === "development",
 });
 
 export const persistor = persistStore(store);

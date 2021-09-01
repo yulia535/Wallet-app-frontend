@@ -1,21 +1,15 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { useCallback, useState } from 'react';
 
 import { getUserName } from '../../../redux/auth/auth-selectors';
-import { authOperations } from '../../../redux/auth';
+
 import { walletActions } from '../../../redux/wallet';
 
-import ModalLogout from '../ModalLogout';
 import s from './UserMenu.module.css';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 const UserMenu = () => {
   const name = useSelector(getUserName);
   const dispatch = useDispatch();
-
-  // const onlogout = useCallback(() => {
-  //   dispatch(authOperations.logout());
-  // }, [dispatch]);//////////////////////////////////
 
   const openModal = () => dispatch(walletActions.logoutModalAction());
 

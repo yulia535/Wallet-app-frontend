@@ -1,8 +1,6 @@
 import axios from 'axios';
 import transactionsActions from './transactions-actions';
 
-// axios.defaults.baseURL = 'http://localhost:3001';
-
 axios.defaults.baseURL = 'https://wallet-app-backend.herokuapp.com/';
 
 const fetchTransactions = () => async dispatch => {
@@ -32,27 +30,20 @@ const fetchTransactionsByDate = (year, month) => async dispatch => {
   }
 };
 
-const addTransaction =
-  // (amount, category, comment, date, type) => async (dispatch, getState) => {
-  correctValue => async (dispatch, getState) => {
-    // const transaction = { amount, category, comment, date, type };
-    const state = getState();
-    console.log(state);
-    console.log(correctValue);
-    // console.log(transaction)
-    dispatch(transactionsActions.addTransactionRequest());
-    try {
-      // const { data } = await axios.post('/transactions', transaction);
-      const response = await axios.post('api/transactions', correctValue);
+const addTransaction = correctValue => async (dispatch, getState) => {
+  const state = getState();
 
-      dispatch(
-        transactionsActions.addTransactionSuccess(response.data.data.result),
-        // transactionsActions.addTransactionSuccess(response.data),
-      );
-    } catch (error) {
-      dispatch(transactionsActions.addTransactionError(error.message));
-    }
-  };
+  dispatch(transactionsActions.addTransactionRequest());
+  try {
+    const response = await axios.post('api/transactions', correctValue);
+
+    dispatch(
+      transactionsActions.addTransactionSuccess(response.data.data.result),
+    );
+  } catch (error) {
+    dispatch(transactionsActions.addTransactionError(error.message));
+  }
+};
 
 const transactionsOperations = {
   fetchTransactions,
