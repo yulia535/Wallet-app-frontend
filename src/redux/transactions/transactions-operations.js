@@ -1,9 +1,9 @@
 import axios from 'axios';
 import transactionsActions from './transactions-actions';
 
-axios.defaults.baseURL = 'http://localhost:3001';
+// axios.defaults.baseURL = 'http://localhost:3001';
 
-// axios.defaults.baseURL = 'https://wallet-app-backend.herokuapp.com/';
+axios.defaults.baseURL = 'https://wallet-app-backend.herokuapp.com/';
 
 const fetchTransactions = () => async dispatch => {
   dispatch(transactionsActions.fetchTransactionsRequest());

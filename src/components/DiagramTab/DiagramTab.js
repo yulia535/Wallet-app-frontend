@@ -13,14 +13,14 @@ import Table from '../Table';
 const DiagramTab = () => {
   const dispatch = useDispatch();
 
-  const monthNow = new Date().getMonth();
-  const yearNow = new Date().getFullYear();
+  // const monthNow = new Date().getMonth();
+  // const yearNow = new Date().getFullYear();
 
-  useEffect(() => {
-    dispatch(
-      transactionsOperations.fetchTransactionsByDate(yearNow, monthNow + 1),
-    );
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(
+  //     transactionsOperations.fetchTransactionsByDate(yearNow, monthNow + 1),
+  //   );
+  // }, [dispatch]);
 
   const month = useSelector(transactionsSelectors.getMonth);
   const year = useSelector(transactionsSelectors.getYear);
