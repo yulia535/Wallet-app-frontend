@@ -1,17 +1,9 @@
 import axios from 'axios';
 import transactionsActions from './transactions-actions';
 
-axios.defaults.baseURL = 'http://localhost:3001';
+// axios.defaults.baseURL = 'http://localhost:3001';
 
-// axios.defaults.baseURL = 'https://wallet-app-backend.herokuapp.com/';
-
-// const token =
-//   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMmI5ZmE2MzE2NzgxMzNjY2M4OWNjNyIsImlhdCI6MTYzMDMyNzg5MX0.JULfcldUUMVYlvJM8W_6FWy1oc2xcR9q0OliONKDEE4';
-// // const token =
-// //   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMmM4NDQ1ODNlOGQzMjAzOGRmOTg4MCIsImlhdCI6MTYzMDMxNzMxMn0.1n6Hkj-flMQjyDRTg3P8qtLpua-KKkEqI4g_mV9DVsA';
-// const config = {
-//   headers: { Authorization: `Bearer ${token}` },
-// };
+axios.defaults.baseURL = 'https://wallet-app-backend.herokuapp.com/';
 
 const fetchTransactions = () => async dispatch => {
   dispatch(transactionsActions.fetchTransactionsRequest());

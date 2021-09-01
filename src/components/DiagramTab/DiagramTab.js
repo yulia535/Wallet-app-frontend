@@ -12,12 +12,22 @@ import Table from '../Table';
 
 const DiagramTab = () => {
   const dispatch = useDispatch();
+
+  // const monthNow = new Date().getMonth();
+  // const yearNow = new Date().getFullYear();
+
+  // useEffect(() => {
+  //   dispatch(
+  //     transactionsOperations.fetchTransactionsByDate(yearNow, monthNow + 1),
+  //   );
+  // }, [dispatch]);
+
   const month = useSelector(transactionsSelectors.getMonth);
   const year = useSelector(transactionsSelectors.getYear);
 
   useEffect(() => {
     dispatch(transactionsOperations.fetchTransactionsByDate(year, month + 1));
-  }, [dispatch, year, month]);
+  }, [dispatch, month, year]);
 
   const transactionsByDate = useSelector(
     transactionsSelectors.getTransactionsByDate,
