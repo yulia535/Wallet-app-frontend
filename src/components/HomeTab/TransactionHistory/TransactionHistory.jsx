@@ -29,7 +29,6 @@ const TransactionHistory = () => {
             const year = String(dt.getFullYear()).slice(2);
             return day + '.' + month + '.' + year;
           };
-          console.log(item);
 
           //     const status = (item.type==='+') ? (styles.incomeItem): (styles.outcomeItem);
           //  const trStyle = (item.type==='+') ? (styles.income): (styles.outcome)
@@ -45,7 +44,7 @@ const TransactionHistory = () => {
           }
 
           return (
-            <tr key={item.id} className={`${trStyle} ${styles.tr}`}>
+            <tr key={item._id} className={`${trStyle} ${styles.tr}`}>
               <td className={`${styles.item} ${styles.td}`} datelabel="Дата">
                 {GetFormattedDate(item.date)}
               </td>
