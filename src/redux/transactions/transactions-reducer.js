@@ -11,7 +11,6 @@ const items = createReducer([], {
   },
   [transactionsActions.addTransactionSuccess]: (state, { payload }) => {
     return [payload, ...state];
-    // return [...state, payload];
   },
 });
 

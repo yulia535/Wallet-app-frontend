@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { MenuItem, Select, FormControl } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { makeStyles } from '@material-ui/core';
+import { useEffect } from 'react';
 import styles from './StatisticMenu.module.css';
 import { transactionsActions } from '../../../redux/transactions';
 
@@ -28,9 +29,7 @@ const useStyles = makeStyles({
       borderColor: '#4A56E2',
       backgroundColor: '#4A56E2',
       color: '#FFFFFF',
-      // transition: 'color 0.4s ease',
       transition: 'background-color 0.4s ease',
-      // transition: 'border-color 0.4s ease',
     },
     '&:focus': {
       borderColor: '#4A56E2',
@@ -84,6 +83,13 @@ const StatisticMenu = () => {
   const [month, setMonth] = useState(monthNow);
   const [year, setYear] = useState(yearNow);
 
+  useEffect(() => {
+    dispatch(transactionsActions.changeMonth(month));
+  });
+  useEffect(() => {
+    dispatch(transactionsActions.changeYear(year));
+  });
+
   const handleChangeMonth = event => {
     setMonth(event.target.value);
     dispatch(transactionsActions.changeMonth(event.target.value));
@@ -92,10 +98,6 @@ const StatisticMenu = () => {
     setYear(event.target.value);
     dispatch(transactionsActions.changeYear(event.target.value));
   };
-
-  // useEffect(() => {
-  //   dispatch(transactionsOperations.fetchTransactions(month, year));
-  // }, [dispatch, month, year]);
 
   const iconComponent = props => {
     return (
