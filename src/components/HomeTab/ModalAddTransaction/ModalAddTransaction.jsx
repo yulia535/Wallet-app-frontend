@@ -1,5 +1,5 @@
 import styles from './modalAddTransaction.module.css';
-import './../UI/stylestoggle.css'
+import './../UI/stylestoggle.css';
 import React from 'react';
 import ToggleCustom from '../UI/ToggleCustom';
 import { Formik, Form, Field } from 'formik';
@@ -11,7 +11,6 @@ import { useState } from 'react';
 
 import { useDispatch } from 'react-redux';
 import transactionsOperations from '../../../redux/transactions/transactions-operations';
-
 
 const ModalAddTransactions = ({ setActive, handleFormCancel }) => {
   const dispatch = useDispatch();
@@ -27,11 +26,13 @@ const ModalAddTransactions = ({ setActive, handleFormCancel }) => {
     { value: 'education', name: 'Образование' },
     { value: 'rest', name: 'Остальные' },
   ];
+
   const categoryDataDeposit = [
     { name: 'Выберите категорию' },
     { value: 'mainIncome', name: 'Регулярный доход' },
     { value: 'restIncome', name: 'Нерегулярный доход' },
   ];
+
   const yesterday = new Date(Date.now() - 86400000);
   const tomorrow = new Date(Date.now() + 43200000);
 
@@ -111,33 +112,33 @@ const ModalAddTransactions = ({ setActive, handleFormCancel }) => {
         {({ values, errors, touched, dirty }) => (
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <Form className={styles.form}>
-            <div className="toggleContainer">
-    <div className="chooseTypeToggle">
-      <label htmlFor="toggle-input" className="toggle">
-        <span
-          style={{
-            color: chooseType === true ? 'black' : '#24CCA7',
-          }}
-        >
-          Доход
-        </span>
-              <ToggleCustom
-                name="type"
-                onChange={onTypeChange}
-                value={values.type}
-              />
+              <div className="toggleContainer">
+                <div className="chooseTypeToggle">
+                  <label htmlFor="toggle-input" className="toggle">
+                    <span
+                      style={{
+                        color: chooseType === true ? 'black' : '#24CCA7',
+                      }}
+                    >
+                      Доход
+                    </span>
+                    <ToggleCustom
+                      name="type"
+                      onChange={onTypeChange}
+                      value={values.type}
+                    />
 
-                  
-        <span className="outcome" style={{
-            color: chooseType === true ? '#FF6596' : 'black',
-          }}>Расход</span>
-      </label>
-    </div>
-  </div>
-
-
-
-
+                    <span
+                      className="outcome"
+                      style={{
+                        color: chooseType === true ? '#FF6596' : 'black',
+                      }}
+                    >
+                      Расход
+                    </span>
+                  </label>
+                </div>
+              </div>
 
               {chooseType ? (
                 <Field

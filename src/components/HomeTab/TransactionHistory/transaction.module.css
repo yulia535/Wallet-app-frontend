@@ -4,16 +4,14 @@
   flex-direction: column;
   width: 100%;
  max-width: 688px;
-  justify-content: space-evenly;
-  
+  justify-content: space-evenly; 
 }
 
 .blockTable{
- 
     display: block;
-    overflow-y: scroll;
     height: 500px;
     width: 768px;
+    margin: 0 auto;
 }
 
 .thead {
@@ -23,6 +21,10 @@
 .tr {
   display: flex;
   width: 100%;
+}
+.tbody{
+  overflow-y: scroll;
+  max-height: 450px;;
 }
 
 .th,
@@ -38,8 +40,6 @@
   text-align: center;
 }
 
-
-
 .item {
   height: 45px;
 }
@@ -48,11 +48,10 @@
   
 }
 
-
-
 .transactionHistory {
   margin-top: 40px;
-
+  margin-left:0;
+  margin-right:0;
   table-layout: fixed;
   width: 100%;
 }
@@ -71,8 +70,6 @@
   font-weight: 700;
   line-height: 1.5;
 }
-
-
 
 .income {
   color: #24cca7;
@@ -99,24 +96,17 @@
   justify-content: center;
 }
 
-@media (min-width: 1280px) {
-  .transactionHistory {
-    margin-left: 30px;
-    max-width: 700px;
-  }
-  .blockTable{
-   
-    height: 500px;
-    width: 800px;
 
-}
-}
 
 @media (max-width: 767px) {
   .transactionHistory {
     min-width: 280px;
     width: 100%;
     max-width: 280px;
+  }
+  .tbody{
+    overflow-y: scroll;
+    max-height: 320px;;
   }
   .titleBlock {
     display: none;
@@ -175,4 +165,22 @@
     line-height: 1.5;
     color: black;
   }
+}
+
+
+@media (min-width: 1280px) {
+  .transactionHistory {
+    margin-left: 30px;
+    max-width: 700px;
+  }
+  .blockTable{
+   
+    height: 500px;
+    width: 800px;
+
+}
+.tbody{
+  overflow-y: scroll;
+  max-height: 500px;;
+}
 }
