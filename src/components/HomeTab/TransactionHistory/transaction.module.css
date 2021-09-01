@@ -10,7 +10,7 @@
 .blockTable{
     display: block;
     height: 500px;
-    width: 768px;
+    /* width: 768px; */
     margin: 0 auto;
 }
 
@@ -95,14 +95,35 @@
   align-items: center;
   justify-content: center;
 }
+@media (max-width: 320px) {
+  .transactionHistory {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
 
+  }
+  .tbody{
+    overflow-y: scroll;
+    width: 100%;
+    max-width: 240px;
+    margin: 0 auto;
 
+  }
+  .blockTable{
+   
+   
+   width: 100%;
 
-@media (max-width: 767px) {
+}
+}
+
+@media screen and (max-width: 767px) {
   .transactionHistory {
     min-width: 280px;
     width: 100%;
     max-width: 280px;
+    margin-left: auto;
+    margin-right: auto;
   }
   .tbody{
     overflow-y: scroll;
@@ -121,7 +142,7 @@
   .blockTable{
    
       height: 320px;
-      width: 320px;
+      max-width: 320px;
   
   }
 
