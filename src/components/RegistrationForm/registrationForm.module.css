@@ -98,8 +98,8 @@ position: absolute;
 width: 100%;
 height: 4px;
 bottom: -10px;
-border: none;
-background-color:  #E5F1EF;
+/* border: none; */
+/* background-color:  #E5F1EF; */
 }
 .lineValidate{
   composes: lineBasic;

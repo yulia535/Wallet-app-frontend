@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from "react-router-dom";
 import { useFormik } from 'formik';
  import * as Yup from 'yup';
  import { useDispatch } from 'react-redux';
+ import {ProgressBarLine} from 'react-progressbar-line';
  import authOperations from '../../redux/auth/auth-operations';
 import Logo from '../Header/Logo'
 import styles from '../RegistrationForm/registrationForm.module.css';
 import iconMail from '../../image/baseline-email-24px 1.svg';
 import iconUser from '../../image/baseline-account_box-24px 1.svg';
 import iconLock from '../../image/baseline-lock-24px 1.svg';
+
 
 function RegistrationForm() {
   const {values, errors, touched,  handleChange, handleBlur, isValid, handleSubmit, dirty} = useFormik({
@@ -27,11 +29,24 @@ function RegistrationForm() {
     onSubmit:(values)=>{dispatch(authOperations.register({email:values.email, password:values.password, name:values.name} ))}
     
   })
-    
-  
+  const [validEmail, setValidEmail] = useState(0);
+  const [validPassword, setValidPassword] = useState(0)
+  const [validConfirmPassword, setValidConfirmPassword] = useState(0)
+  const [validName, setValidName] = useState(0)
+  const [progress, setProgress] = useState(0)
+
+  const counter = (input, set, value)=> {
+    if(value.length >= 2 && input === 0){
+      set(input + 25)
+      const total =25+validEmail+validPassword+validConfirmPassword+validName;
+      setProgress(total);
+    }
+    if(value.length < 2 && input !== 0){set(0)
+     const total =validEmail+validPassword+validConfirmPassword+validName-25;
+     setProgress(total);
+  }}
   
   const dispatch = useDispatch();
-
 
   return (
 <div className={styles.formSection}>
@@ -43,18 +58,17 @@ function RegistrationForm() {
            >
               <div className={styles.imputBox}>
               <img src={iconMail} alt="icon mail" className={styles.iconSvg} />
-           <input
-    
+              <input
                className={styles.inputForm}
                placeholder="E-mail"
                  type="text"
                  name="email"
                  value={values.email}
-                 onChange={handleChange}
-                 onBlur={handleBlur}
+                 onBlur={(e) => {handleBlur(e);console.log(isValid); counter(validEmail, setValidEmail, e.currentTarget.value);}}
+                 onChange={handleChange}                
                />
                {errors.email && touched.email && <div className={styles.errorMessage}>{errors.email}</div>}
-                   </div>
+               </div>
                    
               <div className={styles.imputBox}>
               <img src={iconLock} alt="icon mail" className={styles.iconSvg} />
@@ -65,29 +79,43 @@ function RegistrationForm() {
                  type="password"
                  name="password"
                  value={values.password}
-                 onChange={handleChange}
-                 onBlur={handleBlur}
+                onChange={handleChange}
+                 onBlur={(e) => {handleBlur(e);console.log(isValid); counter(validPassword, setValidPassword, e.currentTarget.value);}}
                />
                {errors.password && touched.password && <div className={styles.errorMessage}>{errors.password}</div>}
                </div>
-              
 
                <div className={styles.imputBox}>
                <img src={iconLock} alt="icon mail" className={styles.iconSvg} /> 
-               <hr className={styles.lineBasic}/>
-
                <input
                className={styles.inputForm}
                placeholder="Подтвердите пароль"
                type="password"
                name="confirmPassword"
                 value={values.confirmPassword}
-                onChange={handleChange}
-                onBlur={handleBlur}
+                onChange={handleChange }
+                onBlur={(e) => {handleBlur(e); counter(validConfirmPassword, setValidConfirmPassword, e.currentTarget.value);}}
                />
               {errors.confirmPassword && touched.confirmPassword && <div className={styles.errorMessage}>{errors.confirmPassword}</div>}
-
-               </div>
+               <div className={styles.lineBasic}><ProgressBarLine
+                        value={progress}
+                        min={0}
+                        max={100}
+                        strokeWidth={1}
+                        trailWidth={1}
+                        styles={{
+                          path: {
+                            stroke: '#24CCA7'
+                          },
+                          trail: {
+                            stroke: '#E5F1EF'
+                          },
+                          text:{
+                            fontSize: '0px'
+                        }
+                       }}
+                      /></div>
+                  </div>
 
                <div className={styles.imputBox}>
                <img src={iconUser} alt="icon mail" className={styles.iconSvg} /> 
@@ -97,11 +125,10 @@ function RegistrationForm() {
                  type="text"
                  name="name"
                  value={values.name}
-               onChange={handleChange}
-               onBlur={handleBlur}
+              onChange={handleChange}
+              onBlur={(e) => {handleBlur(e);console.log(isValid); counter(validName, setValidName, e.currentTarget.value);}}
                />
-                              {errors.name && touched.name && <div className={styles.errorMessage}>{errors.name}</div>}
-
+               {errors.name && touched.name && <div className={styles.errorMessage}>{errors.name}</div>}
                </div>
               
                  <button className={styles.button}
@@ -116,100 +143,3 @@ function RegistrationForm() {
 }
 
 export default RegistrationForm;
-
-
-
-
-
-// export default function RegistrationForm() {
-//   const [newUser, setNewUser] = useState({
-//     name:'',
-//     email: '',
-//     password:''
-//   });
-
-//   const handleChange = useCallback( e => {
-//             const { name, value } = e.target;
-//             setNewUser(prev => ({
-//                 ...prev,
-//                 [name]: value
-//             }));
-//         }
-    
-//   , []);
-
-// //   const dispatch = useDispatch();
-
-// //      const  handleSubmit = useCallback( e => {
-// //     e.preventDefault();
-
-// //       dispatch(authOperations.register(newUser));
-// //   setNewUser( { name:'',
-// //     email: '',
-// //     password:''})
-   
-// //   }, [dispatch,newUser ]);
-
-
-
-//   return (
-// <div className={styles.formSection}>
-// <div className={styles.formContainer}>
-//         <div className={styles.logoContainer} ><Logo/></div>
-//         <form
-//          // onSubmit={handleSubmit}
-//           className={styles.form}
-//           autoComplete="off"
-//         >
-//            <div className={styles.imputBox}>
-//            <img src={iconMail} alt="icon mail" className={styles.iconSvg} />
-//         <input
-//             className={styles.inputForm}
-//             placeholder="E-mail"
-//               type="email"
-//               name="email"
-//               value={newUser.email}
-//               onChange={handleChange}
-//             />
-//                 </div>
-          
-//                 <div className={styles.imputBox}>
-//                 <img src={iconLock} alt="icon mail" className={styles.iconSvg} />
-//             <input
-//             className={styles.inputForm}
-//             placeholder="Пароль"
-//               type="password"
-//               name="password"
-//               value={newUser.password}
-//               onChange={handleChange}
-//             /></div>
-//             <div className={styles.imputBox}>
-//             <img src={iconLock} alt="icon mail" className={styles.iconSvg} /> 
-//             <input
-//             className={styles.inputForm}
-//             placeholder="Подтвердите пароль"
-//             type="password"
-//             //   name="password"
-//             //   value={newUser.password}
-//             //   onChange={handleChange}
-//             />
-//             <hr className={styles.lineBasic}/>
-//             </div>
-//             <div className={styles.imputBox}>
-//             <img src={iconUser} alt="icon mail" className={styles.iconSvg} /> 
-//             <input
-//              className={styles.inputForm}
-//              placeholder="Ваше имя"
-//               type="text"
-//               name="name"
-//               value={newUser.name}
-//             onChange={handleChange}
-//             /></div>
-
-//               <button className={styles.button} type="submit">РЕГИСТРАЦИЯ</button>
-//               <NavLink className={styles.linkButton} to='/login'exact>Вход</NavLink>
-//         </form>
-//       </div>
-// </div>
-//     );
-// }
