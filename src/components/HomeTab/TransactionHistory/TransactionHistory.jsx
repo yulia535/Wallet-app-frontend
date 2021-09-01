@@ -8,110 +8,72 @@ const TransactionHistory = () => {
 
   return (
     <div className={styles.blockTable}>
-      <table className={`${styles.transactionHistory} ${styles.table}`}>
-        <thead className={`${styles.titleBlock} ${styles.thead}`}>
-          <tr className={`${styles.titleItems} ${styles.tr}`}>
-            <th className={`${styles.titleItem} ${styles.th}`}>Дата</th>
-            <th className={`${styles.titleItem} ${styles.th}`}>Тип</th>
-            <th className={`${styles.titleItem} ${styles.th}`}>Категория</th>
-            <th className={`${styles.titleItem} ${styles.th}`}>Комментарий</th>
-            <th className={`${styles.titleItem} ${styles.th}`}>Сумма</th>
-            <th className={`${styles.titleItem} ${styles.th}`}>Баланс</th>
-          </tr>
-        </thead>
+    <table className={`${styles.transactionHistory} ${styles.table}`}>
+      <thead className={`${styles.titleBlock} ${styles.thead}`}>
+        <tr className={`${styles.titleItems} ${styles.tr}`}>
+          <th className={`${styles.titleItem} ${styles.th}`}>Дата</th>
+          <th className={`${styles.titleItem} ${styles.th}`}>Тип</th>
+          <th className={`${styles.titleItem} ${styles.th}`}>Категория</th>
+          <th className={`${styles.titleItem} ${styles.th}`}>Комментарий</th>
+          <th className={`${styles.titleItem} ${styles.th}`}>Сумма</th>
+          <th className={`${styles.titleItem} ${styles.th}`}>Баланс</th>
+        </tr>
+      </thead>
 
-        <tbody className={styles.tbody}>
-          {items.map((item, ind) => {
-            const GetFormattedDate = date => {
-              const dt = new Date(date);
-              const month = String(dt.getMonth() + 1).padStart(2, '0');
-              const day = dt.getDate();
-              const year = String(dt.getFullYear()).slice(2);
-              return day + '.' + month + '.' + year;
-            };
+      <tbody className={styles.tbody}>
+        {items.map((item, ind) => {
+          const GetFormattedDate = date => {
+            const dt = new Date(date);
+            const month = String(dt.getMonth() + 1).padStart(2, '0');
+            const day = dt.getDate();
+            const year = String(dt.getFullYear()).slice(2);
+            return day + '.' + month + '.' + year;
+          };
 
-            const renameCategories = category => {
-              switch (category) {
-                case 'main':
-                  return 'Основной';
+          //     const status = (item.type==='+') ? (styles.incomeItem): (styles.outcomeItem);
+          //  const trStyle = (item.type==='+') ? (styles.income): (styles.outcome)
+          let status;
+          let trStyle;
 
-                case 'food':
-                  return 'Еда';
+          if (!item.type) {
+            status = styles.incomeItem;
+            trStyle = styles.income;
+          } else {
+            status = styles.outcomeItem;
+            trStyle = styles.outcome;
+          }
 
-                case 'car':
-                  return 'Авто';
-
-                case 'development':
-                  return 'Развитие';
-
-                case 'kids':
-                  return 'Дети';
-
-                case 'home':
-                  return 'Дом';
-
-                case 'education':
-                  return 'Образование';
-
-                case 'rest':
-                  return 'Остальные';
-
-                case 'mainIncome':
-                  return 'Регулярный доход';
-                case 'restIncome':
-                  return 'Нерегулярный доход';
-
-                default:
-              }
-            };
-
-            //     const status = (item.type==='+') ? (styles.incomeItem): (styles.outcomeItem);
-            //  const trStyle = (item.type==='+') ? (styles.income): (styles.outcome)
-            let status;
-            let trStyle;
-
-            if (!item.type) {
-              status = styles.incomeItem;
-              trStyle = styles.income;
-            } else {
-              status = styles.outcomeItem;
-              trStyle = styles.outcome;
-            }
-
-            return (
-              <tr key={item.id} className={`${trStyle} ${styles.tr}`}>
-                <td className={`${styles.item} ${styles.td}`} datelabel="Дата">
-                  {GetFormattedDate(item.date)}
-                </td>
-                <td className={`${styles.item} ${styles.td}`} datelabel="Тип">
-                  {!item.type ? '+' : '-'}
-                </td>
-                <td
-                  className={`${styles.item} ${styles.td}`}
-                  datelabel="Категория"
-                >
-                  {renameCategories(item.category)}
-                </td>
-                <td
-                  className={`${styles.item} ${styles.td}`}
-                  datelabel="Комментарий"
-                >
-                  {item.comment}
-                </td>
-                <td className={`${status} ${styles.td}`} datelabel="Сумма">
-                  {item.amount}
-                </td>
-                <td
-                  className={`${styles.item} ${styles.td}`}
-                  datelabel="Баланс"
-                >
-                  {item.balanceAfter}
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+          return (
+            <tr key={item._id} className={`${trStyle} ${styles.tr}`}>
+              <td className={`${styles.item} ${styles.td}`} datelabel="Дата">
+                {GetFormattedDate(item.date)}
+              </td>
+              <td className={`${styles.item} ${styles.td}`} datelabel="Тип">
+                {!item.type ? '+' : '-'}
+              </td>
+              <td
+                className={`${styles.item} ${styles.td}`}
+                datelabel="Категория"
+              >
+                {item.category}
+              </td>
+              <td
+                className={`${styles.item} ${styles.td}`}
+                datelabel="Комментарий"
+              >
+                {item.comment}
+              </td>
+              <td className={`${status} ${styles.td}`} datelabel="Сумма">
+                {item.amount}
+              </td>
+              <td className={`${styles.item} ${styles.td}`} datelabel="Баланс">
+                {item.balanceAfter}
+              </td>
+            </tr>
+          );
+        })}
+      </tbody>
+    </table>
     </div>
   );
 };

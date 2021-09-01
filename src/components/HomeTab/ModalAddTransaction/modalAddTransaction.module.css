@@ -75,7 +75,7 @@ input{
 }
 .selectCategory{
     position: relative;
-
+outline:none;
 margin-top: 40px;
 border:none;
 border-bottom: 1px solid grey;
